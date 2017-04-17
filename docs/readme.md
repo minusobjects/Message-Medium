@@ -2,7 +2,7 @@
 
 Heroku link TK
 
-[Trello link][trello]
+* [Trello link][trello]
 [trello]: https://trello.com/b/XmbpaiSW/medium-clone
 
 
