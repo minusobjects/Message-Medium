@@ -2,8 +2,7 @@
 
 Heroku link TK
 
-[Trello][trello]
-[trello]: http://www.trello.com
+[Trello](https://trello.com/b/XmbpaiSW/medium-clone)
 
 ## Minimum Viable Product
 Message is a single-page web-application inspired by Medium, built using Ruby on Rails, React/Redux, and QuillJS. By the end of Week 9, this app will, at a minimum, satisfy the following criteria with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
