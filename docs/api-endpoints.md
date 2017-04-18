@@ -25,7 +25,7 @@
 
 ### Responses
 - `GET /api/responses` - should be able to query by story or by user
-- `POST /api/responses/:storyId`
+- `POST /api/:storyId/responses`
 - `DELETE /api/responses/:responseId`
 
 ### Tags
@@ -35,8 +35,8 @@
 
 ### Taggings
 - `GET /api/taggings` - should be able to query by story or by tag
-- `POST /api/taggings/:storyId` - also pass in :tagId; add tag to story
-- `DELETE /api/taggings/:storyId` - also pass in :tagId; remove tag from story
+- `POST /api/taggings/` - pass in :storyId and :tagId; add tag to story
+- `DELETE /api/taggings/` - pass in :storyId and :tagId; remove tag from story
 
 ### RelatedTags
 - `GET /api/related_tags/:tagId`
