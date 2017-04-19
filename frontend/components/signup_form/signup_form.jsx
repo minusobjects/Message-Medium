@@ -11,6 +11,9 @@ class SignupForm extends React.Component {
 	}
 
 // something like this...
+componentDidMount() {
+  this.redirectIfLoggedIn();
+}
   componentDidUpdate() {
   	this.redirectIfLoggedIn();
   }

@@ -4,6 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      # note: going to show page here
       render 'api/users/show'
     else
       render json: @user.errors.full_messages, status: 422

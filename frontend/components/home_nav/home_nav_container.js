@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { login, logout, signup } from '../../actions/session_actions';
-import AuthForm from './auth_form';
+import { logout } from '../../actions/session_actions';
+import HomeNav from './home_nav';
 
 
 const mapStateToProps = (state) => ({
   loggedIn: Boolean(state.session.currentUser),
-  errors: state.session.errors
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: user => dispatch(login(user)),
+    logout: user => dispatch(logout(user))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthForm);
+)(HomeNav);
