@@ -3,18 +3,19 @@ import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import App from './app';
+import SignupFormContainer from './signup_form/signup_form_container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
+        <Route path="/signup" component={SignupFormContainer} />
       </Route>
     </Router>
   </Provider>
 );
 
 export default Root;
-
 
 
 // <IndexRoute component={EventIndexContainer} />

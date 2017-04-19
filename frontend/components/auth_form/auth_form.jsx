@@ -4,11 +4,9 @@ import { Link, withRouter } from 'react-router';
 class AuthForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "",
-    email: "", name: "", bio: "", photo_url: "" };
+		this.state = { username: "", password: ""};
 		this.handleLogin = this.handleLogin.bind(this);
 		this.handleLogout = this.handleLogout.bind(this);
-		this.handleSignup = this.handleSignup.bind(this);
 	}
 
   // this works, but is causing an infinite loop for right now
@@ -52,12 +50,6 @@ class AuthForm extends React.Component {
     this.props.logout();
   }
 
-  handleSignup(e) {
-    e.preventDefault();
-    const user = this.state;
-    this.props.signup({user});
-  }
-
 	renderErrors() {
 		return(
 			<ul>
@@ -82,7 +74,7 @@ class AuthForm extends React.Component {
 				<form onSubmit={this.handleLogin}>
 					Welcome to this app!! Login and stuff!
 					<br/>
-            (maybe some options could go here - login or signup)
+            (maybe some options could go here)
             <br />
             <br />
             { isLoggedIn }
@@ -109,56 +101,6 @@ class AuthForm extends React.Component {
         <br />
         <button onClick={this.handleLogout}>Log out!</button>
         <br />
-        <br />
-        <br />
-        Create new user!
-        <br/>
-        <form onSubmit={this.handleSignup}>
-          <label> Username:
-            <input type="text"
-              value={this.state.username}
-              onChange={this.updateField("username")}
-              />
-          </label>
-          <br/>
-          <label> Password:
-            <input type="password"
-              value={this.state.password}
-              onChange={this.updateField("password")}
-              />
-          </label>
-          <br/>
-            <label> Name:
-              <input type="text"
-                value={this.state.name}
-                onChange={this.updateField("name")}
-                />
-            </label>
-            <br/>
-          <label> Email:
-            <input type="text"
-              value={this.state.email}
-              onChange={this.updateField("email")}
-              />
-          </label>
-          <br/>
-          <label> Bio:
-            <input type="text"
-              value={this.state.bio}
-              onChange={this.updateField("bio")}
-              />
-          </label>
-          <br/>
-          <label> Photo URL:
-            <input type="text"
-              value={this.state.photo_url}
-              onChange={this.updateField("photo_url")}
-              />
-          </label>
-          <br/>
-          <br/>
-          <input type="submit" value="Submit new user!" />
-        </form>
 			</div>
 		);
 	}

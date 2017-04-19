@@ -9,6 +9,16 @@ class SignupForm extends React.Component {
 		this.handleSignup = this.handleSignup.bind(this);
 	}
 
+// something like this...
+  componentDidUpdate() {
+  	this.redirectIfLoggedIn();
+  }
+  redirectIfLoggedIn() {
+  	if (this.props.loggedIn) {
+  		this.props.router.push("/");
+  	}
+  }
+
   updateField(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
