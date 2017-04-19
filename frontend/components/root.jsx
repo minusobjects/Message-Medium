@@ -3,12 +3,14 @@ import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import App from './app';
+import AuthFormContainer from './auth_form/auth_form_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
+        <Route path="/login" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
     </Router>

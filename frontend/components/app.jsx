@@ -5,9 +5,7 @@ import AuthFormContainer from './auth_form/auth_form_container';
 const App = ({ children }) => (
   <div>
     <h3>I am the App!!</h3>
-    <br />
-    < AuthFormContainer />
-    <br />
+    <br /><br />
     Children go here:
     <br /><br />
     { children }
@@ -15,8 +13,3 @@ const App = ({ children }) => (
 );
 
 export default App;
-
-
-// { children }
-// as arg.
-// (no children yet though)
