@@ -15,7 +15,8 @@ class Api::SessionsController < ApplicationController
   def destroy
     if logged_in?
       logout
-      # render...?
+      # is this the best thing to render?
+      render json: {}
     else
       render json: ["No one to log out. I am in the sessions controller!"], status: 404
     end
