@@ -14,6 +14,7 @@
 - `GET /api/users/:userId` - view user profile page
 
 ### Session
+(render user partial for current user)
 - `POST /api/session`
 - `DELETE /api/session`
 

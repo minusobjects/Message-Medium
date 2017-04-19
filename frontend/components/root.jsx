@@ -6,6 +6,7 @@ import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>
