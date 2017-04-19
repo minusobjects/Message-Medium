@@ -7,6 +7,9 @@ const App = ({ children }) => (
     <h3>I am the App!!</h3>
     <br />
     < AuthFormContainer />
+    <br />
+    Children go here:
+    <br /><br />
     { children }
   </div>
 );
