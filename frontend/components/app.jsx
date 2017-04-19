@@ -11,3 +11,4 @@ export default App;
 
 
 // { children }
+// as arg
