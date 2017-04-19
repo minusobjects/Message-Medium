@@ -10,17 +10,19 @@ class HomeNav extends React.Component {
   handleLogout(e) {
     e.preventDefault();
     this.props.logout().then(() => hashHistory.push('/'));
-    // should be with a promise?
   }
 
   render() {
 
-    const logoutButton = <button onClick={this.handleLogout}>Log out!</button>;
-    const sessionButtons = (<div>
-    <Link to='/login'>Login!</Link>
-    <br /><br />
-    <Link to='/signup'>Signup!</Link>
-    </div>);
+    const logoutButton =(
+    <ul className='session-buttons'>
+    <li><button onClick={this.handleLogout}>Log out!</button></li>
+    </ul>);
+    const sessionButtons = (
+    <ul className='session-buttons'>
+    <li><Link to='/login'>Login!</Link></li>
+    <li><Link to='/signup'>Signup!</Link></li>
+    </ul>);
 
     let isLoggedIn;
     let helloMessage;
@@ -36,14 +38,13 @@ class HomeNav extends React.Component {
     }
 
     return(
-        <div>
+        <div className='home-nav'>
+          { buttons }
           I am the home nav!
           <br /><br />
           { isLoggedIn }
           <br /><br />
           { helloMessage }
-          <br /><br />
-          { buttons }
         </div>
     );
   }

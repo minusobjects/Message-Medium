@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
 		this.state = { username: "", password: "",
     email: "", name: "", bio: "", photo_url: "" };
 		this.handleSignup = this.handleSignup.bind(this);
+    this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
 	}
 
 // something like this...
@@ -21,6 +22,12 @@ componentDidMount() {
   	if (this.props.loggedIn) {
   		this.props.router.push("/");
   	}
+  }
+
+  formWrapperRedirect(e) {
+    if($(e.target).attr('class') === 'form-wrapper'){
+      this.props.router.push("/");
+    }
   }
 
   updateField(field) {
@@ -55,7 +62,8 @@ componentDidMount() {
       isLoggedIn = 'You are NOT logged in!';
     }
 		return (
-			<div>
+      <div className='form-wrapper' onClick={this.formWrapperRedirect}>
+			<div className='signup-form'>
         Create new user!
         <br/>
         <form onSubmit={this.handleSignup}>
@@ -110,6 +118,7 @@ componentDidMount() {
           <input type="submit" value="Submit new user!" />
         </form>
 			</div>
+    </div>
 		);
 	}
 

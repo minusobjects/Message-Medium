@@ -1,0 +1,18 @@
+.home-nav {
+  background-color: yellow;
+  width: 100%;
+  padding: 8px;
+  float: left;
+}
+
+.session-buttons  {
+  list-style-type: none;
+  background-color: pink;
+  float: right;
+  margin-right: 30px;
+}
+
+.session-buttons li {
+  padding-left: 8px;
+  float: left;
+}

@@ -7,11 +7,13 @@ class AuthForm extends React.Component {
 		super(props);
 		this.state = { username: "", password: ""};
 		this.handleLogin = this.handleLogin.bind(this);
+    this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
 	}
 
   componentDidMount() {
     this.redirectIfLoggedIn();
   }
+
 	componentDidUpdate() {
 		this.redirectIfLoggedIn();
 	}
@@ -20,6 +22,14 @@ class AuthForm extends React.Component {
 			hashHistory.push("/");
 		}
 	}
+
+  // look more into difference between router.push and hashHistory.push
+
+  formWrapperRedirect(e) {
+    if($(e.target).attr('class') === 'form-wrapper'){
+      this.props.router.push("/");
+    }
+  }
 
   updateField(field) {
     return e => this.setState({
@@ -47,7 +57,8 @@ class AuthForm extends React.Component {
 
 	render() {
 		return (
-			<div>
+      <div className='form-wrapper' onClick={this.formWrapperRedirect}>
+			<div className='auth-form'>
 				<form onSubmit={this.handleLogin}>
 					Welcome to this app!! Login and stuff!
 					<br/>
@@ -72,6 +83,7 @@ class AuthForm extends React.Component {
 				</form>
         <br />
 			</div>
+      </div>
 		);
 	}
 
