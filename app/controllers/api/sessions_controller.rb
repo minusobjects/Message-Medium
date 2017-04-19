@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       login(@user)
-      render 'api/users/show'
+      render 'api/users/session_user.json.jbuilder'
     else
       render json: ["Invalid username or password. I am in the sessions controller!"], status: 401
     end
@@ -14,10 +14,10 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     if logged_in?
+      @user = current_user
       logout
-      # is this the best thing to render?
-      # render user partial again
-      render json: {}
+      # rendering basic user data on logout
+      render 'api/users/session_user.json.jbuilder'
     else
       render json: ["No one to log out. I am in the sessions controller!"], status: 404
     end

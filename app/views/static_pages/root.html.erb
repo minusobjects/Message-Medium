@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript">
+      <% if logged_in? %>
+        window.currentUser = <%= render(
+          "api/users/user.json.jbuilder",
+          user: current_user
+        ).html_safe %>
+      <% end %>
+    </script>
     <meta charset="utf-8">
-    <title></title>
+    <title>Message</title>
   </head>
   <body>
     <div id='root'>

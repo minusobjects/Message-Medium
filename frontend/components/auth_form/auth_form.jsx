@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
 
 class AuthForm extends React.Component {
@@ -7,32 +7,19 @@ class AuthForm extends React.Component {
 		super(props);
 		this.state = { username: "", password: ""};
 		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLogout = this.handleLogout.bind(this);
 	}
 
-  // this works, but is causing an infinite loop for right now
-	// componentDidUpdate() {
-	// 	this.redirectIfLoggedIn();
-	// }
-	// redirectIfLoggedIn() {
-	// 	if (this.props.loggedIn) {
-	// 		this.props.router.push("/");
-	// 	}
-	// }
-
-  // the DRY version - we'll see
-	// handleSubmit(e) {
-	// 	e.preventDefault();
-	// 	const user = this.state;
-		// this.props.processForm({user});
-	// }
-	// navLink() {
-	// 	if (this.props.formType === "login") {
-	// 		return <Link to="/signup">sign up instead</Link>;
-	// 	} else {
-	// 		return <Link to="/login">log in instead</Link>;
-	// 	}
-	// }
+  componentDidMount() {
+    this.redirectIfLoggedIn();
+  }
+	componentDidUpdate() {
+		this.redirectIfLoggedIn();
+	}
+	redirectIfLoggedIn() {
+		if (this.props.loggedIn) {
+			hashHistory.push("/");
+		}
+	}
 
   updateField(field) {
     return e => this.setState({
@@ -44,11 +31,6 @@ class AuthForm extends React.Component {
   	e.preventDefault();
   	const user = this.state;
     this.props.login({user});
-  }
-
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.logout();
   }
 
 	renderErrors() {
@@ -64,21 +46,11 @@ class AuthForm extends React.Component {
 	}
 
 	render() {
-    let isLoggedIn;
-    if(this.props.loggedIn){
-      isLoggedIn = 'You ARE logged in!';
-    } else {
-      isLoggedIn = 'You are NOT logged in!';
-    }
 		return (
 			<div>
 				<form onSubmit={this.handleLogin}>
 					Welcome to this app!! Login and stuff!
 					<br/>
-            (maybe some options could go here)
-            <br />
-            <br />
-            { isLoggedIn }
             <br />
 					{this.renderErrors()}
 						<br/>
@@ -98,9 +70,6 @@ class AuthForm extends React.Component {
 						<br/>
 						<input type="submit" value="Log in!" />
 				</form>
-        <br />
-        <br />
-        <button onClick={this.handleLogout}>Log out!</button>
         <br />
 			</div>
 		);
