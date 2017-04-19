@@ -16,6 +16,7 @@ class Api::SessionsController < ApplicationController
     if logged_in?
       logout
       # is this the best thing to render?
+      # render user partial again
       render json: {}
     else
       render json: ["No one to log out. I am in the sessions controller!"], status: 404

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+
 class AuthForm extends React.Component {
 	constructor(props) {
 		super(props);
