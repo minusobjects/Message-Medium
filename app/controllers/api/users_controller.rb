@@ -1,11 +1,12 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
     if @user.save
-      # log_in via helper method
+      login(@user)
+      # render...
     else
-      # render json errors
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
@@ -22,8 +23,6 @@ class UsersController < ApplicationController
   end
 
 end
-
-
 
 
 # lodash babel-core babel-loader babel-preset-es2015 babel-preset-react react react-dom react-redux react-router react-router-redux redux redux-thunk webpack
@@ -98,65 +97,3 @@ end
 #     url: '/api/session'
 #   });
 # };
-
-
-
-
-
-#
-# class Api::UsersController < ApplicationController
-#
-# 	def create
-# 		# debugger
-# 		@user = User.new(user_params)
-#
-# 		if @user.save
-# 			login(@user)
-# 			render "api/users/show"
-# 		else
-# 			render json: @user.errors.full_messages, status: 422
-# 		end
-# 	end
-#
-# 	private
-#
-# 	def user_params
-# 		params.require(:user).permit(:username, :password)
-# 	end
-#
-# end
-
-
-# class Api::SessionsController < ApplicationController
-#
-# 	def create
-# 		@user = User.find_by_credentials(
-#       params[:user][:username],
-#       params[:user][:password]
-#     )
-#
-#     if @user
-# 			login(@user)
-# 			render "api/users/show"
-# 		else
-# 			render(
-#         json: ["Invalid username/password combination"],
-#         status: 401
-#       )
-# 		end
-# 	end
-#
-# 	def destroy
-# 		@user = current_user
-# 		if @user
-# 			logout
-# 			render "api/users/show"
-# 		else
-# 			render(
-#         json: ["Nobody signed in"],
-#         status: 404
-#       )
-# 		end
-# 	end
-#
-# end
