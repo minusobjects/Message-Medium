@@ -13,3 +13,6 @@
 // <Route path="/events" component={EventIndexContainer} />
 // <Route path="/events/:eventId" component={EventShowContainer} />
 // <Route path="/events/:eventId/edit" component={EventFormContainer} />
+
+
+https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
