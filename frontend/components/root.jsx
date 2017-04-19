@@ -17,10 +17,6 @@ export default Root;
 
 
 
-
-    // <Router history={hashHistory}>
-
-
 // <IndexRoute component={EventIndexContainer} />
 // <Route path="/events/new" component={EventFormContainer} />
 // <Route path="/events" component={EventIndexContainer} />
