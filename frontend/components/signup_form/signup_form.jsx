@@ -1,55 +1,18 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
-class AuthForm extends React.Component {
+class SignupForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { username: "", password: "",
     email: "", name: "", bio: "", photo_url: "" };
-		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLogout = this.handleLogout.bind(this);
 		this.handleSignup = this.handleSignup.bind(this);
 	}
-
-  // this works, but is causing an infinite loop for right now
-	// componentDidUpdate() {
-	// 	this.redirectIfLoggedIn();
-	// }
-	// redirectIfLoggedIn() {
-	// 	if (this.props.loggedIn) {
-	// 		this.props.router.push("/");
-	// 	}
-	// }
-
-  // the DRY version - we'll see
-	// handleSubmit(e) {
-	// 	e.preventDefault();
-	// 	const user = this.state;
-		// this.props.processForm({user});
-	// }
-	// navLink() {
-	// 	if (this.props.formType === "login") {
-	// 		return <Link to="/signup">sign up instead</Link>;
-	// 	} else {
-	// 		return <Link to="/login">log in instead</Link>;
-	// 	}
-	// }
 
   updateField(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
-  }
-
-  handleLogin(e) {
-  	e.preventDefault();
-  	const user = this.state;
-    this.props.login({user});
-  }
-
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.logout();
   }
 
   handleSignup(e) {
@@ -79,41 +42,14 @@ class AuthForm extends React.Component {
     }
 		return (
 			<div>
-				<form onSubmit={this.handleLogin}>
-					Welcome to this app!! Login and stuff!
-					<br/>
-            (maybe some options could go here - login or signup)
-            <br />
+        Create new user!
+        <br/>
+        <form onSubmit={this.handleSignup}>
             <br />
             { isLoggedIn }
             <br />
 					{this.renderErrors()}
 						<br/>
-						<label> Username:
-							<input type="text"
-								value={this.state.username}
-								onChange={this.updateField("username")}
-								/>
-						</label>
-						<br/>
-						<label> Password:
-							<input type="password"
-								value={this.state.password}
-								onChange={this.updateField("password")}
-								/>
-						</label>
-						<br/>
-						<input type="submit" value="Log in!" />
-				</form>
-        <br />
-        <br />
-        <button onClick={this.handleLogout}>Log out!</button>
-        <br />
-        <br />
-        <br />
-        Create new user!
-        <br/>
-        <form onSubmit={this.handleSignup}>
           <label> Username:
             <input type="text"
               value={this.state.username}
@@ -165,4 +101,4 @@ class AuthForm extends React.Component {
 
 }
 
-export default withRouter(AuthForm);
+export default withRouter(SignupForm);

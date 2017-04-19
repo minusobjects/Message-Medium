@@ -11,11 +11,12 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    # modify user info
+    # modify user info TK
   end
 
   def show
-    # go to user profile page
+    # will render user data via jbuilder
+    render :show
   end
 
   private
@@ -25,16 +26,3 @@ class Api::UsersController < ApplicationController
   end
 
 end
-
-
-# lodash babel-core babel-loader babel-preset-es2015 babel-preset-react react react-dom react-redux react-router react-router-redux redux redux-thunk webpack
-
-
-# mike = User.new(username: 'mike', name: 'Mike Doe', email: 'm@mike.com', bio: 'I am totally Mike.', photo_url: 'www.url.com', password: 'password')
-
-
-# bench project has a session form... maybe should try to do that on my own
-
-# also some redirect-type stuff in the app's root.jsx
-
-# jbuilder...? yeah need it for views.

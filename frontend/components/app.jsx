@@ -14,6 +14,6 @@ const App = ({ children }) => (
 export default App;
 
 
-
 // { children }
-// as arg
+// as arg.
+// (no children yet though)
