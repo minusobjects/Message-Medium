@@ -1,3 +1,20 @@
+.errors-list {
+  /*background-color: pink;*/
+  list-style: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #a50000;
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+
+.errors-list li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
 .auth-form {
   background-color: white;
   position: fixed;
@@ -8,6 +25,7 @@
   z-index: 201;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
   text-align: center;
+  border-radius: 5px;
 }
 
 .inner-auth {
@@ -27,6 +45,12 @@
   border-bottom: 1px solid #aaa;
   width: 90%;
   height: 20px;
+  outline: none;
+  color: #999;
+}
+
+.inner_auth input[type='text']:focus {
+    background-color: purple;
 }
 
 .inner-auth input[type='submit'] {
@@ -54,6 +78,7 @@
   z-index: 202;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
   text-align: center;
+  border-radius: 5px;
 }
 
 .inner-signup {
@@ -74,6 +99,8 @@
   width: 90%;
   height: 20px;
   margin-bottom: 18px;
+  outline: none;
+  color: #999;
 }
 
 .inner-signup img {

@@ -33,3 +33,12 @@ User.create!(
   bio: 'I am certainly Bill.',
   photo_url: 'www.url.com'
 )
+
+User.create!(
+  username: 'guest',
+  password: 'password',
+  name: 'Guest User',
+  email: 'guest@guest.com',
+  bio: 'Guest user on Message.',
+  photo_url: 'ww.url.com'
+)

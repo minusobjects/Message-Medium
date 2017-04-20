@@ -52,7 +52,7 @@ class AuthForm extends React.Component {
 
 	renderErrors() {
 		return(
-			<ul>
+			<ul className='errors-list'>
 				{this.props.errors.map((error, i) => (
 					<li key={`error-${i}`}>
 						{error}
