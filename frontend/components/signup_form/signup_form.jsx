@@ -68,6 +68,7 @@ class SignupForm extends React.Component {
   }
 
   loadImage(e){
+    e.preventDefault();
     var reader = new FileReader();
     var file = e.currentTarget.files[0];
     reader.onloadend = function() {
@@ -98,7 +99,7 @@ class SignupForm extends React.Component {
     if(this.state.imageUrl){
       previewImage = this.state.imageUrl;
     } else {
-      previewImage = 'assets/missing.png';
+      previewImage = window.images.missing;
     }
 		return (
       <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
@@ -106,7 +107,7 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSignup}>
 					{this.renderErrors()}
           <br />
-          <img src='assets/bad_logo.png' height='50px'/>
+          <img src={ window.images.bad_logo } height='50px'/>
           <br />
           <div className='inner-signup'>
           <label> Username
@@ -146,8 +147,13 @@ class SignupForm extends React.Component {
           <br/>
           <img src={previewImage} />
           <label> Photo (optional)
+            <br />
+            <span className='image-upload'>
+              Choose a file
+            </span>
             <input type="file"
               onChange={this.loadImage}
+              className='hidden-upload'
               />
           </label>
           <br/>
