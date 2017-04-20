@@ -16,8 +16,8 @@ class SignupForm extends React.Component {
   // something like this...
   componentDidMount() {
     this.redirectIfLoggedIn();
+    this.fade();
   }
-
   componentDidUpdate() {
     this.redirectIfLoggedIn();
   }
@@ -25,6 +25,11 @@ class SignupForm extends React.Component {
     if (this.props.loggedIn) {
       hashHistory.push("/");
     }
+  }
+
+  fade() {
+    $('#form-wrapper').animate({
+    opacity: 1,}, 200);
   }
 
   formWrapperRedirect(e) {
@@ -48,8 +53,9 @@ class SignupForm extends React.Component {
 
   handleSignup(e) {
     e.preventDefault();
-    var formData = new FormData();
-    var file = this.state.imageFile;
+    let formData = new FormData();
+    let file = this.state.imageFile;
+    // need to set a default image file?
     formData.append("user[username]", this.state.username);
     formData.append("user[password]", this.state.password);
     formData.append("user[name]", this.state.name);
@@ -92,8 +98,15 @@ class SignupForm extends React.Component {
     } else {
       isLoggedIn = 'You are NOT logged in!';
     }
+
+    let previewImage;
+    if(this.state.imageUrl){
+      previewImage = this.state.imageUrl;
+    } else {
+      previewImage = 'assets/missing.png';
+    }
 		return (
-      <div className='form-wrapper' onClick={this.formWrapperRedirect}>
+      <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
 			<div className='signup-form'>
         Create new user!
         <br/>
@@ -138,8 +151,7 @@ class SignupForm extends React.Component {
               />
           </label>
           <br/>
-          <img src={this.state.imageUrl} width="50px" />
-          <img src='' width="50px" />
+          <img src={previewImage} width="50px" />
           <label> Photo:
             <input type="file"
               onChange={this.loadImage}

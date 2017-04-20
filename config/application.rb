@@ -24,5 +24,3 @@ config.paperclip_defaults = {
 }
   end
 end
-
-# file = File.open('app/assets/images/missing.png')
