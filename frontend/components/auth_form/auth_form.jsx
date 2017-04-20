@@ -12,6 +12,7 @@ class AuthForm extends React.Component {
 
   componentDidMount() {
     this.redirectIfLoggedIn();
+    this.props.receiveErrors([]);
     this.fade();
   }
 
@@ -66,26 +67,33 @@ class AuthForm extends React.Component {
       <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
 			<div className='auth-form'>
 				<form onSubmit={this.handleLogin}>
-					Welcome to this app!! Login and stuff!
-					<br/>
-            <br />
 					{this.renderErrors()}
 						<br/>
-						<label> Username:
+            <img src='assets/bad_logo.png' height='50px'/>
+            <br />
+            <div className='inner-auth'>
+						<label> Username
+              <br />
 							<input type="text"
 								value={this.state.username}
 								onChange={this.updateField("username")}
 								/>
 						</label>
-						<br/>
-						<label> Password:
+						<br/><br />
+						<label> Password
+              <br />
 							<input type="password"
 								value={this.state.password}
 								onChange={this.updateField("password")}
 								/>
 						</label>
 						<br/>
-						<input type="submit" value="Log in!" />
+						<input type="submit" value="Sign in" />
+            </div>
+            <br /><br />
+            <div className='small-message'>
+            <Link to='/signup'>Don't have an account? Sign up here.</Link>
+            </div>
 				</form>
         <br />
 			</div>

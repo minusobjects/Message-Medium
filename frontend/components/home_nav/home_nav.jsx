@@ -20,9 +20,10 @@ class HomeNav extends React.Component {
     </ul>);
     const sessionButtons = (
       <div className='session-buttons'>
-        <Link to='/login'>Sign in</Link>
+        <Link to='/signin'>Sign in</Link>
         &nbsp;/&nbsp;
         <Link to='/signup'>Sign up</Link>
+        &nbsp;/ Sign in as guest
       </div>
     );
 
@@ -45,7 +46,7 @@ class HomeNav extends React.Component {
               { helloMessage }
             </div>
             <div className='write-story-message'>
-              Write a Story
+              <a href='#'>Write a Story</a>
             </div>
             { buttons }
           </div>

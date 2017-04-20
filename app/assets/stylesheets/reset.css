@@ -1,9 +1,30 @@
 body {
   font-family: 'Abel', sans-serif;
   margin: 0px;
+  color: #555;
 }
 
 div {
   width: 100%;
   /*padding: 8px;*/
+}
+
+a:link {
+  color: #777;
+}
+
+a:visited {
+  color: #777;
+}
+
+a:hover {
+  color: #bbb;
+}
+
+a:active {
+  color: #555;
+}
+
+a {
+  text-decoration: none;
 }
