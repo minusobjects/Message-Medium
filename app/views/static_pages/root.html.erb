@@ -8,6 +8,12 @@
           user: current_user
         ).html_safe %>
       <% end %>
+
+      window.images = {
+        missing: "<%= image_path("missing.png") %>",
+        bad_logo: "<%= image_path("bad_logo.png") %>",
+        mag_glass: "<%= image_path("mag-glass.png") %>"
+      }
     </script>
     <meta charset="utf-8">
     <title>Message</title>

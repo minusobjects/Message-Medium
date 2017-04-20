@@ -1,5 +1,4 @@
 .errors-list {
-  /*background-color: pink;*/
   list-style: none;
   font-size: 12px;
   letter-spacing: 1px;
@@ -109,8 +108,20 @@
   width: 50px;
 }
 
-.inner-signup input[type='file'] {
-    /*background-color: yellow;*/
+.image-upload {
+  background-color: bisque;
+  display:inline-block;
+  margin-top: 6px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.image-upload:active {
+  background-color: sandybrown;
+}
+
+.hidden-upload {
+  display: none;
 }
 
 .inner-signup input[type='submit'] {

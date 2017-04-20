@@ -49,7 +49,7 @@ class HomeNav extends React.Component {
     return(
       <div className='nav-outer'>
         <div className='home-nav'>
-          <img src='assets/bad_logo.png' height='40px' id='logo' />
+          <img src={ window.images.bad_logo } height='40px' id='logo' />
           <div className='nav-right'>
             <div className='hello-message'>
               { helloMessage }
@@ -59,7 +59,7 @@ class HomeNav extends React.Component {
             </div>
             { buttons }
             <div className='mag-glass'>
-              <img src='assets/mag-glass' />
+              <img src={window.images.mag_glass} />
             </div>
           </div>
         </div>
