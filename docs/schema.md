@@ -17,11 +17,12 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 author_id       | integer   | not null, foreign key (references users), indexed
-topic_id        | integer   | not null, foreign key (references yopics), indexed
+topic_id        | integer   | (bonus feature) not null, foreign key (references topics), indexed
 title           | string    | not null
 description     | text      |
 body            | text      | not null
-date            | string    | not null
+date            | string    | (allowing null for now - to make use of timestamps)
+image           | string    | (generated via paperclip; can be default)
 
 ## responses
 column name     | data type | details
