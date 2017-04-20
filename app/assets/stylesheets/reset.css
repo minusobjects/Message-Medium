@@ -28,3 +28,13 @@ a:active {
 a {
   text-decoration: none;
 }
+
+
+.test-class {
+  background-color: yellow;
+  width: 50%;
+  height: 500px;
+  color: red;
+  font-family: serif;
+  font-size: 15px;
+}
