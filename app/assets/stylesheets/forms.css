@@ -14,7 +14,6 @@
   width: 70%;
   margin: auto;
   text-align: left;
-  /*background-color: pink;*/
   color: #999;
   font-size: 13px;
   letter-spacing: 1.2px;
@@ -32,7 +31,6 @@
 
 .inner-auth input[type='submit'] {
   margin-top: 18px;
-  /*background-color: yellow;*/
   border: 0px;
   border-bottom: 1px solid #aaa;
   width: 50%;
@@ -62,7 +60,6 @@
   width: 70%;
   margin: auto;
   text-align: left;
-  /*background-color: pink;*/
   color: #999;
   font-size: 13px;
   letter-spacing: 1.2px;
