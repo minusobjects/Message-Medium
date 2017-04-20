@@ -1,27 +1,30 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
 
 class SignupForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { username: "", password: "",
-    email: "", name: "", bio: "", photo_url: "" };
+    email: "", name: "", bio: "", photo_url: "",
+    imageUrl: "", imageFile: null };
 		this.handleSignup = this.handleSignup.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
+    this.loadImage = this.loadImage.bind(this);
 	}
 
-// something like this...
-componentDidMount() {
-  this.redirectIfLoggedIn();
-}
+  // something like this...
+  componentDidMount() {
+    this.redirectIfLoggedIn();
+  }
+
   componentDidUpdate() {
-  	this.redirectIfLoggedIn();
+    this.redirectIfLoggedIn();
   }
   redirectIfLoggedIn() {
-  	if (this.props.loggedIn) {
-  		this.props.router.push("/");
-  	}
+    if (this.props.loggedIn) {
+      hashHistory.push("/");
+    }
   }
 
   formWrapperRedirect(e) {
@@ -36,10 +39,38 @@ componentDidMount() {
     });
   }
 
+  // old version - didn't have to account for images
+  // handleSignup(e) {
+  //   e.preventDefault();
+  //   const user = this.state;
+  //   this.props.signup({user});
+  // }
+
   handleSignup(e) {
     e.preventDefault();
-    const user = this.state;
-    this.props.signup({user});
+    var formData = new FormData();
+    var file = this.state.imageFile;
+    formData.append("user[username]", this.state.username);
+    formData.append("user[password]", this.state.password);
+    formData.append("user[name]", this.state.name);
+    formData.append("user[email]", this.state.email);
+    formData.append("user[bio]", this.state.bio);
+    formData.append("user[photo]", file);
+    this.props.signup(formData);
+  }
+
+  loadImage(e){
+    var reader = new FileReader();
+    var file = e.currentTarget.files[0];
+    reader.onloadend = function() {
+      this.setState({ imageUrl: reader.result, imageFile: file});
+    }.bind(this);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
   }
 
 	renderErrors() {
@@ -107,10 +138,11 @@ componentDidMount() {
               />
           </label>
           <br/>
-          <label> Photo URL:
-            <input type="text"
-              value={this.state.photo_url}
-              onChange={this.updateField("photo_url")}
+          <img src={this.state.imageUrl} width="50px" />
+          <img src='' width="50px" />
+          <label> Photo:
+            <input type="file"
+              onChange={this.loadImage}
               />
           </label>
           <br/>
