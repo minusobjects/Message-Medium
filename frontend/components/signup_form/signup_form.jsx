@@ -56,13 +56,14 @@ class SignupForm extends React.Component {
     let formData = new FormData();
     let file = this.state.imageFile;
 
-    // need to set a default image file?
     formData.append("user[username]", this.state.username);
     formData.append("user[password]", this.state.password);
     formData.append("user[name]", this.state.name);
     formData.append("user[email]", this.state.email);
     formData.append("user[bio]", this.state.bio);
-    formData.append("user[photo]", file);
+    if(file){
+      formData.append("user[photo]", file);
+    }
     this.props.signup(formData);
   }
 
