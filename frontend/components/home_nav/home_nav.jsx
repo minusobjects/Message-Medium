@@ -16,36 +16,41 @@ class HomeNav extends React.Component {
 
     const logoutButton =(
     <ul className='session-buttons'>
-    <li><button onClick={this.handleLogout}>Log out!</button></li>
+    <a href='#' onClick={this.handleLogout}>Sign out</a>
     </ul>);
     const sessionButtons = (
-    <ul className='session-buttons'>
-    <li><Link to='/login'>Login!</Link></li>
-    <li><Link to='/signup'>Signup!</Link></li>
-    </ul>);
+      <div className='session-buttons'>
+        <Link to='/login'>Sign in</Link>
+        &nbsp;/&nbsp;
+        <Link to='/signup'>Sign up</Link>
+      </div>
+    );
 
-    let isLoggedIn;
-    let helloMessage;
+    let helloMessage = ' ';
     let buttons;
 
     if(this.props.loggedIn){
-      isLoggedIn = 'You ARE logged in!';
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
     } else {
-      isLoggedIn = 'You are NOT logged in!';
       buttons = sessionButtons;
     }
 
     return(
+      <div className='nav-outer'>
         <div className='home-nav'>
-          { buttons }
-          I am the home nav!
-          <br /><br />
-          { isLoggedIn }
-          <br /><br />
-          { helloMessage }
+          <img src='assets/bad_logo.png' height='40px' id='logo' />
+          <div className='nav-right'>
+            <div className='hello-message'>
+              { helloMessage }
+            </div>
+            <div className='write-story-message'>
+              Write a Story
+            </div>
+            { buttons }
+          </div>
         </div>
+      </div>
     );
   }
 

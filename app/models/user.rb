@@ -2,27 +2,31 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  email           :string           not null
-#  name            :string           not null
-#  bio             :text
-#  photo_url       :string
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  username           :string           not null
+#  email              :string           not null
+#  name               :string           not null
+#  bio                :text
+#  photo_url          :string
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  photo_file_name    :string
+#  photo_content_type :string
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
 #
 
 class User < ApplicationRecord
+  # styles: { medium: "300x300>", thumb: "100x100>" },
+  has_attached_file :photo, default_url: "missing.png"
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
   validates :username, :email, :session_token, uniqueness: true
   validates :username, :email, :name, :session_token,
   :password_digest, presence: true
   validates :password, length:{minimum: 6, allow_nil: true}
-
-  # styles: { medium: "300x300>", thumb: "100x100>" },
-  has_attached_file :photo, default_url: "missing.png"
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 
