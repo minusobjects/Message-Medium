@@ -5,11 +5,18 @@ class HomeNav extends React.Component {
 	constructor(props) {
 		super(props);
     this.handleLogout = this.handleLogout.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
 	}
 
   handleLogout(e) {
     e.preventDefault();
     this.props.logout().then(() => hashHistory.push('/'));
+  }
+
+  guestLogin(e) {
+    e.preventDefault();
+    let guest = {user: {username: 'guest', password: 'password'}};
+    this.props.login(guest).then(() => hashHistory.push('/'));
   }
 
   render() {
@@ -23,7 +30,9 @@ class HomeNav extends React.Component {
         <Link to='/signin'>Sign in</Link>
         &nbsp;/&nbsp;
         <Link to='/signup'>Sign up</Link>
-        &nbsp;/ Sign in as guest
+        &nbsp;/ <span className='guest-link'>
+        <a href='#' onClick={ this.guestLogin }>Sign in as guest</a>
+        </span>
       </div>
     );
 
@@ -49,6 +58,9 @@ class HomeNav extends React.Component {
               <a href='#'>Write a Story</a>
             </div>
             { buttons }
+            <div className='mag-glass'>
+              <img src='assets/mag-glass' />
+            </div>
           </div>
         </div>
       </div>

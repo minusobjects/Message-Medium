@@ -39,7 +39,15 @@
 .write-story-message {
   margin-top: 20px;
   text-align: right;
-  width: 180px;
+  width: 200px;
+}
+
+.mag-glass {
+  margin-top: 18px;
+  margin-left: 5px;
+  text-align: right;
+  width: 20px;
+  opacity: .5;
 }
 
 .session-buttons  {
@@ -52,5 +60,42 @@
   padding: 0px;
   min-width: 62px;
   max-width: 260px;
-  right:0px
+  right:0px;
+  color: #e6a822;
+}
+
+.session-buttons a:link {
+  color: #e6a822;
+}
+
+.session-buttons a:visited {
+  color: #e6a822;
+}
+
+.session-buttons a:hover {
+  color: #f39036;
+}
+
+.session-buttons a:active {
+  color: #fea95c;
+}
+
+.session-buttons a {
+  text-decoration: none;
+}
+
+.session-buttons .guest-link a:link {
+  color: #f39036;
+}
+
+.session-buttons .guest-link a:visited {
+  color: #f39036;
+}
+
+.session-buttons .guest-link a:hover {
+  color: #e6a822;
+}
+
+.session-buttons .guest-link a:active {
+  color: #fea95c;
 }
