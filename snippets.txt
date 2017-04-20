@@ -18,3 +18,12 @@
 <img src='assets/missing.png' />
 
 https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
+
+
+console.log('hi');
+let elem = document.getElementById('test').innerHTML;
+console.log(elem);
+ elem.addEventListener('select', function(e) {
+   debugger
+ alert('Selection changed! ' + e.currentTarget.value);
+ }, false);

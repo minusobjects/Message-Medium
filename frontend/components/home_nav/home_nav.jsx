@@ -38,14 +38,17 @@ class HomeNav extends React.Component {
 
     let helloMessage = ' ';
     let buttons;
+    let imageUrl;
 
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
+      imageUrl = this.props.currentUser.image_url;
     } else {
       buttons = sessionButtons;
     }
 
+    // need to style the avatar better, of course
     return(
       <div className='nav-outer'>
         <div className='home-nav'>
@@ -55,11 +58,14 @@ class HomeNav extends React.Component {
               { helloMessage }
             </div>
             <div className='write-story-message'>
-              <a href='#'>Write a Story</a>
+              <Link to='/write'>Write a Story</Link>
             </div>
             { buttons }
             <div className='mag-glass'>
               <img src={window.images.mag_glass} />
+            </div>
+            <div className='mag-glass'>
+              <img src={ imageUrl } width='30px'/>
             </div>
           </div>
         </div>
