@@ -11,6 +11,7 @@ const App = ({ children }) => (
     Children go here:
     <br /><br />
     { children }
+    <br /><br />
   </div>
 );
 

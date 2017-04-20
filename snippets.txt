@@ -15,4 +15,6 @@
 // <Route path="/events/:eventId/edit" component={EventFormContainer} />
 
 
+<img src='assets/missing.png' />
+
 https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
