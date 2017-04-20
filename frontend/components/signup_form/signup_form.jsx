@@ -13,9 +13,9 @@ class SignupForm extends React.Component {
     this.loadImage = this.loadImage.bind(this);
 	}
 
-  // something like this...
   componentDidMount() {
     this.redirectIfLoggedIn();
+    this.props.receiveErrors([]);
     this.fade();
   }
   componentDidUpdate() {
@@ -55,6 +55,7 @@ class SignupForm extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     let file = this.state.imageFile;
+
     // need to set a default image file?
     formData.append("user[username]", this.state.username);
     formData.append("user[password]", this.state.password);
@@ -92,13 +93,6 @@ class SignupForm extends React.Component {
 	}
 
 	render() {
-    let isLoggedIn;
-    if(this.props.loggedIn){
-      isLoggedIn = 'You ARE logged in!';
-    } else {
-      isLoggedIn = 'You are NOT logged in!';
-    }
-
     let previewImage;
     if(this.state.imageUrl){
       previewImage = this.state.imageUrl;
@@ -108,59 +102,62 @@ class SignupForm extends React.Component {
 		return (
       <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
 			<div className='signup-form'>
-        Create new user!
-        <br/>
         <form onSubmit={this.handleSignup}>
-            <br />
-            { isLoggedIn }
-            <br />
 					{this.renderErrors()}
-						<br/>
-          <label> Username:
+          <br />
+          <img src='assets/bad_logo.png' height='50px'/>
+          <br />
+          <div className='inner-signup'>
+          <label> Username
             <input type="text"
               value={this.state.username}
               onChange={this.updateField("username")}
               />
           </label>
           <br/>
-          <label> Password:
+          <label> Password
             <input type="password"
               value={this.state.password}
               onChange={this.updateField("password")}
               />
           </label>
           <br/>
-            <label> Name:
+            <label> Name
               <input type="text"
                 value={this.state.name}
                 onChange={this.updateField("name")}
                 />
             </label>
             <br/>
-          <label> Email:
+          <label> Email
             <input type="text"
               value={this.state.email}
               onChange={this.updateField("email")}
               />
           </label>
           <br/>
-          <label> Bio:
+          <label> Bio (optional)
             <input type="text"
               value={this.state.bio}
               onChange={this.updateField("bio")}
               />
           </label>
           <br/>
-          <img src={previewImage} width="50px" />
-          <label> Photo:
+          <img src={previewImage} />
+          <label> Photo (optional)
             <input type="file"
               onChange={this.loadImage}
               />
           </label>
           <br/>
-          <br/>
-          <input type="submit" value="Submit new user!" />
+          <input type="submit" value="Create a new account" />
+          </div>
         </form>
+        <br />
+        <div className='small-message'>
+          <Link to='/signin'>Already have an account? Sign in here.</Link>
+        </div>
+        <br />
 			</div>
     </div>
 		);

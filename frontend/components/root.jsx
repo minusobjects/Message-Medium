@@ -11,7 +11,7 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-        <Route path="/login" component={AuthFormContainer} />
+        <Route path="/signin" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
     </Router>
