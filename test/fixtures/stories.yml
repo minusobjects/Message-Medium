@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: stories
+#
+#  id                      :integer          not null, primary key
+#  author_id               :integer          not null
+#  title                   :string           not null
+#  description             :text
+#  body                    :text             not null
+#  date                    :string
+#  topic_id                :integer
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  main_image_file_name    :string
+#  main_image_content_type :string
+#  main_image_file_size    :integer
+#  main_image_updated_at   :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

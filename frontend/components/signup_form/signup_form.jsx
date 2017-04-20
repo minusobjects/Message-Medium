@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
 		this.state = { username: "", password: "",
     email: "", name: "", bio: "", photo_url: "",
     imageUrl: "", imageFile: null };
+    // photo_url is deprecated
 		this.handleSignup = this.handleSignup.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
     this.loadImage = this.loadImage.bind(this);
