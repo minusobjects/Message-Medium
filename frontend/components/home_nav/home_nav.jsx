@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 class HomeNav extends React.Component {
@@ -6,7 +7,45 @@ class HomeNav extends React.Component {
 		super(props);
     this.handleLogout = this.handleLogout.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
+
+    this.mainClass = 'nav-outer';
 	}
+
+  componentDidMount(){
+  }
+
+  // if(this.props.scrollDir === 'down'){
+  //   setTimeout(()=>{ mainClass = 'nav-outer'; }, 200);
+  // } else {
+  //   mainClass = 'nav-outer-TEST';
+  // }
+
+  componentWillReceiveProps(newProps){
+    const elem = ReactDOM.findDOMNode(this);
+    if((newProps.scrollDir === 'up') && (newProps.scrollTop > 80)){
+      elem.style.opacity = 0;
+      this.mainClass = 'nav-outer-TEST';
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "opacity 200ms";
+        elem.style.opacity = 1;
+      });
+    } else if((newProps.scrollDir === 'down') && (newProps.scrollTop > 80)) {
+      var fadePromise = new Promise(function(resolve, reject){
+      elem.style.opacity = 1;
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "opacity 200ms";
+        elem.style.opacity = 0;
+      });
+    });
+
+    fadePromise.then(()=>{this.mainClass = 'nav-outer';});
+
+    }
+    else if((newProps.scrollDir === 'down') && (newProps.scrollTop < 80)) {
+    this.mainClass = 'nav-outer'; }
+    else { this.mainClass = 'nav-outer-TEST'; }
+
+  }
 
   handleLogout(e) {
     e.preventDefault();
@@ -52,7 +91,7 @@ class HomeNav extends React.Component {
     }
 
     return(
-      <div className='nav-outer'>
+      <div className={ this.mainClass }>
         <div className='home-nav'>
           <img src={ window.images.bad_logo } height='40px' id='logo' />
           <div className='nav-right'>
