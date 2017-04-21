@@ -870,3 +870,25 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+/* Custom changes! */
+
+.ql-toolbar {
+  width: 216px;
+  border-radius: 8px;
+  /*background-color: red;*/
+  margin-right: 2px;
+}
+
+.ql-bubble .ql-tooltip {
+  border-radius: 6px;
+  transform: translateY(-64px);
+  width:218px;
+  background-color: #333;
+}
+
+.ql-bubble .ql-tooltip:not(.ql-flip) .ql-tooltip-arrow {
+  border-bottom: 0;
+  border-top: 6px solid #444;
+  top: 40px;
+}
