@@ -3,9 +3,6 @@
 
 
 
-# also some redirect-type stuff in the app's root.jsx
-
-
 // <IndexRoute component={EventIndexContainer} />
 // <Route path="/events/new" component={EventFormContainer} />
 // <Route path="/events" component={EventIndexContainer} />
@@ -186,3 +183,21 @@ https://www.abeautifulsite.net/how-to-make-rounded-images-with-css
 https://github.com/zenoamaro/react-quill
 https://www.npmjs.com/package/html-to-react
 https://www.npmjs.com/package/quilljs-renderer
+
+
+From when I was messing around with React HTML formatting:
+
+// let testState = {text: (<div><p>This is a story, there will be all sorts of weird <strong>formatting</strong> things happening.</p><h2>Like headers!</h2><p>And other stuff, like <em>italics!</em></p><blockquote><em>Oh and don't forget blockquotes! We love blockquotes!</em></blockquote><p>Yeah text is cool.</p></div>)};
+
+// <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
+
+// { testState.text }
+
+// let s = this.state.text;
+// let htmlObject = document.createElement('div');
+// htmlObject.innerHTML = s;
+// let objectTwo = htmlObject.firstChild;
+// console.log(htmlObject);
+// console.log(objectTwo);
+
+// let divTest = ('<div>' + this.state.text + '</div>');
