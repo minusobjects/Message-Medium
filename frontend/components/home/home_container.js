@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { logout, login } from '../../actions/session_actions';
-import InteriorNav from './interior_nav';
+import Home from './home';
 
 
 const mapStateToProps = (state) => ({
@@ -10,12 +9,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: user => dispatch(logout(user)),
-    login: user => dispatch(login(user))
+
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(InteriorNav);
+)(Home);
