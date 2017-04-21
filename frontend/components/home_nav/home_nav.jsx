@@ -20,7 +20,6 @@ class HomeNav extends React.Component {
   }
 
   render() {
-
     const logoutButton =(
     <ul className='session-buttons'>
     <a href='#' onClick={this.handleLogout}>Sign out</a>
@@ -38,17 +37,20 @@ class HomeNav extends React.Component {
 
     let helloMessage = ' ';
     let buttons;
+    let avatarBox;
     let imageUrl;
 
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
       imageUrl = this.props.currentUser.image_url;
+      avatarBox = (<div className='avatar-container'>
+        <img src={ imageUrl } />
+      </div>);
     } else {
       buttons = sessionButtons;
     }
 
-    // need to style the avatar better, of course
     return(
       <div className='nav-outer'>
         <div className='home-nav'>
@@ -64,9 +66,7 @@ class HomeNav extends React.Component {
             <div className='mag-glass'>
               <img src={window.images.mag_glass} />
             </div>
-            <div className='mag-glass'>
-              <img src={ imageUrl } width='30px'/>
-            </div>
+            { avatarBox }
           </div>
         </div>
       </div>

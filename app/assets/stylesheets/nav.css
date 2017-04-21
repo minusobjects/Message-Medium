@@ -50,6 +50,49 @@
   opacity: .5;
 }
 
+.avatar-container {
+  margin-top: 12px;
+  margin-left: 12px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  padding: 0px;
+  min-width: 32px;
+  max-width: 32px;
+}
+
+.avatar-container img {
+  display: inline;
+  margin: 0 auto;
+  min-width: 32px;
+  height: 32px;
+}
+
+.signup-avatar-container {
+  float: right;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 36px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  padding: 0px;
+  min-width: 32px;
+  max-width: 32px;
+}
+
+.signup-avatar-container img {
+  float: none;
+  display: inline;
+  margin: 0 auto;
+  min-width: 32px;
+  height: 32px;
+}
+
 .session-buttons  {
   text-align: right;
   margin-right: 10px;

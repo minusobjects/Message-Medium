@@ -185,6 +185,15 @@ https://www.npmjs.com/package/html-to-react
 https://www.npmjs.com/package/quilljs-renderer
 
 
+SVG in React!
+
+Look at this thing!
+<br /><br />
+<svg height="210" width="500">
+  <polygon points="200,10 250,190 160,210" style={{fill:'lime',stroke:'purple',strokeWidth:2}} />
+</svg>
+
+
 From when I was messing around with React HTML formatting:
 
 // let testState = {text: (<div><p>This is a story, there will be all sorts of weird <strong>formatting</strong> things happening.</p><h2>Like headers!</h2><p>And other stuff, like <em>italics!</em></p><blockquote><em>Oh and don't forget blockquotes! We love blockquotes!</em></blockquote><p>Yeah text is cool.</p></div>)};

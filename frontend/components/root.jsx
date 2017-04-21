@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import App from './app';
+
 import AuthFormContainer from './auth_form/auth_form_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 import StoryInputContainer from './story_input/story_input_container';
@@ -14,8 +15,8 @@ const Root = ({ store }) => (
       <Route path="/" component={App}>
         <Route path="/signin" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
-        <Route path="/write" component={StoryInputContainer} />
       </Route>
+        <Route path="/write" component={StoryInputContainer} />
     </Router>
   </Provider>
 );

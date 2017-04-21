@@ -146,7 +146,9 @@ class SignupForm extends React.Component {
               />
           </label>
           <br/>
-          <img src={previewImage} />
+          <div className='signup-avatar-container'>
+            <img src={previewImage} />
+          </div>
           <label> Photo (optional)
             <br />
             <span className='image-upload'>

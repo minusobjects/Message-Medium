@@ -2,6 +2,8 @@ import ReactQuill, { Quill } from 'react-quill';
 import React from 'react';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import InteriorNavContainer from '../interior_nav/interior_nav_container';
+
 var HtmlToReactParser = require('html-to-react').Parser;
 
 
@@ -49,6 +51,22 @@ class StoryInput extends React.Component {
 
   render(){
 
+    let modules = { toolbar: [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image'],
+      ['clean']
+    ]
+  };
+
+  let formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ];
+
     // this works! can probably save raw string to db and then parse
     // after the fact.
     var htmlToReactParser = new HtmlToReactParser();
@@ -58,6 +76,7 @@ class StoryInput extends React.Component {
     let date = new Date();
     return(
       <div>
+      < InteriorNavContainer />
         I am the story input!
         <br />
         <br />
@@ -69,14 +88,16 @@ class StoryInput extends React.Component {
         <input type='text' value='title goes here' />
         <br />
         <br />
-        <ReactQuill value={this.state.body} onChange={this.update} theme="bubble" className='test-class'/>
+        <ReactQuill value={this.state.body} onChange={this.update} theme="bubble"
+        modules={ modules }
+        formats={ formats }
+        className='test-class'/>
         <br />
         <br />
           <div>
             { reactElement }
           </div>
         <br /><br /><br /><br />
-
         </div>
       );
     }
