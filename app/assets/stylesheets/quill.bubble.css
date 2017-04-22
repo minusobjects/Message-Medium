@@ -892,3 +892,7 @@
   border-top: 6px solid #444;
   top: 40px;
 }
+
+.ql-tooltip-editor input::placeholder {
+  visibility: hidden;
+}

@@ -14,37 +14,36 @@ class HomeNav extends React.Component {
   componentDidMount(){
   }
 
-  // if(this.props.scrollDir === 'down'){
-  //   setTimeout(()=>{ mainClass = 'nav-outer'; }, 200);
-  // } else {
-  //   mainClass = 'nav-outer-TEST';
-  // }
-
+  // I'm sure this could be nicer, refactoring-wise.
+  // could I just change the 'position' rather than the class?
+  // meow
   componentWillReceiveProps(newProps){
     const elem = ReactDOM.findDOMNode(this);
     if((newProps.scrollDir === 'up') && (newProps.scrollTop > 80)){
       elem.style.opacity = 0;
+      elem.style.top = '-80px';
       this.mainClass = 'nav-outer-TEST';
       window.requestAnimationFrame(function() {
-        elem.style.transition = "opacity 200ms";
+        elem.style.transition = "top 200ms, opacity 150ms";
         elem.style.opacity = 1;
+        elem.style.top = '0px';
       });
     } else if((newProps.scrollDir === 'down') && (newProps.scrollTop > 80)) {
-      var fadePromise = new Promise(function(resolve, reject){
+      let fadePromise = new Promise(function(resolve, reject){
       elem.style.opacity = 1;
+      elem.style.top = '0px';
       window.requestAnimationFrame(function() {
-        elem.style.transition = "opacity 200ms";
+        elem.style.transition = "top 200ms, opacity 150ms";
         elem.style.opacity = 0;
+        elem.style.top = '-80px';
       });
     });
-
     fadePromise.then(()=>{this.mainClass = 'nav-outer';});
 
     }
     else if((newProps.scrollDir === 'down') && (newProps.scrollTop < 80)) {
     this.mainClass = 'nav-outer'; }
     else { this.mainClass = 'nav-outer-TEST'; }
-
   }
 
   handleLogout(e) {

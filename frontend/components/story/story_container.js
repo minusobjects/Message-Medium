@@ -1,23 +1,24 @@
 import { connect } from 'react-redux';
-import { fetchAllStories } from './../../actions/story_actions';
-import Home from './home';
+import { fetchAllStories, fetchStory } from '../../actions/story_actions';
+import Story from './story';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
-    stories: Object.values(state.stories)
+    story: state.stories[ownProps.params.id]
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllStories: () => dispatch(fetchAllStories()),
+    fetchStory: storyId => dispatch(fetchStory(storyId))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Story);
