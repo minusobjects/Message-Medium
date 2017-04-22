@@ -1,8 +1,9 @@
-export const storyIndex = () => {
+export const storyIndex = (data) => {
   return $.ajax({
     method: 'GET',
     url: '/api/stories',
     dataType: 'json',
+    data
   });
 };
 

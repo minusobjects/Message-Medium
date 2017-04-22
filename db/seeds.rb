@@ -59,7 +59,7 @@ Story.create!(
   title: "I am an article!",
   description: "This is the description.",
   body: "This is the body",
-  date: "4,18,2017,10,34,1",
+  date: "4,18,2017,10,34",
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
@@ -68,7 +68,7 @@ Story.create!(
   title: "Article two!",
   description: "Description of the second one.",
   body: "The body should probably be longer than the description. It would be weird if it weren't.",
-  date: "4,18,2017,10,41,1",
+  date: "4,18,2017,22,41",
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
@@ -77,6 +77,6 @@ Story.create!(
   title: "Third article!",
   description: "Formatting test!",
   body: "<p>This story will have <strong>formatting!</strong></p><p><br></p><h3><strong>Everyone loves formatting!!</strong></h3><p><br></p><p><em>Don\'t they???</em></p>",
-  date: "4,18,2017,10,41,1",
+  date: "4,18,2017,22,43",
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )

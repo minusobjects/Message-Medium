@@ -13,8 +13,8 @@ export const receiveStory = story => ({
   story
 });
 
-export const fetchAllStories = () => dispatch => (
-  StoryAPIUtil.storyIndex()
+export const fetchAllStories = (data) => dispatch => (
+  StoryAPIUtil.storyIndex(data)
     .then(stories => dispatch(receiveAllStories(stories)))
 );
 
