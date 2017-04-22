@@ -27,7 +27,7 @@ date            | string    | not null
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-story_id        | integer   | not null, foreign key (references stories), indexed
+story_id        | integer   | foreign key (references stories), indexed
 writer_id       | integer   | not null, foreign key (references users), indexed
 body            | text      | not null
 date            | string    | not null
