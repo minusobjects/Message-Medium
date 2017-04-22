@@ -31,6 +31,7 @@ story_id        | integer   | not null, foreign key (references stories), indexe
 writer_id       | integer   | not null, foreign key (references users), indexed
 body            | text      | not null
 date            | string    | not null
+in_response_id  | integer   | (if possible, foreign key for responses to responses)
 
 ## topics
 column name     | data type | details
