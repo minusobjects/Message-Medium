@@ -6,9 +6,9 @@ import Root from './components/root';
 
 // test stuff
 // meow
-// import {storyIndex, storyShow} from './util/story_api_util';
-// window.storyIndex = storyIndex;
-// window.storyShow = storyShow;
+import {storyIndex, storyShow} from './util/story_api_util';
+window.storyIndex = storyIndex;
+window.storyShow = storyShow;
 
 
 document.addEventListener('DOMContentLoaded', () => {

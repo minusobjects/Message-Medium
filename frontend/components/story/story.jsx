@@ -14,15 +14,19 @@ class Story extends React.Component {
     }
 
 // [4,18,2017,10,41,1]
+// ACTUALLY would be better to just have hours and minutes, get ampm from there!
   formatDate(dateArr){
     let ampm;
-    if(dateArr[5] === 0){
-      ampm = 'am';
-    } else {
+    let hour;
+    if(dateArr[3] > 12){
       ampm = 'pm';
+      hour = (dateArr[3] - 12);
+    } else {
+      ampm = 'am';
+      hour = dateArr[3];
     }
     const months = ['none','Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
-    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${dateArr[3]}:${dateArr[4]} ${ampm}`;
+    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${hour}:${dateArr[4]} ${ampm}`;
     return str;
   }
 
