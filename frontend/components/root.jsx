@@ -7,6 +7,7 @@ import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 import StoryInputContainer from './story_input/story_input_container';
+import StoryContainer from './story/story_container';
 
 
 const Root = ({ store }) => (
@@ -17,6 +18,7 @@ const Root = ({ store }) => (
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
         <Route path="/write" component={StoryInputContainer} />
+        <Route path="/stories/:id" component={StoryContainer} />
     </Router>
   </Provider>
 );

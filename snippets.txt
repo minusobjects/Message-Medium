@@ -251,3 +251,22 @@ function hasScrolled() {
 
   lastScrollTop = st;
 }
+
+
+
+
+//     var quill = new Quill('#editor-container', {
+//   modules: {
+//     toolbar: [
+//       [{ header: [1, 2, false] }],
+//       ['bold', 'italic', 'underline'],
+//       ['image', 'code-block', 'link']
+//     ]
+//   },
+//   placeholder: 'Compose an epic...',
+//   theme: 'snow'  // or 'bubble'
+// });
+// // change the link placeholder to www.github.com
+// var tooltip = quill.theme.tooltip;
+// var input = tooltip.root.querySelector("input[data-link]");
+// input.dataset.link = 'www.github.com';

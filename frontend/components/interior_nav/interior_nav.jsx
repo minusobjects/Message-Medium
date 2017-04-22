@@ -51,7 +51,9 @@ class InteriorNav extends React.Component {
     return(
       <div className='nav-outer'>
         <div className='home-nav'>
-          <img src={ window.images.bad_logo } height='40px' id='logo' />
+          <Link to='/'>
+            <img src={ window.images.bad_logo } height='40px' id='logo' />
+          </Link>
           <div className='nav-right'>
             <div className='hello-message'>
               { helloMessage }

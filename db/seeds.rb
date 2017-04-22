@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Story.destroy_all
 
 User.create!(
   username: 'guest',
@@ -35,11 +36,47 @@ User.create!(
   photo_url: 'www.url.com'
 )
 
-User.create!(
+bill = User.create!(
   username: 'bill',
   password: 'password',
   name: 'Bill Billperson',
   email: 'b@bill.com',
   bio: 'I am certainly Bill.',
   photo_url: 'www.url.com'
+)
+
+max = User.create!(
+  username: 'max',
+  password: 'password',
+  name: 'Max Maximus',
+  email: 'm@max.com',
+  bio: 'Yes I am Max',
+  photo: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
+)
+
+Story.create!(
+  author_id: max.id,
+  title: "I am an article!",
+  description: "This is the description.",
+  body: "This is the body",
+  date: "4,18,2017,10,34,1",
+  main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
+)
+
+Story.create!(
+  author_id: max.id,
+  title: "Article two!",
+  description: "Description of the second one.",
+  body: "The body should probably be longer than the description. It would be weird if it weren't.",
+  date: "4,18,2017,10,41,1",
+  main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
+)
+
+Story.create!(
+  author_id: bill.id,
+  title: "Third article!",
+  description: "Formatting test!",
+  body: "<p>This story will have <strong>formatting!</strong></p><p><br></p><h3><strong>Everyone loves formatting!!</strong></h3><p><br></p><p><em>Don\'t they???</em></p>",
+  date: "4,18,2017,10,41,1",
+  main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )

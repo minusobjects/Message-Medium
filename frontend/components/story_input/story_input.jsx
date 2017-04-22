@@ -52,19 +52,16 @@ class StoryInput extends React.Component {
   render(){
 
     let modules = { toolbar: [
-      [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline','strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image'],
-      ['clean']
-    ]
+      // [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'link'],
+      [{ 'header': 2 }, { 'header': 3 }],
+      ['blockquote'],
+    ],
   };
 
   let formats = [
     'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image'
+    'bold', 'italic', 'link', 'blockquote',
   ];
 
     // this works! can probably save raw string to db and then parse
@@ -72,8 +69,17 @@ class StoryInput extends React.Component {
     var htmlToReactParser = new HtmlToReactParser();
     var reactElement = htmlToReactParser.parse('<div>' + this.state.body + '</div>');
 
+    // had to manually escape a quote I think.
+    let testStory = '\u003cp\u003eThis story will have \u003cstrong\u003eformatting!\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003ch3\u003e\u003cstrong\u003eEveryone loves formatting!!\u003c/strong\u003e\u003c/h3\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cem\u003eDon\'t they???\u003c/em\u003e\u003c/p\u003e';
+    let crossesFingers = htmlToReactParser.parse('<div>' + testStory + '</div>');
+
     // You are: {this.props.currentUser.name}
     let date = new Date();
+
+    // $("button.ql-header[value='2']").html("H2!");
+    $("button.ql-header[value='3']").html("Hi!");
+
+    // will probably have to use the form data thingy since there's a file involved
     return(
       <div>
       < InteriorNavContainer />
@@ -98,6 +104,12 @@ class StoryInput extends React.Component {
             { reactElement }
           </div>
         <br /><br /><br /><br />
+        <div>
+          { this.state.body }
+        </div>
+        <br /><br /><br /><br />
+          { crossesFingers }
+        <br /><br />
         </div>
       );
     }
