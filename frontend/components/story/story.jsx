@@ -60,7 +60,7 @@ class Story extends React.Component {
       <div >
         Story goes here.
         <br /><br />
-        { mainImageUrl }
+        <img src={ mainImageUrl } />
         <br /><br />
         { title }
         <br /><br />

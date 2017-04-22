@@ -13,11 +13,16 @@ end
 
 def create
   @story = Story.new(story_params)
-  if @story.save
-    # is this render right?
-    render :show
+  if current_user.id == @story.author_id
+    if @story.save
+      # is this render right?
+      render :show
+    else
+      render json: @story.errors.full_messages, status: 422
+    end
   else
-    render json: @story.errors.full_messages, status: 422
+    # only if someone's maliciously using the URL
+    render json: 'Invalid post'
   end
 end
 
@@ -26,13 +31,24 @@ def show
 end
 
 def update
-  # edit story
-  # don't forget to check current user
+  # debugger
+  @story = Story.find(params[:story][:id])
+  if current_user.id == @story.author_id
+    if @story.update(story_params)
+      # is this render right?
+      render :show
+    else
+      render json: @story.errors.full_messages, status: 422
+    end
+  else
+    # only if someone's maliciously using the URL
+    render json: 'Invalid edit'
+  end
 end
 
 def destroy
   # delete story
-  # don't forget to check current user
+  # don't forget to check current user?
 end
 
 private

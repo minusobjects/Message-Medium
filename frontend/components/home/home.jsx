@@ -3,6 +3,8 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import HomeNavContainer from '../home_nav/home_nav_container';
 
+import StoriesFeed from '../stories_feed';
+
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
@@ -33,27 +35,6 @@ class Home extends React.Component {
 
   render() {
 
-    let stories;
-      if(this.props.stories){
-        stories = this.props.stories.map((story) => {
-          return(
-            <li>
-              <img src={story.main_image_url} />
-              <br />
-              <Link to={`/stories/${story.id}`}>
-              { story.title }
-              </Link>
-              <br />
-              { story.author_name }
-              <br />
-              { story.date }
-              <br />
-              { story.description }
-              <br />
-            </li>
-          );
-        });
-      }
     return(
       <div>
         < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
@@ -68,11 +49,9 @@ class Home extends React.Component {
         I am the home!
         <br />
         <br />
-        <ul>
-          { stories }
-        </ul>
-          <img src='https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg' />
-          <br /><br />
+        < StoriesFeed stories= {this.props.stories } />
+        <br />
+        <br />
       </div>
     );
   }
@@ -80,3 +59,37 @@ class Home extends React.Component {
 }
 
 export default withRouter(Home);
+
+
+
+// render() {
+//
+//   let stories;
+//     if(this.props.stories){
+//       stories = this.props.stories.map((story) => {
+//         return(
+//           < StoriesFeedItem story={story} key={story.id} />
+//         );
+//       });
+//     }
+//   return(
+//     <div>
+//       < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
+//       <br />
+//       <br />
+//       <br />
+//       <br />
+//       <br />
+//       <br />
+//       <br />
+//       <br />
+//       I am the home!
+//       <br />
+//       <br />
+//       <ul>
+//         { stories }
+//       </ul>
+//         <br /><br />
+//     </div>
+//   );
+// }

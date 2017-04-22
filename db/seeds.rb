@@ -80,3 +80,11 @@ Story.create!(
   date: "4,18,2017,22,43",
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
+
+Story.create!(
+  author_id: bill.id,
+  title: "Fourth article!",
+  description: "Default image, plus same formatting on text as #3.",
+  body: "<p>This story will have <strong>formatting!</strong></p><p><br></p><h3><strong>Everyone loves formatting!!</strong></h3><p><br></p><p><em>Don\'t they???</em></p>",
+  date: "4,22,2017,16,52"
+)

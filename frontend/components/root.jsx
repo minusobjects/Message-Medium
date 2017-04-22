@@ -17,8 +17,10 @@ const Root = ({ store }) => (
         <Route path="/signin" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
-        <Route path="/write" component={StoryInputContainer} />
-        <Route path="/stories/:id" component={StoryContainer} />
+      <Route path="/write" component={StoryInputContainer} />
+      <Route path="/stories/:id" component={StoryContainer} />
+      <Route path="/stories/:id/edit" component={StoryInputContainer} />
+
     </Router>
   </Provider>
 );
