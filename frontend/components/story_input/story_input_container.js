@@ -1,16 +1,26 @@
 import { connect } from 'react-redux';
-import { logout, login } from '../../actions/session_actions';
+import { createStory, fetchStory, updateStory } from '../../actions/story_actions';
 import StoryInput from './story_input';
 
 
-const mapStateToProps = (state) => ({
-  loggedIn: Boolean(state.session.currentUser),
-  currentUser: state.session.currentUser
-});
+const mapStateToProps = (state, ownProps) => {
+  let story;
+  if(ownProps.params.id){
+      story = state.stories[ownProps.params.id];
+  }
+  return ({
+    loggedIn: Boolean(state.session.currentUser),
+    currentUser: state.session.currentUser,
+    story: story
+  });
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // not sure yet
+    createStory: story => dispatch(createStory(story)),
+    fetchStory: story => dispatch(fetchStory(story)),
+    updateStory: story => dispatch(updateStory(story))
+    // receiveErrors: errors => dispatch(receiveErrors(errors))
   };
 };
 

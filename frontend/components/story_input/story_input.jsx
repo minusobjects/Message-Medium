@@ -28,12 +28,31 @@ class StoryInput extends React.Component {
     this.state = { title: "", description: "", body: "",
       date: "", imageUrl: "", imageFile: null };
     // author id will be based on current user
+    // also not really using 'date' in here yet.
+
     this.update = this.update.bind(this);
+    this.handleStoryInput = this.handleStoryInput.bind(this);
+    this.loadImage = this.loadImage.bind(this);
   }
 
   componentDidMount() {
     this.redirectIfNotLoggedIn();
     // this.props.receiveErrors([]);
+
+    // if editing story, import data
+    if(this.props.params.id){
+      this.props.fetchStory(this.props.params.id);
+    }
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({
+      title: newProps.story.title,
+      description: newProps.story.description,
+      body: newProps.story.body,
+      date: newProps.story.date,
+      imageUrl: newProps.story.main_image_url
+    });
   }
 
 	componentDidUpdate() {
@@ -62,7 +81,7 @@ class StoryInput extends React.Component {
     let formData = new FormData();
     let file = this.state.imageFile;
 
-    formData.append("story[author_id]", this.props.currentUser); // current user id!
+    formData.append("story[author_id]", this.props.currentUser.id); // current user id!
     formData.append("story[title]", this.state.title);
     formData.append("story[description]", this.state.description);
     formData.append("story[body]", this.state.body);
@@ -70,7 +89,20 @@ class StoryInput extends React.Component {
     if(file){
       formData.append("story[main_image]", file);
     }
-    // this.props.signup(formData);
+
+    // account for patch or post!
+    // what happens if I 'patch' without entering a new image file?
+
+    if(this.props.params.id){
+      formData.append("story[id]", this.props.params.id);
+      this.props.updateStory(formData);
+    } else {
+      this.props.createStory(formData);
+    }
+
+    // SHOULD BE A PROMISE
+    // SHOULD GO TO SHOW PAGE
+    // hashHistory.push("/");
   }
 
   // [4,18,2017,10,41,1]
@@ -149,6 +181,14 @@ class StoryInput extends React.Component {
     // $("button.ql-header[value='2']").html("H2!");
     $("button.ql-header[value='3']").html("Hi!");
 
+
+    let previewImage;
+    if(this.state.imageUrl){
+      previewImage = this.state.imageUrl;
+    } else {
+      previewImage = window.images.story_default;
+    }
+
     // will probably have to use the form data thingy since there's a file involved
     return(
       <div>
@@ -165,6 +205,7 @@ class StoryInput extends React.Component {
         <br />
         <br />
         <br />
+        <form onSubmit={this.handleStoryInput}>
         <label> Title
           <input type="text"
             value={this.state.title}
@@ -173,10 +214,37 @@ class StoryInput extends React.Component {
         </label>
         <br />
         <br />
+        <label> Description
+          <input type="text"
+            value={this.state.description}
+            onChange={this.updateField("description")}
+            />
+        </label>
+        <br />
+        <br />
         <ReactQuill value={this.state.body} onChange={this.update} theme="bubble"
         modules={ modules }
         formats={ formats }
         className='test-class'/>
+        <br />
+        <br />
+        <div className='signup-avatar-container'>
+          <img src={previewImage} />
+        </div>
+        <label> Photo (optional)
+          <br />
+          <span className='image-upload'>
+            Choose a file
+          </span>
+          <input type="file"
+            onChange={this.loadImage}
+            className='hidden-upload'
+            />
+        </label>
+        <br/>
+        account for patch or post??
+        <input type='submit' value='Submit story!' />
+        </form>
         <br />
         <br />
           <div>
