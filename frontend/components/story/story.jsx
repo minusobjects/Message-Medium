@@ -17,8 +17,17 @@ class Story extends React.Component {
       this.props.fetchAllResponses({storyId: this.props.params.id});
     }
 
+  componentWillReceiveProps(nextProps) {
+		// debugger
+		if(nextProps.params.id != this.props.params.id){
+    	this.props.fetchStory(nextProps.params.id);
+			this.props.fetchAllResponses({storyId: nextProps.params.id});
+		}
+  }
+
 // [4,18,2017,10,41,1]
 // ACTUALLY would be better to just have hours and minutes, get ampm from there!
+// ADD SECONDS!
   formatDate(dateArr){
     let ampm;
     let hour;
@@ -43,6 +52,7 @@ class Story extends React.Component {
     let title;
     let authorName;
     let authorBio;
+		let authorId;
     let authorPhotoUrl;
     let date;
     let formattedDate;
@@ -54,12 +64,25 @@ class Story extends React.Component {
       title = this.props.story.title;
       authorName = this.props.story.author_name;
 			authorBio = this.props.story.author_bio;
+			authorId = this.props.story.author_id;
 			authorPhotoUrl = this.props.story.author_photo_url;
       date = this.props.story.date;
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
       body = this.props.story.body;
     }
+
+		let editThis;
+
+		if(this.props.loggedIn){
+			if(this.props.currentUser.id === authorId){
+				editThis = (<div className='editThis'>
+				<Link to={`/stories/${this.props.story.id}/edit`}>
+					This is your story. Click here to edit.
+				</Link>
+				</div>);
+			}
+		}
 
     var htmlToReactParser = new HtmlToReactParser();
     var parseBody = htmlToReactParser.parse('<div>' + body + '</div>');
@@ -74,14 +97,16 @@ class Story extends React.Component {
 								<img src={ authorPhotoUrl } />
 							</div>
 							<div className='authorInfoContainer'>
-								<br />
 								{ authorName }
 								<br />
-								{ authorBio }
-								<br />
-								{ formattedDate }
+								<span className='smallInfo'>
+									{ authorBio }
+									<br />
+									{ formattedDate }
+								</span>
 							</div>
 						</section>
+						{ editThis }
 						<section className='storyHead'>
 							<div className='storyTitle'>
 								<h1>
@@ -118,12 +143,3 @@ class Story extends React.Component {
 }
 
 export default withRouter(Story);
-
-
-// componentDidMount() {
-//     this.props.fetchPost(this.props.params.postId);
-//   }
-//
-//   componentWillReceiveProps(nextProps) {
-//     this.props.fetchPost(nextProps.params.postId);
-//   }
