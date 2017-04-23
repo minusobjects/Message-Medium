@@ -19,10 +19,46 @@
 }
 
 .storyInfo {
- background-color: turquoise;
+ /*background-color: pink;*/
  display: flex;
  justify-content: left;
+ width: 80%;
 }
+
+.authorInfoContainer {
+  /*background-color: yellow;*/
+  padding-top: 16px;
+  font-size: 16px;
+}
+
+.storyInfo .smallInfo {
+ /*background-color: pink;*/
+ font-size: 13.5px;
+ color: rgba(0,0,0,.5);
+}
+
+.authorPhotoContainer {
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-right: 18px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  padding: 0px;
+  min-width: 65px;
+  max-width: 65px;
+  min-height: 65px;
+}
+
+.authorPhotoContainer img {
+  display: inline;
+  margin: 0 auto;
+  min-width: 65px;
+  height: 65px;
+}
+
 
 .storyHead {
  /*background-color: goldenrod;*/
@@ -64,6 +100,15 @@
 .storyBody {
  background-color: white;
  font-family: 'Amiri', serif;
+}
+
+.editThis {
+  /*font-family: 'Crimson Text', serif;*/
+  /*color: rgba(0,0,0,.5);*/
+  font-size: 16px;
+  opacity: .6;
+  margin-top: 25px;
+  font-style: italic;
 }
 
 .storyBody p {
@@ -111,25 +156,4 @@
   width: 40%;
   border-top: 5px solid rgba(0,0,0,.4);
   margin-top: 50px;
-}
-
-.authorPhotoContainer {
-  margin-top: 12px;
-  margin-left: 12px;
-  height: 32px;
-  overflow: hidden;
-  border-radius: 50%;
-  opacity: .8;
-  position: relative;
-  padding: 0px;
-  min-width: 65px;
-  max-width: 65px;
-  min-height: 65px;
-}
-
-.authorPhotoContainer img {
-  display: inline;
-  margin: 0 auto;
-  min-width: 65px;
-  height: 65px;
 }

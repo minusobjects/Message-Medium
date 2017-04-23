@@ -113,6 +113,7 @@ class SignupForm extends React.Component {
           <div className='inner-signup'>
           <label> Username
             <input type="text"
+							maxLength="40"
               value={this.state.username}
               onChange={this.updateField("username")}
               />
@@ -120,6 +121,7 @@ class SignupForm extends React.Component {
           <br/>
           <label> Password
             <input type="password"
+							maxLength="40"
               value={this.state.password}
               onChange={this.updateField("password")}
               />
@@ -127,6 +129,7 @@ class SignupForm extends React.Component {
           <br/>
             <label> Name
               <input type="text"
+								maxLength="60"
                 value={this.state.name}
                 onChange={this.updateField("name")}
                 />
@@ -134,6 +137,7 @@ class SignupForm extends React.Component {
             <br/>
           <label> Email
             <input type="text"
+							maxLength="60"
               value={this.state.email}
               onChange={this.updateField("email")}
               />
@@ -141,6 +145,7 @@ class SignupForm extends React.Component {
           <br/>
           <label> Bio (optional)
             <input type="text"
+							maxLength="150"
               value={this.state.bio}
               onChange={this.updateField("bio")}
               />
