@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import ResponseInputContainer from '../response_input/response_input_container';
+import ResponseSectionContainer from '../response_section/response_section_container';
+
 var HtmlToReactParser = require('html-to-react').Parser;
 
 class Story extends React.Component {
@@ -11,6 +14,7 @@ class Story extends React.Component {
 
   componentDidMount() {
       this.props.fetchStory(this.props.params.id);
+      this.props.fetchAllResponses({storyId: this.props.params.id});
     }
 
 // [4,18,2017,10,41,1]
@@ -75,6 +79,11 @@ class Story extends React.Component {
         { body }
         <br /><br />
         { parseBody }
+        <br /><br />
+        < ResponseInputContainer storyId={this.props.params.id}/>
+        <br /><br />
+        < ResponseSectionContainer storyId={this.props.params.id} responses={this.props.responses} />
+        <br /><br />
       </div>
     );
   }

@@ -3,9 +3,9 @@ import * as ResponseAPIUtil from '../util/response_api_util';
 export const RECEIVE_ALL_RESPONSES = "RECEIVE_ALL_RESPONSES";
 export const RECEIVE_RESPONSE = "RECEIVE_RESPONSE";
 
-export const receiveAllResponses = stories => ({
+export const receiveAllResponses = responses => ({
   type: RECEIVE_ALL_RESPONSES,
-  stories
+  responses
 });
 
 export const receiveResponse = response => ({
@@ -13,10 +13,11 @@ export const receiveResponse = response => ({
   response
 });
 
-export const fetchAllResponses = (data) => dispatch => (
-  ResponseAPIUtil.responseIndex(data)
+export const fetchAllResponses = (data) => dispatch => {
+    return(ResponseAPIUtil.responseIndex(data)
     .then(stories => dispatch(receiveAllResponses(stories)))
-);
+   );
+};
 
 export const fetchResponse = (responseId) => dispatch => (
   ResponseAPIUtil.responseShow(responseId)
