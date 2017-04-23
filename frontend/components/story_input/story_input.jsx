@@ -181,7 +181,7 @@ class StoryInput extends React.Component {
     let crossesFingers = htmlToReactParser.parse('<div>' + testStory + '</div>');
 
     // $("button.ql-header[value='2']").html("H2!");
-    $("button.ql-header[value='3']").html("Hi!");
+    $("button.ql-header[value='3']").html("H3!");
 
 
     let previewImage;

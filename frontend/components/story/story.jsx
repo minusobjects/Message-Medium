@@ -42,6 +42,8 @@ class Story extends React.Component {
     let mainImageUrl;
     let title;
     let authorName;
+    let authorBio;
+    let authorPhotoUrl;
     let date;
     let formattedDate;
     let description;
@@ -51,6 +53,8 @@ class Story extends React.Component {
       mainImageUrl = this.props.story.main_image_url;
       title = this.props.story.title;
       authorName = this.props.story.author_name;
+			authorBio = this.props.story.author_bio;
+			authorPhotoUrl = this.props.story.author_photo_url;
       date = this.props.story.date;
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
@@ -61,29 +65,52 @@ class Story extends React.Component {
     var parseBody = htmlToReactParser.parse('<div>' + body + '</div>');
 
     return(
-      <div >
-        Story goes here.
-        <br /><br />
-        <img src={ mainImageUrl } />
-        <br /><br />
-        { title }
-        <br /><br />
-        { authorName }
-        <br /><br />
-        { date }
-        <br /><br />
-        { formattedDate }
-        <br /><br />
-        { description }
-        <br /><br />
-        { body }
-        <br /><br />
-        { parseBody }
-        <br /><br />
-        < ResponseInputContainer storyId={this.props.params.id}/>
-        <br /><br />
-        < ResponseSectionContainer storyId={this.props.params.id} responses={this.props.responses} />
-        <br /><br />
+      <div className='mainContainer'>
+				<div className='storyContainer'>
+					<article className='storyContent'>
+
+		        <section className='storyInfo'>
+							<div className='authorPhotoContainer'>
+								<img src={ authorPhotoUrl } />
+							</div>
+							<div className='authorInfoContainer'>
+								<br />
+								{ authorName }
+								<br />
+								{ authorBio }
+								<br />
+								{ formattedDate }
+							</div>
+						</section>
+						<section className='storyHead'>
+							<div className='storyTitle'>
+								<h1>
+				        	{ title }
+								</h1>
+							</div>
+							<div className='storyDescription'>
+								<h3>
+				        	{ description }
+								</h3>
+							</div>
+							<div className='storyMainImageContainer'>
+			        	<img src={ mainImageUrl } />
+							</div>
+						</section>
+						<section className='storyBody'>
+		        	{ parseBody }
+							<hr />
+		        </section>
+
+						<div>
+		        < ResponseInputContainer storyId={this.props.params.id}/>
+		        <br /><br />
+		        < ResponseSectionContainer storyId={this.props.params.id} responses={this.props.responses} />
+		        <br /><br />
+						</div>
+
+						</article>
+				</div>
       </div>
     );
   }
