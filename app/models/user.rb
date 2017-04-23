@@ -32,9 +32,15 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+
   has_many :stories,
     foreign_key: :author_id,
     class_name: 'Story'
+
+  has_many :responses,
+    foreign_key: :response_id,
+    class_name: 'Response'
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

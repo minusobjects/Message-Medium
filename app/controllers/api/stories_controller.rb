@@ -5,6 +5,8 @@ def index
   stories = Story.all
 
   if params[:authorId]
+    # maybe should rearrange this conditional so we're
+    # not getting every story every time?
       stories = stories.where(author_id: params[:authorId])
     end
     @stories = stories

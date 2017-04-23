@@ -3,7 +3,7 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import HomeNavContainer from '../home_nav/home_nav_container';
 
-import StoriesFeed from '../stories_feed';
+import StoriesFeed from '../stories_feed/stories_feed';
 
 class Home extends React.Component {
 	constructor(props) {

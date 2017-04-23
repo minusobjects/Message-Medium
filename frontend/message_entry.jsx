@@ -9,6 +9,9 @@ import Root from './components/root';
 // import {storyIndex, storyShow} from './util/story_api_util';
 // window.storyIndex = storyIndex;
 // window.storyShow = storyShow;
+import {responseIndex, responseShow} from './util/response_api_util';
+window.responseIndex = responseIndex;
+window.responseShow = responseShow;
 
 
 document.addEventListener('DOMContentLoaded', () => {
