@@ -111,3 +111,26 @@ response3 = Response.create!(
   body: 'This is a response to a response.',
   date: '4,22,2017,20,45'
 )
+
+response4 = Response.create!(
+  writer_id: max.id,
+  story_id: story3.id,
+  body: 'This is a random response.',
+  date: '4,22,2017,21,40'
+)
+
+response5 = Response.create!(
+  writer_id: max.id,
+  story_id: story3.id,
+  in_response_id: response1.id,
+  body: 'This is a response to the FIRST response.',
+  date: '4,22,2017,21,45'
+)
+
+response6 = Response.create!(
+  writer_id: max.id,
+  story_id: story3.id,
+  in_response_id: response1.id,
+  body: 'This is ALSO a response to the FIRST response.',
+  date: '4,22,2017,21,50'
+)

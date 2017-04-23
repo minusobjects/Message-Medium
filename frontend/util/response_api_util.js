@@ -1,4 +1,5 @@
 export const responseIndex = (data) => {
+  // debugger
   return $.ajax({
     method: 'GET',
     url: '/api/responses',
@@ -19,9 +20,6 @@ export const responseCreate = (response) => {
   return $.ajax({
     method: 'POST',
     url: `/api/responses`,
-    processData: false,
-    contentType: false,
-    dataType: 'json',
     data: response
   });
 };
@@ -30,9 +28,6 @@ export const responseUpdate = (response) => {
   return $.ajax({
     method: 'PATCH',
     url: `/api/responses/${response.id}`,
-    processData: false,
-    contentType: false,
-    dataType: 'json',
     data: response
   });
 };

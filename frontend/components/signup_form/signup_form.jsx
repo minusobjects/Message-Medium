@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
       previewImage = window.images.missing;
     }
 		return (
-      <div className='form-wrapper' id='form-wrapper' onClick={this.pperRedirect}>
+      <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
 			<div className='signup-form'>
         <form onSubmit={this.handleSignup}>
 					{this.renderErrors()}

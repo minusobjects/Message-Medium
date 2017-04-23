@@ -49,7 +49,7 @@ def update
 end
 
 def destroy
-  # delete story
+  # delete story. tk.
   # don't forget to check current user?
 end
 

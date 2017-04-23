@@ -46,13 +46,15 @@ class StoryInput extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({
-      title: newProps.story.title,
-      description: newProps.story.description,
-      body: newProps.story.body,
-      date: newProps.story.date,
-      imageUrl: newProps.story.main_image_url
-    });
+    if(newProps.story){
+      this.setState({
+        title: newProps.story.title,
+        description: newProps.story.description,
+        body: newProps.story.body,
+        date: newProps.story.date,
+        imageUrl: newProps.story.main_image_url
+      });
+    }
   }
 
 	componentDidUpdate() {

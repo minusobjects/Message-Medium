@@ -270,3 +270,11 @@ function hasScrolled() {
 // var tooltip = quill.theme.tooltip;
 // var input = tooltip.root.querySelector("input[data-link]");
 // input.dataset.link = 'www.github.com';
+
+
+
+https://css-tricks.com/snippets/css/drop-caps/
+
+http://stackoverflow.com/questions/5379120/get-the-highlighted-selected-text
+
+http://stackoverflow.com/questions/8644428/how-to-highlight-text-using-javascript
