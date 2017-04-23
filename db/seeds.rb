@@ -8,8 +8,9 @@
 
 User.destroy_all
 Story.destroy_all
+Response.destroy_all
 
-User.create!(
+guest = User.create!(
   username: 'guest',
   password: 'password',
   name: 'Guest User',
@@ -18,7 +19,7 @@ User.create!(
   photo_url: 'ww.url.com'
 )
 
-User.create!(
+mike = User.create!(
   username: 'mike',
   password: 'password',
   name: 'Mike Doe',
@@ -27,7 +28,7 @@ User.create!(
   photo_url: 'www.url.com'
 )
 
-User.create!(
+joe = User.create!(
   username: 'joe',
   password: 'password',
   name: 'Joe Josephson',
@@ -54,7 +55,7 @@ max = User.create!(
   photo: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
-Story.create!(
+story1 = Story.create!(
   author_id: max.id,
   title: "I am an article!",
   description: "This is the description.",
@@ -63,7 +64,7 @@ Story.create!(
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
-Story.create!(
+story2 = Story.create!(
   author_id: max.id,
   title: "Article two!",
   description: "Description of the second one.",
@@ -72,7 +73,7 @@ Story.create!(
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
-Story.create!(
+story3 = Story.create!(
   author_id: bill.id,
   title: "Third article!",
   description: "Formatting test!",
@@ -81,10 +82,32 @@ Story.create!(
   main_image: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/fluffy.jpg")
 )
 
-Story.create!(
+story4 = Story.create!(
   author_id: bill.id,
   title: "Fourth article!",
   description: "Default image, plus same formatting on text as #3.",
   body: "<p>This story will have <strong>formatting!</strong></p><p><br></p><h3><strong>Everyone loves formatting!!</strong></h3><p><br></p><p><em>Don\'t they???</em></p>",
   date: "4,22,2017,16,52"
+)
+
+response1 = Response.create!(
+  writer_id: joe.id,
+  story_id: story3.id,
+  body: 'This is the response body. I am responding to something.',
+  date: '4,22,2017,20,35'
+)
+
+response2 = Response.create!(
+  writer_id: bill.id,
+  story_id: story3.id,
+  body: 'This is another response.',
+  date: '4,22,2017,20,40'
+)
+
+response3 = Response.create!(
+  writer_id: joe.id,
+  story_id: story3.id,
+  in_response_id: response2.id,
+  body: 'This is a response to a response.',
+  date: '4,22,2017,20,45'
 )

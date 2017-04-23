@@ -28,4 +28,8 @@ class Story < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'User'
 
+  has_many :responses,
+    foreign_key: :story_id,
+    class_name: 'Response'
+
 end
