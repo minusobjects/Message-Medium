@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     storyId: ownProps.storyId,
     inResponseId: ownProps.inResponseId,
+    makeVisible: ownProps.makeVisible,
     thisResponse: thisResponse
   });
 };

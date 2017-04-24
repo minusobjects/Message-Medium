@@ -274,6 +274,7 @@ function hasScrolled() {
 
 http://creativedroplets.com/export-svg-for-the-web-with-illustrator-cc/
 https://codepen.io/luiscarvalho/pen/hJFrx
+https://css-tricks.com/creating-svg-icon-system-react/
 
 https://css-tricks.com/snippets/css/drop-caps/
 

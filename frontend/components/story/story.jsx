@@ -107,7 +107,7 @@ class Story extends React.Component {
 			respondHere = (< ResponseInputContainer storyId={this.props.params.id}/>);
 		} else {
 			respondHere = (<div className='signUpLink'>
-			<Link to='/signup'>Sign up to leave a response.</Link>
+			<Link to='/signin'>Sign in to leave a response.</Link>
 			</div>);
 		}
 
@@ -165,7 +165,7 @@ class Story extends React.Component {
 				</div>
 
 				<section className='bottomSection'>
-					<div className='responseBox-parent'>
+					<div className='responseBox'>
 					{respondHere}
 					</div>
 					<div className='responseList'>

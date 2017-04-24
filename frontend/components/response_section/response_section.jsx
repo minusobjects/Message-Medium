@@ -58,7 +58,11 @@ class ResponseSection extends React.Component {
           isChild = true;
         }
         return(
-          < Response response={response} storyId={this.props.storyId} isChild = {isChild} key={response.id} />
+          < Response response={response}
+          storyId={this.props.storyId}
+          isChild = {isChild}
+          loggedIn = {this.props.loggedIn}
+          key={response.id} />
         );
       });
 

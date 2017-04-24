@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 class ResponseInput extends React.Component {
@@ -11,9 +12,23 @@ class ResponseInput extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
     if(this.props.thisResponse){
       this.setState({body: this.props.thisResponse.body});
     }
+
+    const elem = ReactDOM.findDOMNode(this);
+      elem.style.opacity = 0;
+      elem.style.top = '-80px';
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "top 200ms, opacity 150ms";
+        elem.style.opacity = 1;
+        elem.style.top = '0px';
+      });
+    }
+
+  componentWillReceiveProps(newProps){
+    // debugger
   }
 
   updateField(field) {
@@ -40,15 +55,28 @@ class ResponseInput extends React.Component {
     }};
 
     if(this.props.thisResponse){
-      // responseData.hey_dude = 'check it out';
       responseData.this_id = this.props.this_id;
       this.props.updateResponse(responseData);
     } else {
       this.props.createResponse(responseData);
     }
 
+    const elem = ReactDOM.findDOMNode(this);
+      elem.style.opacity = 1;
+      elem.style.height = '200px';
+      // elem.style.padding = 20;
+      window.requestAnimationFrame(function() {
+        console.log('yeah two')
+        elem.style.transition = "height 200ms, opacity 200ms";
+        elem.style.opacity = 0;
+        elem.style.height = '0px';
+        // elem.style.padding = 0;
+        // elem.style.top = '-80px';
+        // elem.style.display = 'none';
+      });
+
     // SHOULD BE A PROMISE
-    // SHOULD GO TO STORY PAGE
+    // SHOULD GO TO STORY PAGE?
     // hashHistory.push("/");
   }
 
@@ -77,18 +105,25 @@ class ResponseInput extends React.Component {
 
 
   render(){
+
+    let buttonText = 'Respond';
+
+    if(this.props.thisResponse){
+      buttonText = 'Edit your response'
+    }
+
     return(
-      <div>
-        <br />
+      <div className='responseInput'>
         <form onSubmit={this.handleResponseInput}>
         <label>
-          <textarea placeholder="Response goes here." value={this.state.body} onChange={this.updateField("body")}>
+          <textarea placeholder="Write a response..." value={this.state.body} onChange={this.updateField("body")}>
           </textarea>
         </label>
-        <br />
-        <input type='submit' value='Submit response!' />
+        <div className='responseSubmitWrapper'>
+          <input type='submit' value={buttonText} />
+        </div>
         </form>
-        <br />
+        <div style={{height: '15px', display: 'block'}}></div>
         </div>
       );
     }
