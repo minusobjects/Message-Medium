@@ -4,22 +4,6 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
 
-var HtmlToReactParser = require('html-to-react').Parser;
-
-
-//   id                      :integer          not null, primary key
-// #  author_id               :integer          not null
-// #  title                   :string           not null
-// #  description             :text
-// #  body                    :text             not null
-// #  date                    :string
-// #  topic_id                :integer
-// #  created_at              :datetime         not null
-// #  updated_at              :datetime         not null
-// #  main_image_file_name    :string
-// #  main_image_content_type :string
-// #  main_image_file_size    :integer
-// #  main_image_updated_at   :datetime
 
 class StoryInput extends React.Component {
 
@@ -55,6 +39,10 @@ class StoryInput extends React.Component {
         imageUrl: newProps.story.main_image_url
       });
     }
+    else {
+      this.setState({ title: "", description: "", body: "",
+        date: "", imageUrl: "", imageFile: null });
+    }
   }
 
 	componentDidUpdate() {
@@ -83,7 +71,7 @@ class StoryInput extends React.Component {
     let formData = new FormData();
     let file = this.state.imageFile;
 
-    formData.append("story[author_id]", this.props.currentUser.id); // current user id!
+    formData.append("story[author_id]", this.props.currentUser.id);
     formData.append("story[title]", this.state.title);
     formData.append("story[description]", this.state.description);
     formData.append("story[body]", this.state.body);
@@ -107,16 +95,6 @@ class StoryInput extends React.Component {
     // hashHistory.push("/");
   }
 
-  // [4,18,2017,10,41,1]
-  // Today's date is: { date.toDateString() }
-
-  // let date = new Date();
-
-  // a.getDate()
-  // a.getFullYear()
-  // a.getMonth() (add 1)
-  // a.getHours() (0-24)
-  // a.getMinutes()
 
   encodeDate(){
     let date = new Date();
@@ -125,7 +103,8 @@ class StoryInput extends React.Component {
     let year = date.getFullYear();
     let hour = date.getHours();
     let minutes = date.getMinutes();
-    return `${month},${day},${year},${hour},${minutes}`;
+    let seconds = date.getSeconds();
+    return `${month},${day},${year},${hour},${minutes},${seconds}`;
   }
 
   loadImage(e){
@@ -171,30 +150,24 @@ class StoryInput extends React.Component {
     'bold', 'italic', 'link', 'blockquote',
   ];
 
-    // this works! can probably save raw string to db and then parse
-    // after the fact.
-    var htmlToReactParser = new HtmlToReactParser();
-    var reactElement = htmlToReactParser.parse('<div>' + this.state.body + '</div>');
-
-    // had to manually escape a quote I think. Or not...
-    let testStory = '\u003cp\u003eThis story will have \u003cstrong\u003eformatting!\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003ch3\u003e\u003cstrong\u003eEveryone loves formatting!!\u003c/strong\u003e\u003c/h3\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cem\u003eDon\'t they???\u003c/em\u003e\u003c/p\u003e';
-    let crossesFingers = htmlToReactParser.parse('<div>' + testStory + '</div>');
-
-    // $("button.ql-header[value='2']").html("H2!");
-    $("button.ql-header[value='3']").html("H3!");
-
-
     let previewImage;
     if(this.state.imageUrl){
-      previewImage = this.state.imageUrl;
+      previewImage = (<div className='inputPreviewImage'>
+        <img src={this.state.imageUrl} />
+        </div>)
     } else {
-      previewImage = window.images.story_default;
+      // previewImage = window.images.story_default;
     }
 
-    // will probably have to use the form data thingy since there's a file involved
+    $("button.ql-header[value='3']").html('<svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="3" y1="3" x2="3" y2="13"></line><line class="ql-stroke" x1="11" y1="3" x2="11" y2="13"></line><line class="ql-stroke" x1="11" y1="8" x2="3" y2="8"></line><path id="XMLID_28_" class="ql-stroke ql-thin" d="M13.3,9.9c0,0,0.2-1.5,1.5-0.6c1.1,0.8-0.5,1.9-0.5,1.9s0.9,0.8,1.1,1.2 c0.1,0.5-1.1,1.5-2.1,0.3"></path></svg>');
+
+
+    let cameraStyle={backgroundImage: `url(${window.images.little_camera})`};
+
+    // will probably have to use the form data thingy since there's a file involved...?
     return(
       <div>
-      < InteriorNavContainer />
+        < InteriorNavContainer />
         <br />
         <br />
         <br />
@@ -203,66 +176,51 @@ class StoryInput extends React.Component {
         <br />
         <br />
         <br />
-        I am the story input!
-        <br />
-        <br />
-        <br />
-        <form onSubmit={this.handleStoryInput}>
-        <label> Title
-          <input type="text"
-            value={this.state.title}
-            onChange={this.updateField("title")}
-            />
-        </label>
-        <br />
-        <br />
-        <label> Description
-          <input type="text"
-            value={this.state.description}
-            onChange={this.updateField("description")}
-            />
-        </label>
-        <br />
-        <br />
-        <ReactQuill value={this.state.body} onChange={this.update} theme="bubble"
-        modules={ modules }
-        formats={ formats }
-        className='test-class'/>
-        <br />
-        <br />
-        <div className='signup-avatar-container'>
-          <img src={previewImage} />
-        </div>
-        <label> Photo (optional)
-          <br />
-          <span className='image-upload'>
-            Choose a file
-          </span>
-          <input type="file"
-            onChange={this.loadImage}
-            className='hidden-upload'
-            />
-        </label>
-        <br/>
-        account for patch or post??
-        <input type='submit' value='Submit story!' />
-        </form>
-        <br />
-        <br />
-          <div>
-            { reactElement }
+        <div className='mainContainer'>
+          <div className='inputContentContainer'>
+            <div className='inputContent'>
+              <form onSubmit={this.handleStoryInput}>
+                <div className='inputPadder'>
+                  <div className='inputTitle'>
+                    <input type="text"
+                      placeholder="Title"
+                      value={this.state.title}
+                      onChange={this.updateField("title")} />
+                  </div>
+                  <br />
+                  <div className='inputDescription'>
+                    <input type="text"
+                      placeholder="Description"
+                      value={this.state.description}
+                      onChange={this.updateField("description")} />
+                  </div>
+                </div>
+                <br />
+                <div className='inputElements'>
+                  <div className='inputPhoto' style={cameraStyle}>
+                    <label className='input-image-upload'>
+                    TEXT
+                    <input type="file"
+                      onChange={this.loadImage}
+                      className='hidden-input-upload' />
+                    </label>
+                  </div>
+                    {previewImage}
+                </div>
+                <ReactQuill value={this.state.body} onChange={this.update} theme="bubble"
+                  modules={ modules }
+                  formats={ formats }
+                  placeholder="Tell your story."
+                  className='mainEditor'/>
+                <br/><br/><br/>
+                <input type='submit' value='Publish' />
+              </form>
+            </div>
           </div>
-        <br /><br /><br /><br />
-        <div>
-          { this.state.body }
         </div>
-        <br /><br /><br /><br />
-          { crossesFingers }
-        <br /><br />
-        </div>
-      );
-    }
-
+      </div>
+);
+}
 }
 
 export default withRouter(StoryInput);

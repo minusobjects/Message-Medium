@@ -156,13 +156,12 @@ class SignupForm extends React.Component {
           </div>
           <label> Photo (optional)
             <br />
-            <span className='image-upload'>
+            <label className='image-upload'>
               Choose a file
-            </span>
             <input type="file"
               onChange={this.loadImage}
-              className='hidden-upload'
-              />
+              className='hidden-upload'/>
+						</label>
           </label>
           <br/>
           <input type="submit" value="Create a new account" />

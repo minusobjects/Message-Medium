@@ -370,11 +370,14 @@
   text-align: right;
 }
 .ql-editor.ql-blank::before {
-  color: rgba(0,0,0,0.6);
+  /*color: rgba(0,0,0,0.6);*/
+  color: rgba(0,0,0,0.2);
   content: attr(data-placeholder);
-  font-style: italic;
+  /*font-style: italic;*/
   pointer-events: none;
   position: absolute;
+  font-family: 'Amiri', serif;
+  font-size: 22px;
 }
 .ql-snow.ql-toolbar:after,
 .ql-snow .ql-toolbar:after {
