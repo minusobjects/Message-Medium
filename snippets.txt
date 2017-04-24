@@ -272,9 +272,61 @@ function hasScrolled() {
 // input.dataset.link = 'www.github.com';
 
 
+http://creativedroplets.com/export-svg-for-the-web-with-illustrator-cc/
+https://codepen.io/luiscarvalho/pen/hJFrx
 
 https://css-tricks.com/snippets/css/drop-caps/
 
 http://stackoverflow.com/questions/5379120/get-the-highlighted-selected-text
-
 http://stackoverflow.com/questions/8644428/how-to-highlight-text-using-javascript
+
+
+<svg className="umbrella" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" aria-labelledby="title">
+<title id="title">Umbrella Icon</title>
+<path d="M27 14h5c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0zM27 14c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0 14c0 1.112-0.895 2-2 2-1.112 0-2-0.896-2-2.001v-1.494c0-0.291 0.224-0.505 0.5-0.505 0.268 0 0.5 0.226 0.5 0.505v1.505c0 0.547 0.444 0.991 1 0.991 0.552 0 1-0.451 1-0.991v-14.009c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-5.415 6.671-9.825 15-9.995v-1.506c0-0.283 0.224-0.499 0.5-0.499 0.268 0 0.5 0.224 0.5 0.499v1.506c8.329 0.17 15 4.58 15 9.995h-5z"/>
+</svg>
+<br /><br />
+
+<svg className="umbrella" width="200" height="200" viewBox="0 0 612 792" aria-labelledby="title">
+<title id="title">Test Icon</title>
+<polygon id="XMLID_1_" points="152.8,292.7 112.6,223 152.8,153.3 233.2,153.3 273.4,223 233.2,292.7 "/>
+</svg>
+
+
+OK here's the junk from the story input page:
+
+
+var HtmlToReactParser = require('html-to-react').Parser;
+
+
+// this works! can probably save raw string to db and then parse
+// after the fact.
+var htmlToReactParser = new HtmlToReactParser();
+var reactElement = htmlToReactParser.parse('<div>' + this.state.body + '</div>');
+
+// had to manually escape a quote I think. Or not...
+let testStory = '\u003cp\u003eThis story will have \u003cstrong\u003eformatting!\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003ch3\u003e\u003cstrong\u003eEveryone loves formatting!!\u003c/strong\u003e\u003c/h3\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cem\u003eDon\'t they???\u003c/em\u003e\u003c/p\u003e';
+let crossesFingers = htmlToReactParser.parse('<div>' + testStory + '</div>');
+
+// $("button.ql-header[value='2']").html("H2!");
+$("button.ql-header[value='3']").html("H3!");
+
+
+IGNORE EVERYTHING BELOW:
+<br /><br />
+  <div>
+    { reactElement }
+  </div>
+<br /><br /><br /><br />
+<div>
+  { this.state.body }
+</div>
+<br /><br /><br /><br />
+  { crossesFingers }
+<br /><br />
+
+
+// $("button.ql-header[value='2']").html("H2!");
+// $("button.ql-header[value='3']").html("H3!");
+// $("button.ql-header[value='3']").html('<svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="3" x2="3" y1="4" y2="14"></line> <line class="ql-stroke" x1="11" x2="11" y1="4" y2="14"></line> <line class="ql-stroke" x1="11" x2="3" y1="9" y2="9"></line> <path class="ql-stroke ql-thin" d="M15.5,14.5h-2c0-.234,1.85-1.076,1.85-2.234a0.959,0.959,0,0,0-1.85-.109"></path> </svg>');
+// $("button.ql-header[value='3']").html('<svg viewBox="0 0 10 10"> <polygon id="XMLID_4_" class="ql-stroke" points="6.7,2.9 5.4,3 5.6,2.2 4.1,0.6 1.9,1.1 1.2,3.2 2.8,4.9 3.5,4.7 3.1,5.7 4.7,7.7 7.3,7.4 8.3,4.9 "/></svg>');

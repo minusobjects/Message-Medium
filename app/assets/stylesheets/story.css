@@ -5,7 +5,7 @@
   background-color: white;
 }
 
-.storyContainer {
+.storyContentContainer {
  background-color: white;
  width:700px;
  display: flex;
@@ -69,7 +69,7 @@
 }
 
 .storyTitle h1 {
-  font-family: 'PT Sans Bold', 'PT Sans';
+  font-family: 'PT Sans Bold', 'PT Sans', 'Lucida Sans';
   font-size: 36px;
   font-weight: bold;
   color: rgba(0,0,0,.8);

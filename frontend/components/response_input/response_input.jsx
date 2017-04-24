@@ -59,7 +59,8 @@ class ResponseInput extends React.Component {
     let year = date.getFullYear();
     let hour = date.getHours();
     let minutes = date.getMinutes();
-    return `${month},${day},${year},${hour},${minutes}`;
+    let seconds = date.getSeconds();
+    return `${month},${day},${year},${hour},${minutes},${seconds}`;
   }
 
 	renderErrors() {

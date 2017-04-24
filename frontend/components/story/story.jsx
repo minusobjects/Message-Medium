@@ -25,9 +25,9 @@ class Story extends React.Component {
 		}
   }
 
-// [4,18,2017,10,41,1]
-// ACTUALLY would be better to just have hours and minutes, get ampm from there!
-// ADD SECONDS!
+// Not adding seconds in the string.
+// [4,18,2017,10,41,20]
+
   formatDate(dateArr){
     let ampm;
     let hour;
@@ -77,9 +77,10 @@ class Story extends React.Component {
 		if(this.props.loggedIn){
 			if(this.props.currentUser.id === authorId){
 				editThis = (<div className='editThis'>
-				<Link to={`/stories/${this.props.story.id}/edit`}>
-					This is your story. Click here to edit.
-				</Link>
+					This is your story. &nbsp;
+					<Link to={`/stories/${this.props.story.id}/edit`}>
+					Edit?
+					</Link>
 				</div>);
 			}
 		}
@@ -89,7 +90,7 @@ class Story extends React.Component {
 
     return(
       <div className='mainContainer'>
-				<div className='storyContainer'>
+				<div className='storyContentContainer'>
 					<article className='storyContent'>
 
 		        <section className='storyInfo'>
