@@ -2,7 +2,7 @@ import ReactQuill, { Quill } from 'react-quill';
 import React from 'react';
 import { Link, withRouter, hashHistory } from 'react-router';
 
-import InteriorNavContainer from '../interior_nav/interior_nav_container';
+import InputNavContainer from '../input_nav/input_nav_container';
 
 
 class StoryInput extends React.Component {
@@ -11,11 +11,8 @@ class StoryInput extends React.Component {
     super(props);
     this.state = { title: "", description: "", body: "",
       date: "", imageUrl: "", imageFile: null };
-    // author id will be based on current user
-    // also not really using 'date' in here yet.
 
     this.update = this.update.bind(this);
-    this.handleStoryInput = this.handleStoryInput.bind(this);
     this.loadImage = this.loadImage.bind(this);
   }
 
@@ -26,6 +23,17 @@ class StoryInput extends React.Component {
     // if editing story, import data
     if(this.props.params.id){
       this.props.fetchStory(this.props.params.id);
+    }
+  }
+
+  componentDidUpdate() {
+    this.redirectIfNotLoggedIn();
+  }
+
+  redirectIfNotLoggedIn() {
+
+    if (!this.props.loggedIn) {
+      hashHistory.push("/signin");
     }
   }
 
@@ -45,15 +53,6 @@ class StoryInput extends React.Component {
     }
   }
 
-	componentDidUpdate() {
-		this.redirectIfNotLoggedIn();
-	}
-	redirectIfNotLoggedIn() {
-		if (!this.props.loggedIn) {
-			hashHistory.push("/signin");
-		}
-	}
-
   update(a, b, c, d){
     this.setState({body: a});
   }
@@ -64,48 +63,33 @@ class StoryInput extends React.Component {
     });
   }
 
-// params.require(:story).permit(:author_id, :title, :description, :body, :date, :topic_id, :main_image)
 
-  handleStoryInput(e) {
-    e.preventDefault();
-    let formData = new FormData();
-    let file = this.state.imageFile;
+  // handleStoryInput(e) {
+  //   e.preventDefault();
+  //   let formData = new FormData();
+  //   let file = this.state.imageFile;
+  //
+  //   formData.append("story[author_id]", this.props.currentUser.id);
+  //   formData.append("story[title]", this.state.title);
+  //   formData.append("story[description]", this.state.description);
+  //   formData.append("story[body]", this.state.body);
+  //   formData.append("story[date]", this.encodeDate()); // custom date formatting
+  //   if(file){
+  //     formData.append("story[main_image]", file);
+  //   }
 
-    formData.append("story[author_id]", this.props.currentUser.id);
-    formData.append("story[title]", this.state.title);
-    formData.append("story[description]", this.state.description);
-    formData.append("story[body]", this.state.body);
-    formData.append("story[date]", this.encodeDate()); // custom date formatting
-    if(file){
-      formData.append("story[main_image]", file);
-    }
-
-    // account for patch or post!
-    // what happens if I 'patch' without entering a new image file?
-
-    if(this.props.params.id){
-      formData.append("story[id]", this.props.params.id);
-      this.props.updateStory(formData);
-    } else {
-      this.props.createStory(formData);
-    }
+    // if(this.props.params.id){
+    //   formData.append("story[id]", this.props.params.id);
+    //   this.props.updateStory(formData);
+    // } else {
+    //   this.props.createStory(formData);
+    // }
 
     // SHOULD BE A PROMISE
     // SHOULD GO TO SHOW PAGE
     // hashHistory.push("/");
-  }
+  // }
 
-
-  encodeDate(){
-    let date = new Date();
-    let month = (date.getMonth() + 1);
-    let day = date.getDate();
-    let year = date.getFullYear();
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    return `${month},${day},${year},${hour},${minutes},${seconds}`;
-  }
 
   loadImage(e){
     e.preventDefault();
@@ -164,10 +148,22 @@ class StoryInput extends React.Component {
 
     let cameraStyle={backgroundImage: `url(${window.images.little_camera})`};
 
-    // will probably have to use the form data thingy since there's a file involved...?
+
+     let storyData = {};
+     storyData.title = this.state.title;
+     storyData.description = this.state.description;
+     storyData.body = this.state.body;
+     storyData.file = this.state.imageFile;
+      if(this.props.params.id){
+        storyData.id = this.props.params.id;
+      }
+      if(this.props.currentUser){
+        storyData.author_id = this.props.currentUser.id;
+      }
+
     return(
       <div>
-        < InteriorNavContainer />
+        < InputNavContainer storyData={storyData} />
         <br />
         <br />
         <br />
@@ -179,7 +175,7 @@ class StoryInput extends React.Component {
         <div className='mainContainer'>
           <div className='inputContentContainer'>
             <div className='inputContent'>
-              <form onSubmit={this.handleStoryInput}>
+
                 <div className='inputPadder'>
                   <div className='inputTitle'>
                     <input type="text"
@@ -213,8 +209,7 @@ class StoryInput extends React.Component {
                   placeholder="Tell your story."
                   className='mainEditor'/>
                 <br/><br/><br/>
-                <input type='submit' value='Publish' />
-              </form>
+
             </div>
           </div>
         </div>

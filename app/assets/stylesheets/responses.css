@@ -1,0 +1,59 @@
+.bottomSection {
+  background-color: #f8f6f1;
+  /*display: flex;*/
+  margin-top: 10px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.responseBox-parent {
+  width: 640px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  margin-top: 20px;
+}
+
+.responseBox-child {
+  width: 640px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  margin-top: 0px;
+  border-top: 1px solid #ddd;
+}
+
+.responseList {
+  margin: auto;
+  width: 700px;
+}
+
+.responseList ul {
+  list-style: none;
+  /*background-color: yellow;*/
+  padding: 0;
+}
+
+.smallerPhoto {
+  width: 35px;
+  height: 35px;
+}
+
+.signUpLink{
+  width: 640px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.responseBody {
+  color: #666;
+  font-family: 'Amiri', serif;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: .02em;
+  word-spacing: -.08em;
+}

@@ -18,7 +18,7 @@ class StoriesFeed extends React.Component {
       });
     }
     return(
-      <ul>
+      <ul className='storiesFeed'>
         { stories }
       </ul>
     );

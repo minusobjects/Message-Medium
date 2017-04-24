@@ -4,18 +4,28 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
+import InteriorNavContainer from '../interior_nav/interior_nav_container';
 
 var HtmlToReactParser = require('html-to-react').Parser;
 
 class Story extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {scrollTop: 0, scrollDir: 'down'};
+
+    this.handleScroll = this.handleScroll.bind(this);
 	}
 
   componentDidMount() {
       this.props.fetchStory(this.props.params.id);
       this.props.fetchAllResponses({storyId: this.props.params.id});
+			window.addEventListener('scroll', this.handleScroll);
     }
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
+	}
 
   componentWillReceiveProps(nextProps) {
 		// debugger
@@ -24,6 +34,16 @@ class Story extends React.Component {
 			this.props.fetchAllResponses({storyId: nextProps.params.id});
 		}
   }
+
+	handleScroll(event) {
+    if(($(document).scrollTop()) > this.state.scrollTop){
+      this.setState({scrollDir: 'down'});
+    } else {
+      this.setState({scrollDir: 'up'});
+    }
+    this.setState({scrollTop: $(document).scrollTop()});
+  }
+
 
 // Not adding seconds in the string.
 // [4,18,2017,10,41,20]
@@ -73,6 +93,7 @@ class Story extends React.Component {
     }
 
 		let editThis;
+		let respondHere;
 
 		if(this.props.loggedIn){
 			if(this.props.currentUser.id === authorId){
@@ -83,12 +104,24 @@ class Story extends React.Component {
 					</Link>
 				</div>);
 			}
+			respondHere = (< ResponseInputContainer storyId={this.props.params.id}/>);
+		} else {
+			respondHere = (<div className='signUpLink'>
+			<Link to='/signup'>Sign up to leave a response.</Link>
+			</div>);
 		}
 
     var htmlToReactParser = new HtmlToReactParser();
     var parseBody = htmlToReactParser.parse('<div>' + body + '</div>');
 
     return(
+		<div>
+			< InteriorNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
       <div className='mainContainer'>
 				<div className='storyContentContainer'>
 					<article className='storyContent'>
@@ -128,16 +161,21 @@ class Story extends React.Component {
 							<hr />
 		        </section>
 
-						<div>
-		        < ResponseInputContainer storyId={this.props.params.id}/>
-		        <br /><br />
-		        < ResponseSectionContainer storyId={this.props.params.id} responses={this.props.responses} />
-		        <br /><br />
-						</div>
-
-						</article>
+					</article>
 				</div>
+
+				<section className='bottomSection'>
+					<div className='responseBox-parent'>
+					{respondHere}
+					</div>
+					<div className='responseList'>
+						< ResponseSectionContainer storyId={this.props.params.id} responses={this.props.responses} />
+					</div>
+				</section>
+
       </div>
+
+		</div>
     );
   }
 
