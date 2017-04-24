@@ -108,7 +108,7 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSignup}>
 					{this.renderErrors()}
           <br />
-          <img src={ window.images.bad_logo } height='50px'/>
+          <img src={ window.images.first_logo } height='50px'/>
           <br />
           <div className='inner-signup'>
           <label> Username
