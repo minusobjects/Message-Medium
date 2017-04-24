@@ -58,7 +58,8 @@ class ResponseInput extends React.Component {
       writer_id: writer_id,
       story_id: story_id,
       in_response_id: in_response_id
-    }};
+    }
+  };
 
     if(this.props.thisResponse){
       responseData.this_id = this.props.thisResponse.id;
@@ -114,6 +115,8 @@ class ResponseInput extends React.Component {
       buttonText = 'Edit your response'
     }
 
+    let spacerDiv = {height: '15px', display: 'block'};
+
     return(
       <div className='responseInput'>
         <form onSubmit={this.handleResponseInput}>
@@ -125,7 +128,7 @@ class ResponseInput extends React.Component {
           <input type='submit' value={buttonText} />
         </div>
         </form>
-        <div style={{height: '15px', display: 'block'}}></div>
+        <div style={spacerDiv}></div>
         </div>
       );
     }
