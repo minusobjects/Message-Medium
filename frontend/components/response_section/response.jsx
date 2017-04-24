@@ -30,11 +30,23 @@ class Response extends React.Component {
 
   loadResponseInput(e){
 
+    let thisResponse;
+    let inResponseId;
+
+    if(this.props.loggedIn){
+      if(this.props.currentUser.id === this.props.response.writer_id){
+        thisResponse = this.props.response;
+      } else {
+        inResponseId= this.props.response.id;
+      }
+    }
+
     this.floatingInput = (
       <ResponseInputContainer
         storyId={this.props.response.story_id}
-        inResponseId={this.props.response.id}
-        makeVisible={true}/>);
+        inResponseId={inResponseId}
+        makeVisible={true}
+        thisResponse = {thisResponse}/>);
 
       this.setState({inputVisible: true});
     }
@@ -53,11 +65,19 @@ class Response extends React.Component {
 
     let responseOptions;
 
-    if((this.props.loggedIn) && (!this.props.isChild)){
-      responseOptions = (
-        <a onClick={this.loadResponseInput}>Write a response</a>
-      );
+    if(this.props.loggedIn){
+      // debugger
+      if((this.props.currentUser.id) === (this.props.response.writer_id)){
+        responseOptions = (
+          <a onClick={this.loadResponseInput}>Edit this response</a>
+        );
+      } else if(!this.props.isChild){
+        responseOptions = (
+          <a onClick={this.loadResponseInput}>Respond to this</a>
+        );
+      }
     }
+
 
     return (
       <li className={styleType}>

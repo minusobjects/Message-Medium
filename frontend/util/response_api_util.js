@@ -1,5 +1,4 @@
 export const responseIndex = (data) => {
-  // debugger
   return $.ajax({
     method: 'GET',
     url: '/api/responses',

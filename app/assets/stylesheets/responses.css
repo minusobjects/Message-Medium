@@ -119,14 +119,14 @@
     /*font-size: 14px;*/
     letter-spacing: .8px;
     color: #e1bd5b;
-    text-align: right;
+    text-align: left;
     padding-bottom: 15px;
   }
 
   .responseOptionsWrapper a {
     transition: color 200ms;
     cursor: pointer;
-    margin-right: 34px;
+    margin-left: 23px;
   }
 
   .responseOptionsWrapper a:hover {
