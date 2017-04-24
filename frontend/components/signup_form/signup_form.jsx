@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
 		this.state = { username: "", password: "",
     email: "", name: "", bio: "", photo_url: "",
     imageUrl: "", imageFile: null };
+    // photo_url is deprecated
 		this.handleSignup = this.handleSignup.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
     this.loadImage = this.loadImage.bind(this);
@@ -107,11 +108,12 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSignup}>
 					{this.renderErrors()}
           <br />
-          <img src={ window.images.bad_logo } height='50px'/>
+          <img src={ window.images.first_logo } height='50px'/>
           <br />
           <div className='inner-signup'>
           <label> Username
             <input type="text"
+							maxLength="40"
               value={this.state.username}
               onChange={this.updateField("username")}
               />
@@ -119,6 +121,7 @@ class SignupForm extends React.Component {
           <br/>
           <label> Password
             <input type="password"
+							maxLength="40"
               value={this.state.password}
               onChange={this.updateField("password")}
               />
@@ -126,6 +129,7 @@ class SignupForm extends React.Component {
           <br/>
             <label> Name
               <input type="text"
+								maxLength="60"
                 value={this.state.name}
                 onChange={this.updateField("name")}
                 />
@@ -133,6 +137,7 @@ class SignupForm extends React.Component {
             <br/>
           <label> Email
             <input type="text"
+							maxLength="60"
               value={this.state.email}
               onChange={this.updateField("email")}
               />
@@ -140,21 +145,23 @@ class SignupForm extends React.Component {
           <br/>
           <label> Bio (optional)
             <input type="text"
+							maxLength="150"
               value={this.state.bio}
               onChange={this.updateField("bio")}
               />
           </label>
           <br/>
-          <img src={previewImage} />
+          <div className='signup-avatar-container'>
+            <img src={previewImage} />
+          </div>
           <label> Photo (optional)
             <br />
-            <span className='image-upload'>
+            <label className='image-upload'>
               Choose a file
-            </span>
             <input type="file"
               onChange={this.loadImage}
-              className='hidden-upload'
-              />
+              className='hidden-upload'/>
+						</label>
           </label>
           <br/>
           <input type="submit" value="Create a new account" />

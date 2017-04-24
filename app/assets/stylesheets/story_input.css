@@ -1,0 +1,129 @@
+.mainEditor {
+  background-color: white;
+  width: 700px;
+}
+
+.inputContentContainer {
+ background-color: white;
+ width:700px;
+ display: flex;
+ justify-content: center;
+ margin: auto;
+}
+
+.inputContent {
+ width: 700px;
+ color: rgba(0,0,0,.8);
+}
+
+.inputPadder {
+  padding-left: 12px;
+}
+
+.inputTitle input {
+  background-color: white;
+  border: 0px;
+  border-bottom: 0;
+  width: 80%;
+  height: 20px;
+  outline: none;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  font-family: 'PT Sans Bold', 'PT Sans', 'Lucida Sans';
+  font-size: 36px;
+  font-weight: bold;
+  color: rgba(0,0,0,.4);
+  height: 40px;
+}
+
+.inputTitle input::placeholder {
+  color: rgba(0,0,0,.2);
+}
+
+.inputTitle input[type='text']:focus {
+    border-bottom: 1px solid #aaa;
+}
+
+.inputDescription input {
+  background-color: white;
+  border: 0px;
+  border-bottom: 0;
+  width: 80%;
+  height: 20px;
+  outline: none;
+  font-family: 'PT Sans', 'Lucida Sans';
+  color: rgba(0,0,0,.4);
+  font-weight: normal;
+  font-size: 24px;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.inputDescription input::placeholder {
+  color: rgba(0,0,0,.2);
+}
+
+.inputDescription input[type='text']:focus {
+    border-bottom: 1px solid #aaa;
+}
+
+.inputElements {
+  display: flex;
+  /*background-color: turquoise;*/
+  justify-content: left;
+  margin-bottom: -20px;
+}
+
+.inputPhoto {
+  display: inline-block;
+  position: relative;
+  left: -27px;
+  top: -35px;
+  background-color: pink;
+  width: 25px;
+  height: 25px;
+  margin-right: -20px;
+  margin-bottom: -35px;
+  float: left;
+  /*z-index: 100;*/
+  background-size: 24px;
+  opacity: .3;
+  transition: opacity 200ms;
+}
+
+.inputPhoto:hover {
+  opacity: .4;
+}
+
+.inputPreviewImage {
+  padding-left: 12px;
+  display: inline;
+  /*background-color: yellow;*/
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.inputPreviewImage img {
+  max-height: 200px;
+  opacity: .8;
+}
+
+.hidden-input-upload {
+  /*opacity: 0;*/
+  display: none;
+  position: relative;
+  top: -20px;
+  margin-bottom: -20px;
+  /*cursor: pointer;*/
+}
+
+.input-image-upload {
+  display:inline-block;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/*.image-upload:active {
+  background-color: sandybrown;
+}*/

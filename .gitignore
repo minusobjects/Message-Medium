@@ -13,3 +13,6 @@ npm-debug.log
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore local terminal color profile
+.bash_profile

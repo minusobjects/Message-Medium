@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+<!-- Abel|Padauk| -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Sans|PT+Sans:700|Average+Sans|Crimson+Text|Amiri">
+    </link>
+
     <script type="text/javascript">
       <% if logged_in? %>
         window.currentUser = <%= render(
@@ -12,9 +17,14 @@
       window.images = {
         missing: "<%= image_path("missing.png") %>",
         bad_logo: "<%= image_path("bad_logo.png") %>",
-        mag_glass: "<%= image_path("mag-glass.png") %>"
+        first_logo: "<%= image_path("first_logo.png") %>",
+        mag_glass: "<%= image_path("mag-glass.png") %>",
+        fluffy: "<%= image_path("fluffy.jpg") %>",
+        story_default: "<%= image_path("story_default.jpg") %>",
+        little_camera: "<%= image_path("little_camera.png") %>"
       }
     </script>
+
     <meta charset="utf-8">
     <title>Message</title>
   </head>

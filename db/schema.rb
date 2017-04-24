@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420000222) do
+ActiveRecord::Schema.define(version: 20170422234929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "writer_id",      null: false
+    t.integer  "story_id"
+    t.text     "body",           null: false
+    t.string   "date"
+    t.integer  "in_response_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.integer  "author_id",               null: false
+    t.string   "title",                   null: false
+    t.text     "description"
+    t.text     "body",                    null: false
+    t.string   "date"
+    t.integer  "topic_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",           null: false

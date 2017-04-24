@@ -4,6 +4,16 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
+// test stuff
+// meow
+// import {storyIndex, storyShow} from './util/story_api_util';
+// window.storyIndex = storyIndex;
+// window.storyShow = storyShow;
+// import {responseIndex, responseShow} from './util/response_api_util';
+// window.responseIndex = responseIndex;
+// window.responseShow = responseShow;
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   let store;
