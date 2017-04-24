@@ -6,7 +6,7 @@
   padding-bottom: 40px;
 }
 
-.responseBox-parent {
+.responseBox {
   width: 640px;
   background-color: white;
   margin: auto;
@@ -14,13 +14,65 @@
   margin-top: 20px;
 }
 
-.responseBox-child {
-  width: 640px;
-  background-color: white;
-  margin: auto;
-  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+.responseChild {
   margin-top: 0px;
-  border-top: 1px solid #ddd;
+}
+
+.responseInput {
+  padding: 0px 20px 0px 20px;
+  /*background-color: yellow;*/
+  /*border-top: 1px solid #bbb;*/
+}
+
+.responseInput textarea {
+  margin-top: 15px;
+  width:594px;
+  height: 100px;
+  resize: none;
+  /*background-color: pink;*/
+  border: 0;
+}
+
+.responseInput textarea:focus {
+  outline: none;
+}
+
+.responseInput textarea::placeholder {
+  font-family: 'PT Sans', 'Lucida Sans', sans-serif;
+  font-size: 16px;
+  color: #999;
+}
+
+.responseInput textarea {
+  font-family: 'PT Sans', 'Lucida Sans', sans-serif;
+  font-size: 16px;
+  color: #777;
+  overflow:hidden;
+}
+
+.responseSubmitWrapper {
+  width: 580px;
+  /*background-color: pink;*/
+  text-align: right;
+  /*margin-bottom: 15px;*/
+}
+
+.responseInput input[type='submit'] {
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  letter-spacing: .8px;
+  color: #e1bd5b;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.responseInput input[type='submit']:hover {
+  color: #e6a822;
+}
+
+.responseInput input[type='submit']:focus {
+  outline: none;
 }
 
 .responseList {
@@ -56,4 +108,32 @@
   font-weight: normal;
   letter-spacing: .02em;
   word-spacing: -.08em;
+}
+
+.floatingResponseInput {
+  background-color: purple;
+  /*display: none;*/
+}
+
+.responseOptionsWrapper {
+    /*font-size: 14px;*/
+    letter-spacing: .8px;
+    color: #e1bd5b;
+    text-align: right;
+    padding-bottom: 15px;
+  }
+
+  .responseOptionsWrapper a {
+    transition: color 200ms;
+    cursor: pointer;
+    margin-right: 34px;
+  }
+
+  .responseOptionsWrapper a:hover {
+    color: #e6a822;
+  }
+
+  .responseOptionsWrapper:focus {
+    outline: none;
+  }
 }

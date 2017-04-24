@@ -7,6 +7,10 @@ class Response extends React.Component {
 
   constructor(props){
     super(props);
+
+    this.state = {inputVisible: false};
+    this.loadResponseInput = this.loadResponseInput.bind(this);
+    this.floatingInput;
   }
 
   formatDate(dateArr){
@@ -24,15 +28,35 @@ class Response extends React.Component {
     return str;
   }
 
+  loadResponseInput(e){
+
+    this.floatingInput = (
+      <ResponseInputContainer
+        storyId={this.props.response.story_id}
+        inResponseId={this.props.response.id}
+        makeVisible={true}/>);
+
+      this.setState({inputVisible: true});
+    }
+
+
 
   render(){
 
     let styleType;
 
     if(this.props.isChild){
-      styleType = 'responseBox-child';
+      styleType = 'responseBox responseChild';
     } else {
-      styleType = 'responseBox-parent';
+      styleType = 'responseBox';
+    }
+
+    let responseOptions;
+
+    if((this.props.loggedIn) && (!this.props.isChild)){
+      responseOptions = (
+        <a onClick={this.loadResponseInput}>Write a response</a>
+      );
     }
 
     return (
@@ -52,7 +76,10 @@ class Response extends React.Component {
         <div className='responseBody'>
           { this.props.response.body }
         </div>
-
+        <div className='responseOptionsWrapper'>
+          {responseOptions}
+        </div>
+        {this.floatingInput}
       </li>
     );
   }
