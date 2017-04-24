@@ -62,6 +62,7 @@ class ResponseSection extends React.Component {
           storyId={this.props.storyId}
           isChild = {isChild}
           loggedIn = {this.props.loggedIn}
+          currentUser = {this.props.currentUser}
           key={response.id} />
         );
       });

@@ -12,7 +12,6 @@ class ResponseInput extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     if(this.props.thisResponse){
       this.setState({body: this.props.thisResponse.body});
     }
@@ -28,7 +27,7 @@ class ResponseInput extends React.Component {
     }
 
   componentWillReceiveProps(newProps){
-    // debugger
+
   }
 
   updateField(field) {
@@ -55,7 +54,7 @@ class ResponseInput extends React.Component {
     }};
 
     if(this.props.thisResponse){
-      responseData.this_id = this.props.this_id;
+      responseData.this_id = this.props.thisResponse.id;
       this.props.updateResponse(responseData);
     } else {
       this.props.createResponse(responseData);
@@ -66,7 +65,6 @@ class ResponseInput extends React.Component {
       elem.style.height = '200px';
       // elem.style.padding = 20;
       window.requestAnimationFrame(function() {
-        console.log('yeah two')
         elem.style.transition = "height 200ms, opacity 200ms";
         elem.style.opacity = 0;
         elem.style.height = '0px';

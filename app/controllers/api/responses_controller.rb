@@ -33,7 +33,7 @@ def update
   @response = Response.find(params[:this_id])
   if current_user.id == @response.writer_id
     if @response.update(response_params)
-      # is this render right?
+      # is this render right? guess so.
       render :show
     else
       render json: @response.errors.full_messages, status: 422
