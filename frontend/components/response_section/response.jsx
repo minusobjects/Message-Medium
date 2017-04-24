@@ -32,7 +32,7 @@ class Response extends React.Component {
 
     let thisResponse;
     let inResponseId;
-    debugger
+
     if(this.props.loggedIn){
       if(this.props.currentUser.id === this.props.response.writer_id){
         thisResponse = this.props.response;
@@ -57,7 +57,6 @@ class Response extends React.Component {
 
   render(){
 
-    debugger
     let styleType;
 
     if(this.props.isChild){
