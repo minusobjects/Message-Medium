@@ -1,0 +1,139 @@
+.bottomSection {
+  background-color: #f8f6f1;
+  /*display: flex;*/
+  margin-top: 10px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.responseBox {
+  width: 640px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  margin-top: 20px;
+}
+
+.responseChild {
+  margin-top: 0px;
+}
+
+.responseInput {
+  padding: 0px 20px 0px 20px;
+  /*background-color: yellow;*/
+  /*border-top: 1px solid #bbb;*/
+}
+
+.responseInput textarea {
+  margin-top: 15px;
+  width:594px;
+  height: 100px;
+  resize: none;
+  /*background-color: pink;*/
+  border: 0;
+}
+
+.responseInput textarea:focus {
+  outline: none;
+}
+
+.responseInput textarea::placeholder {
+  font-family: 'PT Sans', 'Lucida Sans', sans-serif;
+  font-size: 16px;
+  color: #999;
+}
+
+.responseInput textarea {
+  font-family: 'PT Sans', 'Lucida Sans', sans-serif;
+  font-size: 16px;
+  color: #777;
+  overflow:hidden;
+}
+
+.responseSubmitWrapper {
+  width: 580px;
+  /*background-color: pink;*/
+  text-align: right;
+  /*margin-bottom: 15px;*/
+}
+
+.responseInput input[type='submit'] {
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  letter-spacing: .8px;
+  color: #e1bd5b;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.responseInput input[type='submit']:hover {
+  color: #e6a822;
+}
+
+.responseInput input[type='submit']:focus {
+  outline: none;
+}
+
+.responseList {
+  margin: auto;
+  width: 700px;
+}
+
+.responseList ul {
+  list-style: none;
+  /*background-color: yellow;*/
+  padding: 0;
+}
+
+.smallerPhoto {
+  width: 35px;
+  height: 35px;
+}
+
+.signUpLink{
+  width: 640px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.responseBody {
+  color: #666;
+  font-family: 'Amiri', serif;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: .02em;
+  word-spacing: -.08em;
+}
+
+.floatingResponseInput {
+  background-color: purple;
+  /*display: none;*/
+}
+
+.responseOptionsWrapper {
+    /*font-size: 14px;*/
+    letter-spacing: .8px;
+    color: #e1bd5b;
+    text-align: left;
+    padding-bottom: 15px;
+  }
+
+  .responseOptionsWrapper a {
+    transition: color 200ms;
+    cursor: pointer;
+    margin-left: 23px;
+  }
+
+  .responseOptionsWrapper a:hover {
+    color: #e6a822;
+  }
+
+  .responseOptionsWrapper:focus {
+    outline: none;
+  }
+}

@@ -1,5 +1,7 @@
 body {
-  font-family: 'Abel', sans-serif;
+  font-family: 'PT Sans', 'Lucida Sans', 'Arial', sans-serif;
+  word-spacing: -.07em;
+  letter-spacing: .2em
   margin: 0px;
   color: #555;
 }

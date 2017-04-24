@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 class HomeNav extends React.Component {
@@ -6,7 +7,44 @@ class HomeNav extends React.Component {
 		super(props);
     this.handleLogout = this.handleLogout.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
+
+    this.mainClass = 'nav-outer';
 	}
+
+  componentDidMount(){
+  }
+
+  // I'm sure this could be nicer, refactoring-wise.
+  // could I just change the 'position' rather than the class?
+  // meow
+  componentWillReceiveProps(newProps){
+    const elem = ReactDOM.findDOMNode(this);
+    if((newProps.scrollDir === 'up') && (newProps.scrollTop > 80)){
+      elem.style.opacity = 0;
+      elem.style.top = '-80px';
+      this.mainClass = 'nav-outer-TEST';
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "top 200ms, opacity 150ms";
+        elem.style.opacity = 1;
+        elem.style.top = '0px';
+      });
+    } else if((newProps.scrollDir === 'down') && (newProps.scrollTop > 80)) {
+      let fadePromise = new Promise(function(resolve, reject){
+      elem.style.opacity = 1;
+      elem.style.top = '0px';
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "top 200ms, opacity 150ms";
+        elem.style.opacity = 0;
+        elem.style.top = '-80px';
+      });
+    });
+    fadePromise.then(()=>{this.mainClass = 'nav-outer';});
+
+    }
+    else if((newProps.scrollDir === 'down') && (newProps.scrollTop < 80)) {
+    this.mainClass = 'nav-outer'; }
+    else { this.mainClass = 'nav-outer-TEST'; }
+  }
 
   handleLogout(e) {
     e.preventDefault();
@@ -20,7 +58,6 @@ class HomeNav extends React.Component {
   }
 
   render() {
-
     const logoutButton =(
     <ul className='session-buttons'>
     <a href='#' onClick={this.handleLogout}>Sign out</a>
@@ -38,29 +75,36 @@ class HomeNav extends React.Component {
 
     let helloMessage = ' ';
     let buttons;
+    let avatarBox;
+    let imageUrl;
 
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
+      imageUrl = this.props.currentUser.image_url;
+      avatarBox = (<div className='avatar-container'>
+        <img src={ imageUrl } />
+      </div>);
     } else {
       buttons = sessionButtons;
     }
 
     return(
-      <div className='nav-outer'>
+      <div className={ this.mainClass }>
         <div className='home-nav'>
-          <img src={ window.images.bad_logo } height='40px' id='logo' />
+          <img src={ window.images.first_logo } height='40px' id='logo' />
           <div className='nav-right'>
             <div className='hello-message'>
               { helloMessage }
             </div>
             <div className='write-story-message'>
-              <a href='#'>Write a Story</a>
+              <Link to='/write'>Write a Story</Link>
             </div>
             { buttons }
             <div className='mag-glass'>
               <img src={window.images.mag_glass} />
             </div>
+            { avatarBox }
           </div>
         </div>
       </div>

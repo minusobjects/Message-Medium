@@ -51,7 +51,7 @@
 }
 
 .inner_auth input[type='text']:focus {
-    background-color: purple;
+    /*background-color: purple;*/
 }
 
 .inner-auth input[type='submit'] {
