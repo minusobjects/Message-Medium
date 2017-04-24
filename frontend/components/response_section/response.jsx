@@ -8,7 +8,7 @@ class Response extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {inputVisible: false};
+    this.state = {stateChanger: false};
     this.loadResponseInput = this.loadResponseInput.bind(this);
     this.floatingInput;
   }
@@ -32,7 +32,7 @@ class Response extends React.Component {
 
     let thisResponse;
     let inResponseId;
-
+    debugger
     if(this.props.loggedIn){
       if(this.props.currentUser.id === this.props.response.writer_id){
         thisResponse = this.props.response;
@@ -48,13 +48,16 @@ class Response extends React.Component {
         makeVisible={true}
         thisResponse = {thisResponse}/>);
 
-      this.setState({inputVisible: true});
+        let current = !this.state.stateChanger;
+
+      this.setState({stateChanger: current});
     }
 
 
 
   render(){
 
+    debugger
     let styleType;
 
     if(this.props.isChild){

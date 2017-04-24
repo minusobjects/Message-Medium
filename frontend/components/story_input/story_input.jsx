@@ -64,33 +64,6 @@ class StoryInput extends React.Component {
   }
 
 
-  // handleStoryInput(e) {
-  //   e.preventDefault();
-  //   let formData = new FormData();
-  //   let file = this.state.imageFile;
-  //
-  //   formData.append("story[author_id]", this.props.currentUser.id);
-  //   formData.append("story[title]", this.state.title);
-  //   formData.append("story[description]", this.state.description);
-  //   formData.append("story[body]", this.state.body);
-  //   formData.append("story[date]", this.encodeDate()); // custom date formatting
-  //   if(file){
-  //     formData.append("story[main_image]", file);
-  //   }
-
-    // if(this.props.params.id){
-    //   formData.append("story[id]", this.props.params.id);
-    //   this.props.updateStory(formData);
-    // } else {
-    //   this.props.createStory(formData);
-    // }
-
-    // SHOULD BE A PROMISE
-    // SHOULD GO TO SHOW PAGE
-    // hashHistory.push("/");
-  // }
-
-
   loadImage(e){
     e.preventDefault();
     var reader = new FileReader();

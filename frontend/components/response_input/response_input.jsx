@@ -27,7 +27,14 @@ class ResponseInput extends React.Component {
     }
 
   componentWillReceiveProps(newProps){
-
+    const elem = ReactDOM.findDOMNode(this);
+      elem.style.opacity = 0;
+      elem.style.height = '0px';
+      window.requestAnimationFrame(function() {
+        elem.style.transition = "height 200ms, opacity 150ms";
+        elem.style.opacity = 1;
+        elem.style.height = '200px';
+      });
   }
 
   updateField(field) {
@@ -73,9 +80,6 @@ class ResponseInput extends React.Component {
         // elem.style.display = 'none';
       });
 
-    // SHOULD BE A PROMISE
-    // SHOULD GO TO STORY PAGE?
-    // hashHistory.push("/");
   }
 
   encodeDate(){

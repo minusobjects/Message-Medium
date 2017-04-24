@@ -16,11 +16,6 @@ class InputNav extends React.Component {
     // debugger
   }
 
-  // handleLogout(e) {
-  //   e.preventDefault();
-  //   this.props.logout().then(() => hashHistory.push('/'));
-  // }
-
   handleStoryInput(e) {
 
     e.preventDefault();
@@ -38,9 +33,9 @@ class InputNav extends React.Component {
 
     if(this.props.storyData.id){
       formData.append("story[id]", this.props.storyData.id);
-      this.props.updateStory(formData);
+      this.props.updateStory(formData).then(hashHistory.push(`/stories/${this.props.storyData.id}`));;
     } else {
-      this.props.createStory(formData);
+      this.props.createStory(formData).then(hashHistory.push(`/stories/${this.props.storyData.id}`));
     }
   }
 
