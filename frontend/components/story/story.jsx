@@ -5,6 +5,7 @@ import { Link, withRouter, hashHistory } from 'react-router';
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
+import StorySidebar from '../story_sidebar/story_sidebar';
 
 var HtmlToReactParser = require('html-to-react').Parser;
 
@@ -45,7 +46,13 @@ class Story extends React.Component {
   }
 
 	handleLike(e){
-		// goes to backend!
+		e.preventDefault();
+		let likeData = {like:{
+			liker_id: this.props.currentUser.id,
+			story_id: this.props.story.id
+			}
+		};
+		this.props.createLike(likeData);
 	}
 
   formatDate(dateArr){
@@ -68,6 +75,7 @@ class Story extends React.Component {
 
     // way to destructure?
 
+		let storyId;
     let mainImageUrl;
     let title;
     let authorName;
@@ -79,9 +87,10 @@ class Story extends React.Component {
     let description;
     let body;
 		let likers = [];
-		let liker_ids = [];
+		let likerIds = [];
 
     if(this.props.story){
+			storyId = this.props.story.id;
       mainImageUrl = this.props.story.main_image_url;
       title = this.props.story.title;
       authorName = this.props.story.author_name;
@@ -95,33 +104,32 @@ class Story extends React.Component {
 			likers = this.props.story.likers;
 			if(this.props.story.likers){
 				likers.forEach((liker) => {
-					liker_ids.push(liker.id);
+					likerIds.push(liker.id);
 				})
 			}
     }
 
+		// this thingy here both checks whether the user can edit the story
+		// and whether they can leave a comment.
 		let editThis;
 		let respondHere;
-		let likeThis;
 
 		if(this.props.loggedIn){
+
 			if(this.props.currentUser.id === authorId){
 				editThis = (<div className='editThis'>
-					This is your story. &nbsp;
-					<Link to={`/stories/${this.props.story.id}/edit`}>
-					Edit?
-					</Link>
-				</div>);
-				// also, stuff to indicate that they can';'t like their own story.
-			} else {
-				likeThis = (<div>'YOU CAN LIKE!!' <a onClick={this.handleLike}>LIKE IT!</a></div>);
-			}
+						This is your story. &nbsp;
+						<Link to={`/stories/${this.props.story.id}/edit`}>
+							Edit?
+						</Link>
+					</div>);
+				}
 			respondHere = (< ResponseInputContainer storyId={this.props.params.id}/>);
 		} else {
-			respondHere = (<div className='signUpLink'>
-			<Link to='/signin'>Sign in to leave a response.</Link>
-			</div>);
-		}
+				respondHere = (<div className='signUpLink'>
+				<Link to='/signin'>Sign in to leave a response.</Link>
+				</div>);
+			}
 
     var htmlToReactParser = new HtmlToReactParser();
     var parseBody = htmlToReactParser.parse('<div>' + body + '</div>');
@@ -137,9 +145,15 @@ class Story extends React.Component {
       <div className='mainContainer'>
 				<div className='storyContentContainer'>
 					<article className='storyContent'>
-							LIKES: {liker_ids.length}
-							<br />
-							Can you like? {likeThis}
+							<StorySidebar
+								currentUser={this.props.currentUser}
+								loggedIn={this.props.loggedIn}
+								storyId={storyId}
+								authorId={authorId}
+								likerIds={likerIds}
+								createLike={this.props.createLike}
+								destroyLike={this.props.destroyLike}
+								/>
 		        <section className='storyInfo'>
 							<div className='authorPhotoContainer'>
 								<img src={ authorPhotoUrl } />
