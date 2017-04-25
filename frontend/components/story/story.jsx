@@ -15,6 +15,7 @@ class Story extends React.Component {
 		this.state = {scrollTop: 0, scrollDir: 'down'};
 
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleLike = this.handleLike.bind(this);
 	}
 
   componentDidMount() {
@@ -28,7 +29,6 @@ class Story extends React.Component {
 	}
 
   componentWillReceiveProps(nextProps) {
-		// debugger
 		if(nextProps.params.id != this.props.params.id){
     	this.props.fetchStory(nextProps.params.id);
 			this.props.fetchAllResponses({storyId: nextProps.params.id});
@@ -44,9 +44,9 @@ class Story extends React.Component {
     this.setState({scrollTop: $(document).scrollTop()});
   }
 
-
-// Not adding seconds in the string.
-// [4,18,2017,10,41,20]
+	handleLike(e){
+		// goes to backend!
+	}
 
   formatDate(dateArr){
     let ampm;
@@ -78,6 +78,8 @@ class Story extends React.Component {
     let formattedDate;
     let description;
     let body;
+		let likers = [];
+		let liker_ids = [];
 
     if(this.props.story){
       mainImageUrl = this.props.story.main_image_url;
@@ -90,10 +92,17 @@ class Story extends React.Component {
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
       body = this.props.story.body;
+			likers = this.props.story.likers;
+			if(this.props.story.likers){
+				likers.forEach((liker) => {
+					liker_ids.push(liker.id);
+				})
+			}
     }
 
 		let editThis;
 		let respondHere;
+		let likeThis;
 
 		if(this.props.loggedIn){
 			if(this.props.currentUser.id === authorId){
@@ -103,6 +112,9 @@ class Story extends React.Component {
 					Edit?
 					</Link>
 				</div>);
+				// also, stuff to indicate that they can';'t like their own story.
+			} else {
+				likeThis = (<div>'YOU CAN LIKE!!' <a onClick={this.handleLike}>LIKE IT!</a></div>);
 			}
 			respondHere = (< ResponseInputContainer storyId={this.props.params.id}/>);
 		} else {
@@ -125,7 +137,9 @@ class Story extends React.Component {
       <div className='mainContainer'>
 				<div className='storyContentContainer'>
 					<article className='storyContent'>
-
+							LIKES: {liker_ids.length}
+							<br />
+							Can you like? {likeThis}
 		        <section className='storyInfo'>
 							<div className='authorPhotoContainer'>
 								<img src={ authorPhotoUrl } />
