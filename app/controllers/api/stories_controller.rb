@@ -33,7 +33,6 @@ def show
 end
 
 def update
-  # debugger
   @story = Story.find(params[:story][:id])
   if current_user.id == @story.author_id
     if @story.update(story_params)
@@ -83,4 +82,3 @@ end
 #     benches = benches.where(seating: seating_range)
 #   end
 #   @benches = benches.includes(:reviews, :favorite_users)
-# debugger

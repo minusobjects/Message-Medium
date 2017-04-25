@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
 
   def create
-    # debugger
     @user = User.new(user_params)
     if @user.save
       login(@user)
@@ -12,13 +11,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    render :show
+  end
+
   def update
     # modify user info. TK.
   end
 
-  def show
-    # will render user data via jbuilder
-    render :show
+  def destroy
+    # delete user. TK.
   end
 
   private

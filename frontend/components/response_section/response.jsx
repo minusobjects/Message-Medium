@@ -68,7 +68,6 @@ class Response extends React.Component {
     let responseOptions;
 
     if(this.props.loggedIn){
-      // debugger
       if((this.props.currentUser.id) === (this.props.response.writer_id)){
         responseOptions = (
           <a onClick={this.loadResponseInput}>Edit this response</a>

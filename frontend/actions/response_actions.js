@@ -15,7 +15,7 @@ export const receiveResponse = response => ({
 
 export const fetchAllResponses = (data) => dispatch => {
     return(ResponseAPIUtil.responseIndex(data)
-    .then(stories => dispatch(receiveAllResponses(stories)))
+    .then(responses => dispatch(receiveAllResponses(responses)))
    );
 };
 

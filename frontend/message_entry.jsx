@@ -12,7 +12,8 @@ import Root from './components/root';
 // import {responseIndex, responseShow} from './util/response_api_util';
 // window.responseIndex = responseIndex;
 // window.responseShow = responseShow;
-
+import {likeDestroy} from './util/like_api_util';
+window.likeDestroy = likeDestroy;
 
 document.addEventListener('DOMContentLoaded', () => {
 

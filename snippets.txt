@@ -19,7 +19,6 @@ console.log('hi');
 let elem = document.getElementById('test').innerHTML;
 console.log(elem);
  elem.addEventListener('select', function(e) {
-   debugger
  alert('Selection changed! ' + e.currentTarget.value);
  }, false);
 
@@ -231,7 +230,6 @@ setInterval(function() {
 
 function hasScrolled() {
   var st = $(this).scrollTop();
-  debugger
 
   // Make sure they scroll more than delta
   if(Math.abs(lastScrollTop - st) <= delta)

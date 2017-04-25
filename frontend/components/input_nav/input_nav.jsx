@@ -13,7 +13,6 @@ class InputNav extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // debugger
   }
 
   handleStoryInput(e) {
