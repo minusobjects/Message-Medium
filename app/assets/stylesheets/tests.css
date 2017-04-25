@@ -11,7 +11,39 @@
   z-index: 101;
 }
 
-.umbrella {
+/*.umbrella {
   background-color: purple;
   fill: pink;
+}*/
+
+.example-enter {
+  opacity: 0.01;
+  background-color: purple;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: all 3000ms ease-in;
+  background-color: pink;
+}
+
+.example-leave {
+  opacity: 1;
+  background-color: yellow;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: all 3000ms ease-in;
+  background-color: blue;
+}
+
+.example-appear {
+  opacity: 0.01;
+  background-color: turquoise;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: all 3000ms ease-in;
 }

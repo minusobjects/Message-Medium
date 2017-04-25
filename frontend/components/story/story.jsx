@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
@@ -124,7 +126,14 @@ class Story extends React.Component {
 						</Link>
 					</div>);
 				}
-			respondHere = (< ResponseInputContainer storyId={this.props.params.id}/>);
+			respondHere = (
+				// <CSSTransitionGroup
+        //   transitionName="example"
+        //   transitionEnterTimeout={3000}
+        //   transitionLeaveTimeout={3000}>
+				<ResponseInputContainer storyId={this.props.params.id}/>
+				// </CSSTransitionGroup>
+			);
 		} else {
 				respondHere = (<div className='signUpLink'>
 				<Link to='/signin'>Sign in to leave a response.</Link>

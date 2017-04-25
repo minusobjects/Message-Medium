@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+
+
 import ResponseInputContainer from '../response_input/response_input_container';
 
 class Response extends React.Component {
@@ -8,9 +11,13 @@ class Response extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {stateChanger: false};
+    this.state = {floatingInput: ''};
     this.loadResponseInput = this.loadResponseInput.bind(this);
-    this.floatingInput;
+    this.responseKeys = 0;
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({floatingInput: ''});
   }
 
   formatDate(dateArr){
@@ -41,16 +48,17 @@ class Response extends React.Component {
       }
     }
 
-    this.floatingInput = (
-      <ResponseInputContainer
-        storyId={this.props.response.story_id}
-        inResponseId={inResponseId}
-        makeVisible={true}
-        thisResponse = {thisResponse}/>);
+    this.responseKeys = this.responseKeys + 1;
 
-        let current = !this.state.stateChanger;
-
-      this.setState({stateChanger: current});
+    this.setState({floatingInput: (
+          <ResponseInputContainer
+            key={this.responseKeys}
+            storyId={this.props.response.story_id}
+            inResponseId={inResponseId}
+            makeVisible={true}
+            thisResponse = {thisResponse}/>
+          )
+        });
     }
 
 
@@ -100,7 +108,14 @@ class Response extends React.Component {
         <div className='responseOptionsWrapper'>
           {responseOptions}
         </div>
-        {this.floatingInput}
+        <CSSTransitionGroup
+          transitionName="example"
+            // transitionAppear={true}
+            // transitionAppearTimeout={3000}
+            transitionEnterTimeout={3000}
+            transitionLeaveTimeout={3000}>
+            {this.state.floatingInput}
+          </CSSTransitionGroup>
       </li>
     );
   }

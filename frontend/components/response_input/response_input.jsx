@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class ResponseInput extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { body: ""};
+    this.state = {body: "", change: ""};
 
     this.handleResponseInput = this.handleResponseInput.bind(this);
   }
@@ -19,25 +18,25 @@ class ResponseInput extends React.Component {
     }
 
     // this stuff needs to change!
-    const elem = ReactDOM.findDOMNode(this);
-      elem.style.opacity = 0;
-      elem.style.top = '-80px';
-      window.requestAnimationFrame(function() {
-        elem.style.transition = "top 200ms, opacity 150ms";
-        elem.style.opacity = 1;
-        elem.style.top = '0px';
-      });
+    // const elem = ReactDOM.findDOMNode(this);
+    //   elem.style.opacity = 0;
+    //   elem.style.height = '0px';
+    //   window.requestAnimationFrame(function() {
+    //     elem.style.transition = "height 200ms, opacity 150ms";
+    //     elem.style.opacity = 1;
+    //     elem.style.height = '160px';
+      // });
     }
 
   componentWillReceiveProps(newProps){
-    const elem = ReactDOM.findDOMNode(this);
-      elem.style.opacity = 0;
-      elem.style.height = '0px';
-      window.requestAnimationFrame(function() {
-        elem.style.transition = "height 200ms, opacity 150ms";
-        elem.style.opacity = 1;
-        elem.style.height = '160px';
-      });
+    // const elem = ReactDOM.findDOMNode(this);
+    //   elem.style.opacity = 0;
+    //   elem.style.height = '0px';
+    //   window.requestAnimationFrame(function() {
+    //     elem.style.transition = "height 200ms, opacity 150ms";
+    //     elem.style.opacity = 1;
+    //     elem.style.height = '160px';
+    //   });
   }
 
   updateField(field) {
@@ -71,19 +70,20 @@ class ResponseInput extends React.Component {
       this.props.createResponse(responseData);
     }
 
-    const elem = ReactDOM.findDOMNode(this);
-      elem.style.opacity = 1;
-      elem.style.height = '200px';
-      // elem.style.padding = 20;
-      window.requestAnimationFrame(function() {
-        elem.style.transition = "height 200ms, opacity 200ms";
-        elem.style.opacity = 0;
-        elem.style.height = '0px';
-        // elem.style.padding = 0;
-        // elem.style.top = '-80px';
-        // elem.style.display = 'none';
-      });
-
+    this.transName = 'testThing';
+    this.setState({change: (this.state.change + 'n')})
+    // const elem = ReactDOM.findDOMNode(this);
+    //   elem.style.opacity = 1;
+    //   elem.style.height = '160px';
+    //   // elem.style.padding = 20;
+    //   window.requestAnimationFrame(function() {
+    //     elem.style.transition = "height 200ms, opacity 200ms";
+    //     elem.style.opacity = 0;
+    //     elem.style.height = '0px';
+    //     // elem.style.padding = 0;
+    //     // elem.style.top = '-80px';
+    //     // elem.style.display = 'none';
+    //   });
   }
 
   encodeDate(){
@@ -111,7 +111,6 @@ class ResponseInput extends React.Component {
 
 
   render(){
-
     let buttonText = 'Respond';
 
     if(this.props.thisResponse){
@@ -124,7 +123,9 @@ class ResponseInput extends React.Component {
       <div className='responseInput'>
         <form onSubmit={this.handleResponseInput}>
         <label>
-          <textarea placeholder="Write a response..." value={this.state.body} onChange={this.updateField("body")}>
+          <textarea placeholder="Write a response..."
+            value={this.state.body}
+            onChange={this.updateField("body")}>
           </textarea>
         </label>
         <div className='responseSubmitWrapper'>
