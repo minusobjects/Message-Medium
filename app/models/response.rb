@@ -34,4 +34,11 @@ class Response < ApplicationRecord
     class_name: 'Response',
     optional: true
 
+  has_many :likers,
+    foreign_key: :liker_id,
+    class_name: 'Like'
+
+  has_many :likes,
+    through: :likers
+
 end

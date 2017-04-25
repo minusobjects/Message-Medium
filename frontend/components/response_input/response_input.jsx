@@ -16,6 +16,7 @@ class ResponseInput extends React.Component {
       this.setState({body: this.props.thisResponse.body});
     }
 
+    // this stuff needs to change!
     const elem = ReactDOM.findDOMNode(this);
       elem.style.opacity = 0;
       elem.style.top = '-80px';
@@ -33,7 +34,7 @@ class ResponseInput extends React.Component {
       window.requestAnimationFrame(function() {
         elem.style.transition = "height 200ms, opacity 150ms";
         elem.style.opacity = 1;
-        elem.style.height = '200px';
+        elem.style.height = '120px';
       });
   }
 
