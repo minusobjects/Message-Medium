@@ -18,7 +18,6 @@ class StorySidebar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // debugger
     if(nextProps.likerIds.length != this.props.likerIds.length){
       this.setState({likerIds: nextProps.likerIds})
     }
