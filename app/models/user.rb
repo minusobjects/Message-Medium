@@ -41,6 +41,14 @@ class User < ApplicationRecord
     foreign_key: :response_id,
     class_name: 'Response'
 
+  has_many :liked_stories,
+    foreign_key: :story_id,
+    class_name: 'Like'
+
+  has_many :liked_responses,
+    foreign_key: :response_id,
+    class_name: 'Like'
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
