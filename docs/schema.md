@@ -89,4 +89,4 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 user_id         | integer   | not null, foreign key (references users), indexed
 story_id        | integer   | not null, foreign key (references stories), indexed
-response_id     | integer   | not null, foreign key (references responses), indexed
+response_id     | integer   | foreign key (references responses), indexed
