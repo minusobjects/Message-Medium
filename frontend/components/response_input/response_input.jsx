@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+
 class ResponseInput extends React.Component {
 
   constructor(props){
@@ -34,7 +36,7 @@ class ResponseInput extends React.Component {
       window.requestAnimationFrame(function() {
         elem.style.transition = "height 200ms, opacity 150ms";
         elem.style.opacity = 1;
-        elem.style.height = '120px';
+        elem.style.height = '160px';
       });
   }
 
