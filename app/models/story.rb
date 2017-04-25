@@ -32,11 +32,12 @@ class Story < ApplicationRecord
     foreign_key: :story_id,
     class_name: 'Response'
 
-  has_many :likers,
-    foreign_key: :liker_id,
+  has_many :likes,
+    foreign_key: :story_id,
     class_name: 'Like'
 
-  has_many :likes,
-    through: :likers
+  has_many :likers,
+    through: :likes,
+    source: :liker
 
 end
