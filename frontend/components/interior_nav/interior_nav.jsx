@@ -2,9 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+// import SignupForm from '../signup_form/signup_form';
+// import AuthForm from '../auth_form/auth_form';
+
 class InteriorNav extends React.Component {
 	constructor(props) {
 		super(props);
+
+		// this.state = {authForm: '', signupForm: ''};
+
     this.handleLogout = this.handleLogout.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
 
@@ -89,6 +95,9 @@ class InteriorNav extends React.Component {
       buttons = sessionButtons;
     }
 
+		// figure this out!
+		// {this.state.authForm}
+		// {this.state.signupForm}
     return(
       <div className={ this.mainClass }>
         <div className='home-nav'>

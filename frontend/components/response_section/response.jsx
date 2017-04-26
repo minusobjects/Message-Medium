@@ -19,21 +19,21 @@ class Response extends React.Component {
     this.handleUnlike = this.handleUnlike.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.response != this.props.response){
-      this.setState({floatingInput: ''});
-    }
-
+  componentDidMount(){
     let likerIds = [];
-
-    let likes = nextProps.response.likes;
-    if(nextProps.response.likes){
+    let likes = this.props.response.likes;
+    if(this.props.response.likes){
       likes.forEach((like) => {
         likerIds.push(like.liker_id);
       })
     }
-
     this.setState({likerIds: likerIds});
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.response != this.props.response){
+      this.setState({floatingInput: ''});
+    }
   }
 
   handleUnlike(e){
@@ -45,7 +45,7 @@ class Response extends React.Component {
 
 		let unlikeData = {
 			likerId: this.props.currentUser.id,
-			response_id: this.props.response.id
+			responseId: this.props.response.id
 		};
 		this.props.destroyLike(unlikeData);
 	}
@@ -109,12 +109,11 @@ class Response extends React.Component {
 
 
   render(){
-    // debugger
 
     let likeThis;
-
+    // debugger
     if(this.props.loggedIn){
-      if(this.props.currentUser.id === this.props.response.writerId){
+      if(this.props.currentUser.id === this.props.response.writer_id){
         likeThis = (<div>'YOU CANNOT LIKE YOUR OWN RESPONSE!!'</div>);
         } else {
             if(this.state.likerIds.includes(this.props.currentUser.id)){
