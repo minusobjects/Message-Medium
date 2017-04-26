@@ -69,7 +69,6 @@ class ResponseSection extends React.Component {
 
     }
 
-
     return(
       <ul>
         { responses }

@@ -101,11 +101,13 @@ class Story extends React.Component {
     let formattedDate;
     let description;
     let body;
-		let likers = [];
+		// let likers = [];
+		let likes = [];
 		let likerIds = [];
 		let authorFollowerIds;
 
     if(this.props.story){
+			// debugger
 			storyId = this.props.story.id;
       mainImageUrl = this.props.story.main_image_url;
       title = this.props.story.title;
@@ -118,10 +120,13 @@ class Story extends React.Component {
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
       body = this.props.story.body;
-			likers = this.props.story.likers;
-			if(this.props.story.likers){
-				likers.forEach((liker) => {
-					likerIds.push(liker.id);
+			// likers = this.props.story.likers;
+			likes = this.props.story.likes;
+			if(this.props.story.likes){
+				likes.forEach((like) => {
+					if(!like.response_id){
+					likerIds.push(like.liker_id);
+					}
 				})
 			}
     }

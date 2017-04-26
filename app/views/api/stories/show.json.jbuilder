@@ -1,4 +1,4 @@
-json.extract! @story, :id, :author_id, :title, :description, :body, :date, :likers
+json.extract! @story, :id, :author_id, :title, :description, :body, :date, :likers, :likes
 json.author_name @story.author.name
 json.author_bio @story.author.bio
 json.author_follower_ids @story.author.follower_ids
