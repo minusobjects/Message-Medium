@@ -18,7 +18,7 @@ class StoryInput extends React.Component {
 
   componentDidMount() {
     this.redirectIfNotLoggedIn();
-    // this.props.receiveErrors([]);
+    this.props.receiveErrors([]);
 
     // if editing story, import data
     if(this.props.params.id){
@@ -38,6 +38,7 @@ class StoryInput extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+    // debugger
     if(newProps.story){
       this.setState({
         title: newProps.story.title,
@@ -48,8 +49,8 @@ class StoryInput extends React.Component {
       });
     }
     else {
-      this.setState({ title: "", description: "", body: "",
-        date: "", imageUrl: "", imageFile: null });
+      let prevState = this.state;
+      this.setState(prevState);
     }
   }
 
@@ -81,7 +82,7 @@ class StoryInput extends React.Component {
 
 	renderErrors() {
 		return(
-			<ul className='errors-list'>
+			<ul className='errors-list-story-input'>
 				{this.props.errors.map((error, i) => (
 					<li key={`error-${i}`}>
 						{error}
@@ -148,8 +149,8 @@ class StoryInput extends React.Component {
         <div className='mainContainer'>
           <div className='inputContentContainer'>
             <div className='inputContent'>
-
                 <div className='inputPadder'>
+                  {this.renderErrors()}
                   <div className='inputTitle'>
                     <input type="text"
                       placeholder="Title"
