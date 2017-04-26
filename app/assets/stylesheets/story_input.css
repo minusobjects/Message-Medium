@@ -125,6 +125,21 @@
   cursor: pointer;
 }
 
+.errors-list-story-input {
+  list-style: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #a50000;
+  padding: 0px;
+  padding-top: 15px;
+  margin-bottom: 0px;
+  padding-left: 4px;
+  margin-bottom: 0px;
+  opacity: .6;
+  top: -40px;
+  position: relative;
+}
+
 /*.image-upload:active {
   background-color: sandybrown;
 }*/
