@@ -29,7 +29,7 @@ class Api::LikesController < ApplicationController
 
   def destroy
     if(params[:responseId])
-      @like = Like.where.(liker_id: params[:likerId]).where(response_id: params[:responseId]).first
+      @like = Like.where(liker_id: params[:likerId]).where(response_id: params[:responseId]).first
     else
       @like = Like.where(liker_id: params[:likerId]).where(story_id: params[:storyId]).first
     end

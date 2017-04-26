@@ -63,6 +63,8 @@ class ResponseSection extends React.Component {
           isChild = {isChild}
           loggedIn = {this.props.loggedIn}
           currentUser = {this.props.currentUser}
+          createLike = {this.props.createLike}
+          destroyLike = {this.props.destroyLike}
           key={response.id} />
         );
       });

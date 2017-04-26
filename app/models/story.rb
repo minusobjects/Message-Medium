@@ -21,7 +21,7 @@ class Story < ApplicationRecord
 
   validates :author_id, :title, :body, presence: true
 
-  has_attached_file :main_image, default_url: "story_default.jpg"
+  has_attached_file :main_image, default_url: "story_default.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :author,

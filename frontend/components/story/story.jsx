@@ -165,6 +165,7 @@ class Story extends React.Component {
 
     return(
 		<div>
+		{this.props.children}
 			< InteriorNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
 			<br />
 			<br />
