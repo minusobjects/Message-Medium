@@ -16,7 +16,7 @@ class Story extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {scrollTop: 0, scrollDir: 'down'};
+		this.state = {scrollTop: 0, scrollDir: 'down', firstResponseInput:'', responsesLoaded: false};
 
     this.handleScroll = this.handleScroll.bind(this);
     this.handleLike = this.handleLike.bind(this);
@@ -24,7 +24,12 @@ class Story extends React.Component {
 
   componentDidMount() {
       this.props.fetchStory(this.props.params.id);
-      this.props.fetchAllResponses({storyId: this.props.params.id});
+      this.props.fetchAllResponses({storyId: this.props.params.id})
+			.then(() => {
+				this.setState({responsesLoaded: true})
+			});
+			this.setState({firstResponseInput: (
+				<ResponseInputContainer storyId={this.props.params.id} key={0}/>)});
 			window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -35,8 +40,15 @@ class Story extends React.Component {
   componentWillReceiveProps(nextProps) {
 		if(nextProps.params.id != this.props.params.id){
     	this.props.fetchStory(nextProps.params.id);
-			this.props.fetchAllResponses({storyId: nextProps.params.id});
-		}
+			this.props.fetchAllResponses({storyId: nextProps.params.id})
+			.then(() => {
+				this.setState({responsesLoaded: true})
+			});
+		} else if(
+			this.state.responsesLoaded &&
+			this.props.responses.length < nextProps.responses.length &&
+			!nextProps.responses[nextProps.responses.length-1].in_response_id){
+				this.setState({firstResponseInput: ''})}
   }
 
 	handleScroll(event) {
@@ -130,12 +142,12 @@ class Story extends React.Component {
 					</div>);
 				}
 			respondHere = (
-				// <CSSTransitionGroup
-        //   transitionName="example"
-        //   transitionEnterTimeout={3000}
-        //   transitionLeaveTimeout={3000}>
-				<ResponseInputContainer storyId={this.props.params.id}/>
-				// </CSSTransitionGroup>
+				<CSSTransitionGroup
+          transitionName="responseInputTrans"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
+						{this.state.firstResponseInput}
+				 	</CSSTransitionGroup>
 			);
 		} else {
 				respondHere = (<div className='signUpLink'>

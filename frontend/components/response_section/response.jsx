@@ -17,7 +17,9 @@ class Response extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({floatingInput: ''});
+    if(nextProps.response != this.props.response){
+      this.setState({floatingInput: ''});
+    }
   }
 
   formatDate(dateArr){
@@ -109,11 +111,9 @@ class Response extends React.Component {
           {responseOptions}
         </div>
         <CSSTransitionGroup
-          transitionName="example"
-            // transitionAppear={true}
-            // transitionAppearTimeout={3000}
-            transitionEnterTimeout={3000}
-            transitionLeaveTimeout={3000}>
+          transitionName="responseInputTrans"
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={200}>
             {this.state.floatingInput}
           </CSSTransitionGroup>
       </li>
@@ -124,7 +124,8 @@ class Response extends React.Component {
 
 export default Response;
 
-
+// transitionAppear={true}
+// transitionAppearTimeout={3000}
 
 // <br />
 // For EDITING this one:

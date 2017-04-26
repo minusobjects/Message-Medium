@@ -63,7 +63,6 @@ class FollowUser extends React.Component {
 
     render(){
       let followThis;
-      // debugger
       if(this.props.loggedIn && this.state.authorFollowerIds){
         if(this.props.currentUser.id === this.props.authorId){
           followThis = (<div>'YOU CANNOT FOLLOW YOURSELF!'</div>);

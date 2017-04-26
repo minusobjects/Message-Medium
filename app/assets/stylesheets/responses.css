@@ -137,3 +137,39 @@
   .responseOptionsWrapper:focus {
     outline: none;
   }
+
+  .responseInputTrans-enter {
+    opacity: 0.01;
+    height: 0px;
+    /*background-color: purple;*/
+  }
+
+  .responseInputTrans-enter.responseInputTrans-enter-active {
+    opacity: 1;
+    height: 160px;
+    transition: all 200ms ease-in;
+    /*background-color: pink;*/
+  }
+
+  .responseInputTrans-leave {
+    opacity: 1;
+    height: 160px;
+    /*background-color: yellow;*/
+  }
+
+  .responseInputTrans-leave.responseInputTrans-leave-active {
+    opacity: 0;
+    height: 0px;
+    transition: all 200ms ease-in;
+    /*background-color: blue;*/
+  }
+
+  /*.responseInputTrans-appear {
+    opacity: 0.01;
+    background-color: turquoise;
+  }
+
+  .responseInputTrans-appear.responseInputTrans-appear-active {
+    opacity: 1;
+    transition: all 3000ms ease-in;
+  }*/

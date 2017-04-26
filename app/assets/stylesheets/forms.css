@@ -8,6 +8,19 @@
   padding: 0px;
 }
 
+.errors-list-response-input {
+  list-style: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #a50000;
+  /*display: flex;*/
+  justify-content: center;
+  padding: 0px;
+  padding-top: 15px;
+  margin-bottom: 0px;
+  padding-left: 4px;
+}
+
 .errors-list li {
   display: block;
   margin: 0;
