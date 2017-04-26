@@ -12,8 +12,11 @@ import Root from './components/root';
 // import {responseIndex, responseShow} from './util/response_api_util';
 // window.responseIndex = responseIndex;
 // window.responseShow = responseShow;
-import {likeDestroy} from './util/like_api_util';
-window.likeDestroy = likeDestroy;
+// import {likeDestroy} from './util/like_api_util';
+// window.likeDestroy = likeDestroy;
+import {followingDestroy, followingCreate} from './util/following_api_util';
+window.followingCreate = followingCreate;
+window.followingDestroy = followingDestroy;
 
 document.addEventListener('DOMContentLoaded', () => {
 
