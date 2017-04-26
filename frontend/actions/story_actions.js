@@ -26,7 +26,7 @@ export const fetchStory = (storyId) => dispatch => (
 export const createStory = (story) => dispatch => {
 return (
   StoryAPIUtil.storyCreate(story)
-    .then(story => dispatch(receiveStory(story)))
+    .then(newStory => dispatch(receiveStory(newStory)))
   );
 };
 

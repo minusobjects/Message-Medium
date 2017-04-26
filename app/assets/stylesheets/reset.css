@@ -4,6 +4,7 @@ body {
   /*letter-spacing: .2em;*/
   margin: 0px;
   color: #555;
+  z-index: 1;
 }
 
 div {
