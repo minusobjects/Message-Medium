@@ -15,26 +15,22 @@
 }
 
 .storyContent {
- /*background-color: pink;*/
  width: 700px;
  color: rgba(0,0,0,.8);
 }
 
 .storyInfo {
- /*background-color: pink;*/
  display: flex;
  justify-content: left;
  width: 80%;
 }
 
 .authorInfoContainer {
-  /*background-color: yellow;*/
   padding-top: 16px;
   font-size: 16px;
 }
 
 .storyInfo .smallInfo {
- /*background-color: pink;*/
  font-size: 13.5px;
  color: rgba(0,0,0,.5);
 }

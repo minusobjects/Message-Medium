@@ -8,6 +8,8 @@ class AuthForm extends React.Component {
 		this.state = { username: "", password: ""};
 		this.handleLogin = this.handleLogin.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
+
+		this.backPath = this.props.location.pathname.slice(0, -7);
 	}
 
   componentDidMount() {
@@ -21,7 +23,7 @@ class AuthForm extends React.Component {
 	}
 	redirectIfLoggedIn() {
 		if (this.props.loggedIn) {
-			hashHistory.push("/");
+			hashHistory.push(this.backPath);
 		}
 	}
 
@@ -34,7 +36,7 @@ class AuthForm extends React.Component {
 
   formWrapperRedirect(e) {
     if($(e.target).attr('class') === 'form-wrapper'){
-      this.props.router.push("/");
+      this.props.router.push(this.backPath);
     }
   }
 
@@ -62,7 +64,8 @@ class AuthForm extends React.Component {
 		);
 	}
 
-	render() {
+	render(){
+
 		return (
       <div className='form-wrapper' id='form-wrapper' onClick={this.formWrapperRedirect}>
 			<div className='auth-form'>
@@ -92,7 +95,7 @@ class AuthForm extends React.Component {
             </div>
             <br /><br />
             <div className='small-message'>
-            <Link to='/signup'>Don't have an account? Sign up here.</Link>
+            <Link to={`${this.backPath}/signup`}>Don't have an account? Sign up here.</Link>
             </div>
 				</form>
         <br />

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
@@ -16,7 +17,12 @@ class Story extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {scrollTop: 0, scrollDir: 'down', firstResponseInput:'', responsesLoaded: false};
+		this.state = {scrollTop: 0,
+			scrollDir: 'down',
+			firstResponseInput:'',
+			responsesLoaded: false,
+			sidebar: '',
+			storyHeight: 0};
 
     this.handleScroll = this.handleScroll.bind(this);
     this.handleLike = this.handleLike.bind(this);
@@ -49,13 +55,50 @@ class Story extends React.Component {
 			this.props.responses.length < nextProps.responses.length &&
 			!nextProps.responses[nextProps.responses.length-1].in_response_id){
 				this.setState({firstResponseInput: ''})}
+
+		const storyHeight = document.getElementById('mainBody').clientHeight;
+		this.setState({storyHeight: storyHeight});
   }
 
 	handleScroll(event) {
-    if(($(document).scrollTop()) > this.state.scrollTop){
+		if(($(document).scrollTop()) > this.state.scrollTop){
       this.setState({scrollDir: 'down'});
     } else {
       this.setState({scrollDir: 'up'});
+    }
+			if(($(document).scrollTop() > 140) && ($(document).scrollTop() < this.state.storyHeight - 160)){
+				// console.log(this.props.story.likes);
+
+				let storyId;
+				let authorId;
+				let likes = [];
+				let likerIds = [];
+
+				if(this.props.story){
+					storyId = this.props.story.id;
+					authorId = this.props.story.author_id;
+					likes = this.props.story.likes;
+					if(this.props.story.likes){
+						likes.forEach((like) => {
+							if(!like.response_id){
+							likerIds.push(like.liker_id);
+							}
+						})
+					}
+				}
+
+				this.setState({sidebar:(<StorySidebar
+					currentUser={this.props.currentUser}
+					loggedIn={this.props.loggedIn}
+					storyId={storyId}
+					authorId={authorId}
+					likerIds={likerIds}
+					createLike={this.props.createLike}
+					destroyLike={this.props.destroyLike}
+					thisPath={this.props.location.pathname}/>)
+			});
+    } else {
+			this.setState({sidebar: ''});
     }
     this.setState({scrollTop: $(document).scrollTop()});
   }
@@ -156,7 +199,7 @@ class Story extends React.Component {
 			);
 		} else {
 				respondHere = (<div className='signUpLink'>
-				<Link to='/signin'>Sign in to leave a response.</Link>
+				<Link to={`${this.props.location.pathname}/signin`}>Sign in to leave a response.</Link>
 				</div>);
 			}
 
@@ -174,15 +217,13 @@ class Story extends React.Component {
 			<br />
       <div className='mainContainer'>
 				<div className='storyContentContainer'>
-					<article className='storyContent'>
-							<StorySidebar
-								currentUser={this.props.currentUser}
-								loggedIn={this.props.loggedIn}
-								storyId={storyId}
-								authorId={authorId}
-								likerIds={likerIds}
-								createLike={this.props.createLike}
-								destroyLike={this.props.destroyLike}/>
+					<article id='mainBody' className='storyContent'>
+					<CSSTransitionGroup
+	          transitionName="sidebarTrans"
+	          transitionEnterTimeout={200}
+	          transitionLeaveTimeout={200}>
+							{this.state.sidebar}
+							</CSSTransitionGroup>
 							<FollowUser
 								loggedIn={this.props.loggedIn}
 								currentUser={this.props.currentUser}
@@ -227,7 +268,6 @@ class Story extends React.Component {
 
 					</article>
 				</div>
-
 				<section className='bottomSection'>
 					<div className='responseBox'>
 					{respondHere}
