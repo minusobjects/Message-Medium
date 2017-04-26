@@ -4,6 +4,7 @@ import { Link, withRouter, hashHistory } from 'react-router';
 import HomeNavContainer from '../home_nav/home_nav_container';
 
 import StoriesFeed from '../stories_feed/stories_feed';
+import HomeFeed from '../home_feed/home_feed';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -44,12 +45,7 @@ class Home extends React.Component {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        I am the home!
-        <br />
-        <br />
-        < StoriesFeed stories= {this.props.stories } />
+        < HomeFeed stories={this.props.stories } />
         <br />
         <br />
       </div>

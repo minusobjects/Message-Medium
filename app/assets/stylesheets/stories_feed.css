@@ -1,3 +1,161 @@
 .storiesFeed {
   margin: auto;
 }
+
+.homeFeed {
+  /*background-color: pink;*/
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.homeFeed img{
+  width: 100%;
+  position: absolute;
+  display: inline-block;
+}
+
+.storyInfoSection{
+  margin-top: 170px;
+  z-index: 10;
+}
+
+.homeFeedItem{
+  margin-top: 30px;
+}
+
+.groupOfFour {
+  margin-bottom: 20px;
+}
+
+.groupOfFive {
+  /*background-color: purple;*/
+}
+
+.groupOfFour div {
+  /*background-color: green;*/
+  width: 333px;
+  display: inline-block;
+  height: 350px;
+  vertical-align: top;
+  position: relative;
+  /*padding-bottom: 20px;*/
+}
+
+.groupOfFive div {
+  /*background-color: green;*/
+  width: 333px;
+  display: inline-block;
+  height: 350px;
+  vertical-align: top;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.groupOfFour div:nth-child(1) {
+  /*background-color: turquoise;*/
+  width: 1000px;
+  display: block;
+}
+
+.groupOfFour div img {
+  clip: rect(0px,320px,170px,0px);
+}
+
+.groupOfFour div:nth-child(1) img {
+  width: 655px;
+  clip: rect(0px,655px,355px,0px);
+}
+
+.groupOfFour div:nth-child(1) .storyInfoSection {
+  /*color: red;*/
+  display: inline-block;
+  margin-top: -20px;
+  margin-left: 673px;
+  width: 300px;
+  padding-top: 10px
+}
+
+.groupOfFour div:nth-child(1) .homeFeedItemHeadline {
+  font-weight: 700;
+  color: #666;
+  font-size: 34px;
+  line-height: 1.1em;
+}
+
+.groupOfFive div:nth-child(-n+2) {
+  /*background-color: orange;*/
+  width: 500px;
+  display: inline-block;
+  margin-bottom: 40px;
+  margin-top: -20px;
+}
+
+.groupOfFive div:nth-child(-n+2) .storyInfoSection {
+  margin-top: 270px;
+  width: 450px;
+}
+
+.groupOfFive div:nth-child(-n+2) .homeFeedItemHeadline {
+  font-weight: 700;
+  color: #666;
+  font-size: 30px;
+  line-height: 1.1em;
+}
+
+.groupOfFive div img {
+  clip: rect(0px,320px,170px,0px);
+}
+
+.groupOfFive div:nth-child(-n+2) img {
+  clip: rect(0px,485px,270px,0px);
+}
+
+.homeFeedItemHeadline {
+  z-index: 20;
+  font-family: 'PT Sans', 'Lucida Sans', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.homeFeed a:link {
+  color: #444;
+}
+
+.homeFeed a:visited {
+  color: #444;
+}
+
+.homeFeed a:hover {
+  color: #777;
+}
+
+
+.homeFeed a:active {
+  color: #444;
+}
+
+
+/*.homeFeedAvatar img{
+  position: static;
+  display: inline;
+  width: 20px;
+}
+
+.homeFeedAvatar{
+  width: 20px;
+  display: inline;
+  overflow: hidden;
+}*/
+
+
+/*.homeFeed div:nth-child(1) {
+  background-color: yellow;
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.homeFeed div:nth-child(2) {
+  background-color: purple;
+  margin: 0 auto;
+  width: 1000px;
+}*/

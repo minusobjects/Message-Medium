@@ -19,7 +19,7 @@ class InputNav extends React.Component {
 
     e.preventDefault();
     let formData = new FormData();
-    let file = this.props.storyData.imageFile;
+    let file = this.props.storyData.file;
 
     formData.append("story[author_id]", this.props.storyData.author_id);
     formData.append("story[title]", this.props.storyData.title);
@@ -34,7 +34,7 @@ class InputNav extends React.Component {
       formData.append("story[id]", this.props.storyData.id);
       this.props.updateStory(formData).then(hashHistory.push(`/stories/${this.props.storyData.id}`));;
     } else {
-      this.props.createStory(formData).then(hashHistory.push(`/stories/${this.props.storyData.id}`));
+      this.props.createStory(formData).then(newStory => hashHistory.push(`/stories/${newStory.id}`));
     }
   }
 

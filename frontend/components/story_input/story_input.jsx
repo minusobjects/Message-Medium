@@ -153,6 +153,7 @@ class StoryInput extends React.Component {
                   <div className='inputTitle'>
                     <input type="text"
                       placeholder="Title"
+                      maxLength="80"
                       value={this.state.title}
                       onChange={this.updateField("title")} />
                   </div>
@@ -160,6 +161,7 @@ class StoryInput extends React.Component {
                   <div className='inputDescription'>
                     <input type="text"
                       placeholder="Description"
+                      maxLength="110"
                       value={this.state.description}
                       onChange={this.updateField("description")} />
                   </div>
