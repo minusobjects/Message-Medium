@@ -32,9 +32,10 @@ class InputNav extends React.Component {
 
     if(this.props.storyData.id){
       formData.append("story[id]", this.props.storyData.id);
-      this.props.updateStory(formData).then(hashHistory.push(`/stories/${this.props.storyData.id}`));;
+      this.props.updateStory(formData).then(() => hashHistory.push(`/stories/${this.props.storyData.id}`));;
     } else {
-      this.props.createStory(formData).then(newStory => hashHistory.push(`/stories/${newStory.id}`));
+			// remember, the 'then' is receive the entire action
+      this.props.createStory(formData).then(({story}) => hashHistory.push(`/stories/${story.id}`));
     }
   }
 

@@ -13,30 +13,13 @@ class ResponseInput extends React.Component {
   }
 
   componentDidMount() {
+    this.props.receiveErrors([]);
     if(this.props.thisResponse){
       this.setState({body: this.props.thisResponse.body});
     }
-
-    // this stuff needs to change!
-    // const elem = ReactDOM.findDOMNode(this);
-    //   elem.style.opacity = 0;
-    //   elem.style.height = '0px';
-    //   window.requestAnimationFrame(function() {
-    //     elem.style.transition = "height 200ms, opacity 150ms";
-    //     elem.style.opacity = 1;
-    //     elem.style.height = '160px';
-      // });
-    }
+  }
 
   componentWillReceiveProps(newProps){
-    // const elem = ReactDOM.findDOMNode(this);
-    //   elem.style.opacity = 0;
-    //   elem.style.height = '0px';
-    //   window.requestAnimationFrame(function() {
-    //     elem.style.transition = "height 200ms, opacity 150ms";
-    //     elem.style.opacity = 1;
-    //     elem.style.height = '160px';
-    //   });
   }
 
   updateField(field) {
@@ -47,7 +30,6 @@ class ResponseInput extends React.Component {
 
   handleResponseInput(e) {
     e.preventDefault();
-    // params.require(:response).permit(:writer_id, :story_id, :in_response_id, :body, :date)
     let body = this.state.body;
     let date = this.encodeDate();
     let writer_id = this.props.currentUser.id;
@@ -70,20 +52,8 @@ class ResponseInput extends React.Component {
       this.props.createResponse(responseData);
     }
 
-    this.transName = 'testThing';
-    this.setState({change: (this.state.change + 'n')})
-    // const elem = ReactDOM.findDOMNode(this);
-    //   elem.style.opacity = 1;
-    //   elem.style.height = '160px';
-    //   // elem.style.padding = 20;
-    //   window.requestAnimationFrame(function() {
-    //     elem.style.transition = "height 200ms, opacity 200ms";
-    //     elem.style.opacity = 0;
-    //     elem.style.height = '0px';
-    //     // elem.style.padding = 0;
-    //     // elem.style.top = '-80px';
-    //     // elem.style.display = 'none';
-    //   });
+    // this.transName = 'testThing';
+    // this.setState({change: (this.state.change + 'n')})
   }
 
   encodeDate(){
@@ -99,7 +69,7 @@ class ResponseInput extends React.Component {
 
 	renderErrors() {
 		return(
-			<ul className='errors-list'>
+			<ul className='errors-list-response-input'>
 				{this.props.errors.map((error, i) => (
 					<li key={`error-${i}`}>
 						{error}
@@ -122,6 +92,7 @@ class ResponseInput extends React.Component {
     return(
       <div className='responseInput'>
         <form onSubmit={this.handleResponseInput}>
+        {this.renderErrors()}
         <label>
           <textarea placeholder="Write a response..."
             value={this.state.body}
