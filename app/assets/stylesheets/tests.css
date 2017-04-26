@@ -16,6 +16,22 @@
   fill: pink;
 }*/
 
+.st0div{
+  width:50px;
+}
+
+.st0{
+  fill:white;
+  stroke:orange;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
+.st0:hover{
+	fill:orange;
+	cursor:pointer;
+}
+
 .example-enter {
   opacity: 0.01;
   background-color: purple;
