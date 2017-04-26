@@ -45,6 +45,10 @@ class User < ApplicationRecord
     foreign_key: :story_id,
     class_name: 'Like'
 
+  has_many :likes_on_responses,
+    foreign_key: :response_id,
+    class_name: 'Like'
+
   has_many :follower_ids,
     foreign_key: :follower_id,
     class_name: 'Following'

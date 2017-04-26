@@ -22,4 +22,8 @@ class Like < ApplicationRecord
     foreign_key: :story_id,
     class_name: 'Story'
 
+  belongs_to :response,
+    foreign_key: :response_id,
+    class_name: 'Response'
+
 end
