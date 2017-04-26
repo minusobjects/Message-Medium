@@ -55,37 +55,3 @@ class Home extends React.Component {
 }
 
 export default withRouter(Home);
-
-
-
-// render() {
-//
-//   let stories;
-//     if(this.props.stories){
-//       stories = this.props.stories.map((story) => {
-//         return(
-//           < StoriesFeedItem story={story} key={story.id} />
-//         );
-//       });
-//     }
-//   return(
-//     <div>
-//       < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
-//       <br />
-//       <br />
-//       <br />
-//       <br />
-//       <br />
-//       <br />
-//       <br />
-//       <br />
-//       I am the home!
-//       <br />
-//       <br />
-//       <ul>
-//         { stories }
-//       </ul>
-//         <br /><br />
-//     </div>
-//   );
-// }
