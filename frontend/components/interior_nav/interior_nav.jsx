@@ -68,11 +68,12 @@ class InteriorNav extends React.Component {
     <ul className='session-buttons'>
     <a href='#' onClick={this.handleLogout}>Sign out</a>
     </ul>);
+
     const sessionButtons = (
       <div className='session-buttons'>
-        <Link to='/signin'>Sign in</Link>
+        <Link to={`${this.props.location.pathname}/signin`}>Sign in</Link>
         &nbsp;/&nbsp;
-        <Link to='/signup'>Sign up</Link>
+        <Link to={`${this.props.location.pathname}/signup`}>Sign up</Link>
         &nbsp;/ <span className='guest-link'>
         <a href='#' onClick={ this.guestLogin }>Sign in as guest</a>
         </span>

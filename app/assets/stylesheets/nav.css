@@ -149,7 +149,7 @@
   height: 32px;
 }
 
-.signup-avatar-container {
+/*.signup-avatar-container {
   float: right;
   margin-top: 0px;
   margin-left: 0px;
@@ -170,6 +170,33 @@
   margin: 0 auto;
   min-width: 32px;
   height: 32px;
+}*/
+
+.signup-avatar-container {
+  margin-top: 8px;
+  /*margin-left: 12px;*/
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .7;
+  position: relative;
+  padding: 0px;
+  min-width: 32px;
+  max-width: 32px;
+  position: absolute;
+  right: 0;
+  margin-right: 12px;
+  /*background-color: pink;*/
+}
+
+.signup-avatar-container img {
+  display: inline;
+  margin: 0 auto;
+  width: 32px;
+  min-height: 32px;
+  /*margin-right: 1px;*/
+  /*min-width: 32px;*/
+  /*height: 32px;*/
 }
 
 .session-buttons  {

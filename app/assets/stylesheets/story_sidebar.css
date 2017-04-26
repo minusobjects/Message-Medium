@@ -1,0 +1,91 @@
+.storySidebar{
+  /*background-color: pink;*/
+  position: fixed;
+  top:50;
+  left:50%;
+  margin-left:-460px;
+  width:100px;
+}
+
+.st0div{
+  width:50px;
+}
+
+.st0{
+  fill:white;
+  stroke:orange;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
+.st0:hover{
+	fill:orange;
+	cursor:pointer;
+}
+
+.likeHeartDiv{
+  width:50px;
+}
+
+.likeHeart-canLike{
+  fill:white;
+  stroke:#e1bd5b;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
+.likeHeart-canLike:hover{
+	fill:#e1bd5b;
+	cursor:pointer;
+}
+
+.likeHeart-canUnlike{
+  fill:#e1bd5b;
+  stroke:#e1bd5b;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
+.likeHeart-canUnlike:hover{
+	fill:white;
+	cursor:pointer;
+}
+
+.likeHeart-static{
+  fill:white;
+  stroke:#e1bd5b;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
+.likeNumber{
+  color: #999;
+  text-align: center;
+  width: 50px;
+}
+
+.sidebarTrans-enter {
+  opacity: 0.01;
+  height: 0px;
+  /*background-color: purple;*/
+}
+
+.sidebarTrans-enter.sidebarTrans-enter-active {
+  opacity: 1;
+  height: 160px;
+  transition: all 200ms ease-in;
+  /*background-color: pink;*/
+}
+
+.sidebarTrans-leave {
+  opacity: 1;
+  height: 160px;
+  /*background-color: yellow;*/
+}
+
+.sidebarTrans-leave.sidebarTrans-leave-active {
+  opacity: 0;
+  height: 0px;
+  transition: all 200ms ease-in;
+  /*background-color: blue;*/
+}

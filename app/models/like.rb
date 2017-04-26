@@ -24,6 +24,7 @@ class Like < ApplicationRecord
 
   belongs_to :response,
     foreign_key: :response_id,
-    class_name: 'Response'
+    class_name: 'Response',
+    optional: true
 
 end

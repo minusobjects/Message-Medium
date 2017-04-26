@@ -12,6 +12,8 @@ class SignupForm extends React.Component {
 		this.handleSignup = this.handleSignup.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
     this.loadImage = this.loadImage.bind(this);
+
+		this.backPath = this.props.location.pathname.slice(0, -7);
 	}
 
   componentDidMount() {
@@ -35,7 +37,7 @@ class SignupForm extends React.Component {
 
   formWrapperRedirect(e) {
     if($(e.target).attr('class') === 'form-wrapper'){
-      this.props.router.push("/");
+      this.props.router.push(this.backPath);
     }
   }
 
@@ -169,7 +171,7 @@ class SignupForm extends React.Component {
         </form>
         <br />
         <div className='small-message'>
-          <Link to='/signin'>Already have an account? Sign in here.</Link>
+          <Link to={`${this.backPath}/signin`}>Already have an account? Sign in here.</Link>
         </div>
         <br />
 			</div>
