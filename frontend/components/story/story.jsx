@@ -8,6 +8,7 @@ import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
 import StorySidebar from '../story_sidebar/story_sidebar';
+import FollowUser from '../follow_user/follow_user';
 
 var HtmlToReactParser = require('html-to-react').Parser;
 
@@ -90,6 +91,7 @@ class Story extends React.Component {
     let body;
 		let likers = [];
 		let likerIds = [];
+		let authorFollowerIds;
 
     if(this.props.story){
 			storyId = this.props.story.id;
@@ -99,6 +101,7 @@ class Story extends React.Component {
 			authorBio = this.props.story.author_bio;
 			authorId = this.props.story.author_id;
 			authorPhotoUrl = this.props.story.author_photo_url;
+			authorFollowerIds = this.props.story.author_follower_ids;
       date = this.props.story.date;
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
@@ -161,8 +164,14 @@ class Story extends React.Component {
 								authorId={authorId}
 								likerIds={likerIds}
 								createLike={this.props.createLike}
-								destroyLike={this.props.destroyLike}
-								/>
+								destroyLike={this.props.destroyLike}/>
+							<FollowUser
+								loggedIn={this.props.loggedIn}
+								currentUser={this.props.currentUser}
+								authorFollowerIds={authorFollowerIds}
+								authorId={authorId}
+								createFollowing={this.props.createFollowing}
+								destroyFollowing={this.props.destroyFollowing}/>
 		        <section className='storyInfo'>
 							<div className='authorPhotoContainer'>
 								<img src={ authorPhotoUrl } />

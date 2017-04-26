@@ -45,14 +45,22 @@ class User < ApplicationRecord
     foreign_key: :story_id,
     class_name: 'Like'
 
-  # has_many :liked_stories,
-  #   through: :likes_on_stories,
-    # source: :story_id
-    # class_name: 'Story'
+  has_many :follower_ids,
+    foreign_key: :follower_id,
+    class_name: 'Following'
 
-  # has_many :liked_responses,
-  #   foreign_key: :response_id,
-  #   class_name: 'Like'
+  has_many :followers,
+    through: :following_ids,
+    source: :follower
+
+  has_many :following_ids,
+    foreign_key: :following_id,
+    class_name: 'Following'
+
+  has_many :following,
+    through: :follower_ids,
+    source: :following
+
 
 
   def self.find_by_credentials(username, password)
