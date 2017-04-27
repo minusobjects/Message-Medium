@@ -2,12 +2,12 @@ class Api::StoriesController < ApplicationController
 
 def index
   # returns title, description, etc. but NOT the body
-  stories = Story.all.includes(:likes, :likers, :author).order(created_at: :asc)
+  stories = Story.all.includes(:likes, :likers, :author).order(created_at: :desc)
 
   if params[:authorId]
     # maybe should rearrange this conditional so we're
     # not getting every story every time?
-      stories = stories.where(author_id: params[:authorId]).includes(:likes, :likers, :author).order(created_at: :asc)
+      stories = stories.where(author_id: params[:authorId]).includes(:likes, :likers, :author).order(created_at: :desc)
     end
     @stories = stories
     render :index
@@ -61,21 +61,6 @@ end
 
 end
 
-
-
-#  id                      :integer          not null, primary key
-#  author_id               :integer          not null
-#  title                   :string           not null
-#  description             :text
-#  body                    :text             not null
-#  date                    :string
-#  topic_id                :integer
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  main_image_file_name    :string
-#  main_image_content_type :string
-#  main_image_file_size    :integer
-#  main_image_updated_at   :datetime
 
 
 # if (params[:minSeating] && params[:maxSeating])

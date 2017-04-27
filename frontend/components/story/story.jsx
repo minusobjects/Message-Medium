@@ -62,7 +62,7 @@ class Story extends React.Component {
 		const storyHeight = document.getElementById('mainBody').clientHeight;
 		this.setState({storyHeight: storyHeight});
 		console.log(storyHeight);
-		
+
 		if(($(document).scrollTop()) > this.state.scrollTop){
       this.setState({scrollDir: 'down'});
     } else {
@@ -238,7 +238,9 @@ class Story extends React.Component {
 								<img src={ authorPhotoUrl } />
 							</div>
 							<div className='authorInfoContainer'>
+							<Link to={`/users/${authorId}`}>
 								{ authorName }
+								</Link>
 								<br />
 								<span className='smallInfo'>
 									{ authorBio }

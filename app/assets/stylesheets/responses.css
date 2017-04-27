@@ -167,16 +167,16 @@
 
   .responseLikeSection {
     position: absolute;
-    left: 550px;
-    /*top: 124px;*/
-    bottom: 12px;
+    left: 545px;
+    top: 116px;
+    /*bottom: 12px;*/
     width: 80px;
     display: flex;
     /*justify-content: flex-end;*/
   }
 
   .likeHeartDiv-response{
-    width:40px;
+    width:35px;
   }
 
   .responseLikeAmount{
@@ -185,7 +185,7 @@
     /*background-color: pink;*/
     color: #bbb;
     padding-right: 4px;
-    padding-top: 20px;
+    padding-top: 15px;
   }
 
   /*.responseInputTrans-appear {

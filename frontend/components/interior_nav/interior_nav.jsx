@@ -96,9 +96,13 @@ class InteriorNav extends React.Component {
       buttons = sessionButtons;
     }
 
-		// figure this out!
-		// {this.state.authForm}
-		// {this.state.signupForm}
+			let writeLink;
+			if(this.props.loggedIn){
+				writeLink = '/write';
+			} else {
+				writeLink = `${this.props.location.pathname}/signin`;
+			}
+
     return(
       <div className={ this.mainClass }>
         <div className='home-nav'>
@@ -110,7 +114,7 @@ class InteriorNav extends React.Component {
               { helloMessage }
             </div>
             <div className='write-story-message'>
-              <Link to='/write'>Write a Story</Link>
+              <Link to={writeLink}>Write a Story</Link>
             </div>
             { buttons }
             <div className='mag-glass'>
