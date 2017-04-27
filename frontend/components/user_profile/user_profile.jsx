@@ -6,29 +6,39 @@ class UserProfile extends React.Component {
 
   constructor(props){
     super(props);
+
+    this.state = {storiesByUser: '', responsesByUser: '',
+      storiesLikedByUser: '', responsesLikedByUser: '',
+      storiesByFollowed: '', responsesByFollowed: ''}
   }
 
   componentDidMount(){
-    this.props.fetchAllStories();
+    // this.props.fetchAllStories({authorId: this.props.params.id})
+    // .then(() => this.setState({storiesByUser: this.props.stories}));
+    // this.props.fetchAllResponses({writerId: this.props.params.id})
+    // .then(() => this.setState({responsesByUser: this.props.responses}));
+
+    // SHOULD BE ABLE TO JUST GET EVERYTHING THROUGH DB INITIALLY!
+
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.stories.length > this.props.stories.length){
-      this.props.fetchAllResponses({storyId: nextProps.stories[2].id});
-    }
+
   }
 
   render(){
-    debugger
+    console.log(this.state);
+    // debugger
     return(
       <div>
         hi
         <br />
-        STORIES:
+        STORIES BY THIS USER:
         {this.props.stories.length}
         <br />
-        RESPONSES TO THIRD STORY:
+        RESPONSES BY THIS USER:
         {this.props.responses.length}
+        <br />
       </div>
     );
   }

@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  liker_id    :integer          not null
-#  story_id    :integer          not null
+#  story_id    :integer
 #  response_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

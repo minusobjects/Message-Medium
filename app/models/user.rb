@@ -38,16 +38,34 @@ class User < ApplicationRecord
     class_name: 'Story'
 
   has_many :responses,
-    foreign_key: :response_id,
+    foreign_key: :writer_id,
     class_name: 'Response'
 
-  has_many :likes_on_stories,
-    foreign_key: :story_id,
+  # has_many :likes_on_stories,
+  #   foreign_key: :story_id,
+  #   class_name: 'Like'
+  #
+  # has_many :likes_on_responses,
+  #   foreign_key: :response_id,
+  #   class_name: 'Like'
+
+  has_many :things_liked,
+    foreign_key: :liker_id,
     class_name: 'Like'
 
-  has_many :likes_on_responses,
-    foreign_key: :response_id,
-    class_name: 'Like'
+  has_many :liked_stories,
+    through: :things_liked,
+    source: :story
+
+  has_many :liked_responses,
+    through: :things_liked,
+    source: :response
+
+  # will this work?
+  # has_many :liked_stories,
+  #   through: :likes_on_stories,
+
+  # yipes
 
   has_many :follower_ids,
     foreign_key: :follower_id,
@@ -65,6 +83,15 @@ class User < ApplicationRecord
     through: :follower_ids,
     source: :following
 
+# will this work?
+  has_many :stories_by_followed_users,
+    through: :following,
+    source: :stories
+
+  has_many :responses_by_followed_users,
+    through: :following,
+    source: :responses
+# yipes
 
 
   def self.find_by_credentials(username, password)

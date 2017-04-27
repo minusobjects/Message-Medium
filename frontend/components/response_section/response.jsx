@@ -57,7 +57,6 @@ class Response extends React.Component {
 
     let likeData = {like:{
       liker_id: this.props.currentUser.id,
-      story_id: this.props.storyId,
       response_id: this.props.response.id
       }
     };
@@ -187,16 +186,16 @@ class Response extends React.Component {
         <div className='responseBody'>
           { this.props.response.body }
         </div>
+        <div className='responseLikeSection'>
+          <div className='responseLikeAmount'>
+            {this.state.likerIds.length}
+            </div>
+          <div className='responseLikeHeart'>
+            {likeThis}
+          </div>
+        </div>
         <div className='responseOptionsWrapper'>
           {responseOptions}
-          <div className='responseLikeSection'>
-            <div className='responseLikeAmount'>
-              {this.state.likerIds.length}
-              </div>
-            <div className='responseLikeHeart'>
-              {likeThis}
-            </div>
-          </div>
         </div>
         <CSSTransitionGroup
           transitionName="responseInputTrans"
