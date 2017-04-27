@@ -38,7 +38,7 @@ class StoryInput extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // debugger
+
     if(newProps.story){
       this.setState({
         title: newProps.story.title,

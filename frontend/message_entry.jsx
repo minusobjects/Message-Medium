@@ -17,6 +17,9 @@ import Root from './components/root';
 // import {followingDestroy, followingCreate} from './util/following_api_util';
 // window.followingCreate = followingCreate;
 // window.followingDestroy = followingDestroy;
+// import {userShow} from './util/user_api_util';
+// window.userShow = userShow;
+
 
 document.addEventListener('DOMContentLoaded', () => {
 

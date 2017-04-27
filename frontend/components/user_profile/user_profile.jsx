@@ -13,31 +13,21 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.fetchAllStories({authorId: this.props.params.id})
-    // .then(() => this.setState({storiesByUser: this.props.stories}));
-    // this.props.fetchAllResponses({writerId: this.props.params.id})
-    // .then(() => this.setState({responsesByUser: this.props.responses}));
-
-    // SHOULD BE ABLE TO JUST GET EVERYTHING THROUGH DB INITIALLY!
-
+    this.props.fetchUser(this.props.params.id);
   }
 
   componentWillReceiveProps(nextProps){
-
+    if(this.props.params.id != nextProps.params.id){
+      this.props.fetchUser(this.props.params.id);
+    }
   }
 
   render(){
-    console.log(this.state);
-    // debugger
+    debugger
     return(
       <div>
         hi
         <br />
-        STORIES BY THIS USER:
-        {this.props.stories.length}
-        <br />
-        RESPONSES BY THIS USER:
-        {this.props.responses.length}
         <br />
       </div>
     );

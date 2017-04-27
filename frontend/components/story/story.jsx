@@ -83,7 +83,7 @@ class Story extends React.Component {
 					authorId = this.props.story.author_id;
 					likes = this.props.likes;
 					if(this.props.likes){
-						// debugger
+	
 						Object.values(likes).forEach((like) => {
 							// don't think I need the response_id thing anymore
 							if(!like.response_id){

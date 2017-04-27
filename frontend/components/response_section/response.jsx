@@ -109,7 +109,6 @@ class Response extends React.Component {
   render(){
 
     let likeThis;
-    // debugger
 
     if(this.props.loggedIn){
         if(this.state.likerIds.includes(this.props.currentUser.id)){
