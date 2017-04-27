@@ -17,6 +17,7 @@
 .storyInfoSection{
   margin-top: 170px;
   z-index: 10;
+  margin-right:10px;
 }
 
 .homeFeedItem{
@@ -49,6 +50,7 @@
   vertical-align: top;
   position: relative;
   padding-bottom: 20px;
+  padding-top: 30px;
 }
 
 .groupOfFour div:nth-child(1) {
@@ -88,6 +90,7 @@
   display: inline-block;
   margin-bottom: 40px;
   margin-top: -20px;
+  padding-top: 0px;
 }
 
 .groupOfFive div:nth-child(-n+2) .storyInfoSection {
@@ -170,3 +173,7 @@
   margin: 0 auto;
   width: 1000px;
 }*/
+
+.homeFeedItemDescription{
+  margin-right:10px;
+}

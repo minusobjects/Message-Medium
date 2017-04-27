@@ -102,7 +102,7 @@
 .responseBody {
   color: #666;
   font-family: 'Amiri', serif;
-  width: 590px;
+  width: 540px;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -168,7 +168,8 @@
   .responseLikeSection {
     position: absolute;
     left: 545px;
-    top: 116px;
+    /*top: 116px;*/
+    top: 20px;
     /*bottom: 12px;*/
     width: 80px;
     display: flex;
