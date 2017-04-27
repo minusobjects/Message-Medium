@@ -3,7 +3,6 @@ import { Link, hashHistory } from 'react-router';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
-
 import ResponseInputContainer from '../response_input/response_input_container';
 
 class Response extends React.Component {
@@ -115,13 +114,13 @@ class Response extends React.Component {
 
     if(this.props.loggedIn){
         if(this.state.likerIds.includes(this.props.currentUser.id)){
-          likeThis = (<div><a onClick={this.handleUnlike}><div className='likeHeartDiv'>
+          likeThis = (<div><a onClick={this.handleUnlike}><div className='likeHeartDiv-response'>
               <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
               <path className="likeHeart-canUnlike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
               </svg>
               </div></a></div>);
         } else {
-          likeThis = (<div><a onClick={this.handleLike}><div className='likeHeartDiv'>
+          likeThis = (<div><a onClick={this.handleLike}><div className='likeHeartDiv-response'>
               <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
               <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
               </svg>
@@ -130,7 +129,7 @@ class Response extends React.Component {
             </div>);
         }
       } else {
-        likeThis = (<div><a onClick={this.handleLike}><div className='likeHeartDiv'>
+        likeThis = (<div><a onClick={this.handleLike}><div className='likeHeartDiv-response'>
             <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
             <path className="likeHeart-static" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
             </svg>
@@ -138,26 +137,6 @@ class Response extends React.Component {
             </a>
           </div>);
       }
-
-
-
-    // if(this.props.loggedIn){
-    //   if(this.props.currentUser.id === this.props.response.writer_id){
-    //     likeThis = (<div>'YOU CANNOT LIKE YOUR OWN RESPONSE!!'</div>);
-    //     } else {
-    //         if(this.state.likerIds.includes(this.props.currentUser.id)){
-    //           likeThis = (<div>'YOU HAVE ALREADY LIKED!! <a onClick={this.handleUnlike}>Unlike!'</a></div>);
-    //         } else {
-    //           likeThis = (<div>'YOU CAN LIKE!!' <a onClick={this.handleLike}><div className='st0div'>
-    //               <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
-    //               <path className="st0" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
-    //               </svg>
-    //               </div>
-    //               </a>
-    //             </div>);
-    //         }
-    //       }
-    //   }
 
 
     let styleType;
@@ -172,9 +151,17 @@ class Response extends React.Component {
 
     if(this.props.loggedIn){
       if((this.props.currentUser.id) === (this.props.response.writer_id)){
-        responseOptions = (
-          <a onClick={this.loadResponseInput}>Edit this response</a>
-        );
+        if(!this.props.isChild){
+          // tried to also allow user to respond to self, but too hard.
+          responseOptions = (
+            <div>
+            <a onClick={this.loadResponseInput}>Edit this response</a>
+            </div>
+          ); } else {
+            responseOptions = (
+              <a onClick={this.loadResponseInput}>Edit this response</a>
+            );
+          }
       } else if(!this.props.isChild){
         responseOptions = (
           <a onClick={this.loadResponseInput}>Respond to this</a>
@@ -202,9 +189,13 @@ class Response extends React.Component {
         </div>
         <div className='responseOptionsWrapper'>
           {responseOptions}
-          <div>
-            {likeThis}
-            {this.state.likerIds.length}
+          <div className='responseLikeSection'>
+            <div className='responseLikeAmount'>
+              {this.state.likerIds.length}
+              </div>
+            <div className='responseLikeHeart'>
+              {likeThis}
+            </div>
           </div>
         </div>
         <CSSTransitionGroup

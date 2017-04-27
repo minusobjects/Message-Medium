@@ -7,8 +7,6 @@ class StorySidebar extends React.Component {
   constructor(props) {
 		super(props);
     this.state = {likerIds: []};
-    // will need scrolling stuff eventully
-    // this.handleScroll = this.handleScroll.bind(this);
 
     this.handleLike = this.handleLike.bind(this);
     this.handleUnlike = this.handleUnlike.bind(this);
@@ -23,12 +21,6 @@ class StorySidebar extends React.Component {
       this.setState({likerIds: nextProps.likerIds})
     }
   }
-
-//   shouldComponentUpdate: function(nextProps, nextState) {
-//   // You can access `this.props` and `this.state` here
-//   // This function should return a boolean, whether the component should re-render.
-//   return false;
-// },
 
   handleUnlike(e){
 		e.preventDefault();
