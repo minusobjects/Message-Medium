@@ -102,7 +102,6 @@ class HomeNav extends React.Component {
             </div>
             { buttons }
             <div className='mag-glass'>
-              <img src={window.images.mag_glass} />
             </div>
             { avatarBox }
           </div>
@@ -114,3 +113,9 @@ class HomeNav extends React.Component {
 }
 
 export default withRouter(HomeNav);
+
+// <img src={window.images.mag_glass} />
+
+// <div className='hoverTest'>
+// 	<a href='#'>ENERGY MOTION TIME DISTANCE</a>
+// 	</div>

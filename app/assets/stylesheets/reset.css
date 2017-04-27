@@ -7,6 +7,10 @@ body {
   z-index: 1;
 }
 
+ul {
+  list-style: none;
+}
+
 div {
   width: 100%;
   /*padding: 8px;*/

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import ScrollableAnchor from 'react-scrollable-anchor';
+// import ScrollableAnchor from 'react-scrollable-anchor';
 
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
@@ -83,7 +83,7 @@ class Story extends React.Component {
 					authorId = this.props.story.author_id;
 					likes = this.props.likes;
 					if(this.props.likes){
-	
+
 						Object.values(likes).forEach((like) => {
 							// don't think I need the response_id thing anymore
 							if(!like.response_id){

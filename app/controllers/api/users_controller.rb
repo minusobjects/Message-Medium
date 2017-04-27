@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(stories: :author, responses: :writer).find(params[:id])
+    @user = User.includes(stories: :author, responses: [:writer, :likes, :likers]).find(params[:id])
     render :show
   end
 

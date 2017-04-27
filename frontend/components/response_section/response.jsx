@@ -30,10 +30,13 @@ class Response extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.response != this.props.response){
-      this.setState({floatingInput: ''});
+    // debugger
+    // if(!this.props.isMixed){
+      if(nextProps.response != this.props.response){
+        this.setState({floatingInput: ''});
+      }
+    // }
     }
-  }
 
   handleUnlike(e){
 		e.preventDefault();
@@ -147,7 +150,15 @@ class Response extends React.Component {
 
     let responseOptions;
 
-    if(this.props.loggedIn){
+    if(this.props.isMixed){
+      responseOptions = (
+        <div>
+        <Link to={`/stories/${this.props.response.story_id}`}>Go to story</Link>
+        </div>
+      );
+    }
+
+    if(this.props.loggedIn && !this.props.isMixed){
       if((this.props.currentUser.id) === (this.props.response.writer_id)){
         if(!this.props.isChild){
           // tried to also allow user to respond to self, but too hard.
@@ -160,7 +171,7 @@ class Response extends React.Component {
               <a onClick={this.loadResponseInput}>Edit this response</a>
             );
           }
-      } else if(!this.props.isChild){
+      } else if(!this.props.isChild && !this.props.isMixed){
         responseOptions = (
           <a onClick={this.loadResponseInput}>Respond to this</a>
         );
@@ -219,3 +230,11 @@ export default Response;
 // <br />
 // For RESPONDING TO this one (should only be allowed if not already a child):
 // < ResponseInputContainer storyId={this.props.storyId} inResponseId={this.props.response.id} />
+
+
+// if(nextProps.responses[this.props.responses.length-1]){
+//   debugger
+//   if(nextProps.responses[this.props.responses.length-1].id === this.props.response.id){
+//     this.setState({floatingInput: ''});
+//   }
+// }

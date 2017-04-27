@@ -11,6 +11,17 @@
   z-index: 101;
 }
 
+
+.hoverTest{
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.hoverTest:hover {
+  opacity: .8;
+  transition: opacity 300ms;
+}
+
 /*.umbrella {
   background-color: purple;
   fill: pink;

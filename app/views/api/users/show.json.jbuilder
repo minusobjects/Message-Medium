@@ -52,7 +52,9 @@ end
 json.liked_responses do
   json.array! @user.liked_responses do |response|
     json.this_is 'response'
+    json.response response
     json.response_id response.id
+    json.response_story_id response.story_id
     json.response_body response.body
     json.response_date response.date
     json.created_at response.created_at
@@ -60,13 +62,18 @@ json.liked_responses do
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
     json.response_writer_photo_url response.writer.photo.url
+    json.response_likes response.likes
+    json.response_likers response.likers
+    json.response_liker_ids response.liker_ids
   end
 end
 
 json.responses_by_followed_users do
   json.array! @user.responses_by_followed_users do |response|
     json.this_is 'response'
+    json.response response
     json.response_id response.id
+    json.response_story_id response.story_id
     json.response_body response.body
     json.response_date response.date
     json.created_at response.created_at
@@ -74,13 +81,18 @@ json.responses_by_followed_users do
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
     json.response_writer_photo_url response.writer.photo.url
+    json.response_likes response.likes
+    json.response_likers response.likers
+    json.response_liker_ids response.liker_ids
   end
 end
 
 json.responses do
   json.array! @user.responses do |response|
     json.this_is 'response'
+    json.response response
     json.response_id response.id
+    json.response_story_id response.story_id
     json.response_body response.body
     json.response_date response.date
     json.created_at response.created_at
@@ -88,5 +100,8 @@ json.responses do
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
     json.response_writer_photo_url response.writer.photo.url
+    json.response_likes response.likes
+    json.response_likers response.likers
+    json.response_liker_ids response.liker_ids
   end
 end
