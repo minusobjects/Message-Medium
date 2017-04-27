@@ -73,7 +73,7 @@
 .sidebarTrans-enter.sidebarTrans-enter-active {
   opacity: 1;
   height: 160px;
-  transition: all 200ms ease-in;
+  transition: all 100ms ease-in;
   /*background-color: pink;*/
 }
 
@@ -86,6 +86,6 @@
 .sidebarTrans-leave.sidebarTrans-leave-active {
   opacity: 0;
   height: 0px;
-  transition: all 200ms ease-in;
+  transition: all 100ms ease-in;
   /*background-color: blue;*/
 }

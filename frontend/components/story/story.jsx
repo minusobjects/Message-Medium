@@ -70,8 +70,8 @@ class Story extends React.Component {
     } else {
       this.setState({scrollDir: 'up'});
     }
-			if(($(document).scrollTop() > 140) && ($(document).scrollTop() < this.state.storyHeight - 160)){
-				// console.log(this.props.story.likes);
+			if(($(document).scrollTop() > 140) && ($(document).scrollTop() < this.state.storyHeight - 300)){
+				// console.log(this.state.storyHeight);
 
 				let storyId;
 				let authorId;
@@ -227,8 +227,8 @@ class Story extends React.Component {
 					<article id='mainBody' className='storyContent'>
 					<CSSTransitionGroup
 	          transitionName="sidebarTrans"
-	          transitionEnterTimeout={200}
-	          transitionLeaveTimeout={200}>
+	          transitionEnterTimeout={100}
+	          transitionLeaveTimeout={100}>
 							{this.state.sidebar}
 							</CSSTransitionGroup>
 		        <section className='storyInfo'>
