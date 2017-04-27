@@ -12,6 +12,7 @@
   margin: auto;
   box-shadow: 0 1px 4px rgba(0,0,0,.25);
   margin-top: 20px;
+  position: relative;
 }
 
 .responseChild {
@@ -122,12 +123,12 @@
     color: #e1bd5b;
     text-align: left;
     padding-bottom: 15px;
+    margin-left: 23px;
   }
 
   .responseOptionsWrapper a {
     transition: color 200ms;
     cursor: pointer;
-    margin-left: 23px;
   }
 
   .responseOptionsWrapper a:hover {
@@ -162,6 +163,29 @@
     height: 0px;
     transition: all 200ms ease-in;
     /*background-color: blue;*/
+  }
+
+  .responseLikeSection {
+    position: absolute;
+    left: 550px;
+    /*top: 124px;*/
+    bottom: 12px;
+    width: 80px;
+    display: flex;
+    /*justify-content: flex-end;*/
+  }
+
+  .likeHeartDiv-response{
+    width:40px;
+  }
+
+  .responseLikeAmount{
+    text-align: right;
+    width: 30px;
+    /*background-color: pink;*/
+    color: #bbb;
+    padding-right: 4px;
+    padding-top: 20px;
   }
 
   /*.responseInputTrans-appear {

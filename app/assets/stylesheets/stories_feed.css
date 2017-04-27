@@ -134,6 +134,17 @@
   color: #444;
 }
 
+.homeFeedItemAuthor{
+  color: #888;
+  padding-top: 11px;
+}
+
+.homeFeedItemDate{
+  color: #888;
+  padding-top: 4px;
+  font-size: 12px;
+}
+
 
 /*.homeFeedAvatar img{
   position: static;

@@ -56,11 +56,13 @@ class Story extends React.Component {
 			!nextProps.responses[nextProps.responses.length-1].in_response_id){
 				this.setState({firstResponseInput: ''})}
 
-		const storyHeight = document.getElementById('mainBody').clientHeight;
-		this.setState({storyHeight: storyHeight});
   }
 
 	handleScroll(event) {
+		const storyHeight = document.getElementById('mainBody').clientHeight;
+		this.setState({storyHeight: storyHeight});
+		console.log(storyHeight);
+		
 		if(($(document).scrollTop()) > this.state.scrollTop){
       this.setState({scrollDir: 'down'});
     } else {
