@@ -65,26 +65,19 @@ class FollowUser extends React.Component {
       let followThis;
       if(this.props.loggedIn && this.state.authorFollowerIds){
         if(this.props.currentUser.id === this.props.authorId){
-          followThis = (<div>'YOU CANNOT FOLLOW YOURSELF!'</div>);
+          followThis = (<div></div>);
           } else {
               if(this.state.authorFollowerIds.includes(this.props.currentUser.id)){
-                followThis = (<div>'YOU HAVE ALREADY FOLLOWED!! <a onClick={this.handleUnfollow}>Unfollow!'</a></div>);
+                followThis = (<div className='followButton-unfollow'><a onClick={this.handleUnfollow}>UNFOLLOW</a></div>);
               } else {
-                followThis = (<div>'YOU CAN FOLLOW!!' <a onClick={this.handleFollow}><div className='st0div'>
-                    <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
-                    <path className="st0" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
-                    </svg>
-                    </div>
-                    </a>
-                  </div>);
+                followThis = (<div className='followButton-follow'><a onClick={this.handleFollow}>FOLLOW</a></div>);
               }
             }
         }
 
       return(
-        <div>
-          <br />
-          Can you follow? {followThis}
+        <div className='followButtonContainer'>
+          {followThis}
         </div>
       )
     }
