@@ -29,7 +29,7 @@ def create
 end
 
 def show
-  @story = Story.find(params[:id])
+  @story = Story.find(params[:id]).includes(:author)
 end
 
 def update
