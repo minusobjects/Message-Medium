@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
     story: state.stories[ownProps.params.id],
-    responses: Object.values(state.responses)
+    responses: Object.values(state.responses),
+    likes: state.likes
   });
 };
 

@@ -30,6 +30,7 @@ class Story extends React.Component {
 
   componentDidMount() {
       this.props.fetchStory(this.props.params.id);
+			this.props.fetchAllLikes({storyId: this.props.params.id});
       this.props.fetchAllResponses({storyId: this.props.params.id})
 			.then(() => {
 				this.setState({responsesLoaded: true})
@@ -44,6 +45,8 @@ class Story extends React.Component {
 	}
 
   componentWillReceiveProps(nextProps) {
+		// this.props.fetchAllLikes({storyId: this.props.params.id});
+
 		if(nextProps.params.id != this.props.params.id){
     	this.props.fetchStory(nextProps.params.id);
 			this.props.fetchAllResponses({storyId: nextProps.params.id})
@@ -55,13 +58,12 @@ class Story extends React.Component {
 			this.props.responses.length < nextProps.responses.length &&
 			!nextProps.responses[nextProps.responses.length-1].in_response_id){
 				this.setState({firstResponseInput: ''})}
-
   }
 
 	handleScroll(event) {
 		const storyHeight = document.getElementById('mainBody').clientHeight;
 		this.setState({storyHeight: storyHeight});
-		console.log(storyHeight);
+		// console.log(storyHeight);
 
 		if(($(document).scrollTop()) > this.state.scrollTop){
       this.setState({scrollDir: 'down'});
@@ -79,13 +81,15 @@ class Story extends React.Component {
 				if(this.props.story){
 					storyId = this.props.story.id;
 					authorId = this.props.story.author_id;
-					likes = this.props.story.likes;
-					if(this.props.story.likes){
-						likes.forEach((like) => {
+					likes = this.props.likes;
+					if(this.props.likes){
+						// debugger
+						Object.values(likes).forEach((like) => {
+							// don't think I need the response_id thing anymore
 							if(!like.response_id){
 							likerIds.push(like.liker_id);
 							}
-						})
+						});
 					}
 				}
 
@@ -101,6 +105,8 @@ class Story extends React.Component {
 			});
     } else {
 			this.setState({sidebar: ''});
+			this.props.fetchAllLikes({storyId: this.props.params.id});
+
     }
     this.setState({scrollTop: $(document).scrollTop()});
   }
@@ -152,7 +158,6 @@ class Story extends React.Component {
 		let authorFollowerIds;
 
     if(this.props.story){
-			// debugger
 			storyId = this.props.story.id;
       mainImageUrl = this.props.story.main_image_url;
       title = this.props.story.title;
@@ -226,13 +231,6 @@ class Story extends React.Component {
 	          transitionLeaveTimeout={200}>
 							{this.state.sidebar}
 							</CSSTransitionGroup>
-							<FollowUser
-								loggedIn={this.props.loggedIn}
-								currentUser={this.props.currentUser}
-								authorFollowerIds={authorFollowerIds}
-								authorId={authorId}
-								createFollowing={this.props.createFollowing}
-								destroyFollowing={this.props.destroyFollowing}/>
 		        <section className='storyInfo'>
 							<div className='authorPhotoContainer'>
 								<img src={ authorPhotoUrl } />
@@ -248,6 +246,18 @@ class Story extends React.Component {
 									{ formattedDate }
 								</span>
 							</div>
+							<CSSTransitionGroup
+							 transitionName="followAppear"
+							 transitionAppear={true}
+							 transitionAppearTimeout={1000}>
+								<FollowUser
+									loggedIn={this.props.loggedIn}
+									currentUser={this.props.currentUser}
+									authorFollowerIds={authorFollowerIds}
+									authorId={authorId}
+									createFollowing={this.props.createFollowing}
+									destroyFollowing={this.props.destroyFollowing}/>
+								</CSSTransitionGroup>
 						</section>
 						{ editThis }
 						<section className='storyHead'>
