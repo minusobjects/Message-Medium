@@ -19,9 +19,11 @@ class Home extends React.Component {
     window.addEventListener('scroll', this.handleScroll);
 		if(this.props.route){
 			if(this.props.route.path === "/topics/:id"){
+				this.props.fetchAllTopics();
 				this.props.fetchAllStories({topicId: this.props.params.id});
 			}
 		} else {
+		this.props.fetchAllTopics();
     this.props.fetchAllStories();
 		}
   }
@@ -29,9 +31,11 @@ class Home extends React.Component {
 	componentWillReceiveProps(nextProps){
 		if(nextProps.route){
 			if((nextProps.route.path === "/topics/:id") && (nextProps.params.id != this.props.params.id)){
+				this.props.fetchAllTopics();
 				this.props.fetchAllStories({topicId: nextProps.params.id});
 			}
 		} else if (!nextProps.route && this.props.route) {
+			this.props.fetchAllTopics();
 			this.props.fetchAllStories();
 		}
 	}
@@ -57,16 +61,27 @@ class Home extends React.Component {
 			return(<LoadingIcon />);
 		}
 
+		if(this.props.route){
+			let paramId = parseInt(this.props.params.id);
+			let name;
+			this.props.topics.forEach((topic) => {
+				if(topic.id === paramId){
+					name = topic.name
+				}
+			});
+			this.topicName = name;
+		}
+
     return(
       <div>
-        < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop}/>
+        < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop} topics={this.props.topics}/>
         <br />
         <br />
         <br />
         <br />
         <br />
         <br />
-        < HomeFeed stories={this.props.stories } />
+        < HomeFeed stories={this.props.stories} topicName={this.topicName} />
         <br />
         <br />
 				<div className='bottom'>

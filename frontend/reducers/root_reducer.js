@@ -5,6 +5,7 @@ import ResponsesReducer from './responses_reducer';
 import LikesReducer from './likes_reducer';
 import FollowingsReducer from './followings_reducer';
 import UsersReducer from './users_reducer';
+import TopicsReducer from './topics_reducer';
 import LoadingReducer from './loading_reducer';
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   likes: LikesReducer,
   followings: FollowingsReducer,
   users: UsersReducer,
+  topics: TopicsReducer,
   loading: LoadingReducer
 });

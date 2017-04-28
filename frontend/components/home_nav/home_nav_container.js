@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
     scrollDir: ownProps.scrollDir,
-    scrollTop: ownProps.scrollTop
+    scrollTop: ownProps.scrollTop,
+    topics: ownProps.topics
   });
 };
 

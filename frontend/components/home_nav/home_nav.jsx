@@ -104,6 +104,9 @@ class HomeNav extends React.Component {
             <div className='hello-message'>
               { helloMessage }
             </div>
+						<div className='hoverTest'>
+							{this.props.topics.toString()}
+						</div>
             <div className='write-story-message'>
               <Link to={writeUrl}>Write a Story</Link>
             </div>
