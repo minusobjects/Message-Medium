@@ -12,11 +12,16 @@ class Home extends React.Component {
     this.state = {scrollTop: 0, scrollDir: 'down'};
 
     this.handleScroll = this.handleScroll.bind(this);
+		this.topicName;
 	}
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+		if(this.props.route.path === "/topics/:id"){
+			this.props.fetchAllStories({topicId: this.props.params.id});
+		} else {
     this.props.fetchAllStories();
+		}
   }
 
   componentWillUnmount() {

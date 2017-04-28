@@ -9,6 +9,7 @@ import SignupFormContainer from './signup_form/signup_form_container';
 import StoryInputContainer from './story_input/story_input_container';
 import StoryContainer from './story/story_container';
 import UserProfileContainer from './user_profile/user_profile_container';
+import HomeContainer from './home/home_container';
 
 
 const Root = ({ store }) => (
@@ -18,6 +19,7 @@ const Root = ({ store }) => (
         <Route path="/signin" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
+      <Route path="/topics/:id" component={HomeContainer} />
       <Route path="/write" component={StoryInputContainer} />
       <Route path="/stories/:id" component={StoryContainer}>
         <Route path="/stories/:id/signin" component={AuthFormContainer} />

@@ -3,7 +3,7 @@ import { fetchAllStories } from './../../actions/story_actions';
 import Home from './home';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllStories: () => dispatch(fetchAllStories()),
+    fetchAllStories: (id) => dispatch(fetchAllStories(id)),
   };
 };
 

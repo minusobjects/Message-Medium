@@ -40,4 +40,8 @@ class Story < ApplicationRecord
     through: :likes,
     source: :liker
 
+  belongs_to :topic,
+    foreign_key: :topic_id,
+    class_name: 'Topic'
+
 end
