@@ -36,6 +36,11 @@
  color: rgba(0,0,0,.5);
 }
 
+.storyInfo .smallInfo .dateInfo {
+ font-size: 13.5px;
+ color: rgba(0,0,0,.35);
+}
+
 .authorPhotoContainer {
   margin-top: 12px;
   margin-left: 12px;

@@ -91,17 +91,17 @@ class UserProfile extends React.Component {
       let userStoriesArr = this.props.user.stories;
       let userResponsesArr = this.props.user.responses;
       let userLatestArr = userStoriesArr.concat(userResponsesArr);
-      mixedLatest = userLatestArr.sort((a, b) => { return a.created_at.localeCompare(b.created_at); });
+      mixedLatest = userLatestArr.sort((a, b) => { return b.created_at.localeCompare(a.created_at); });
 
       let storiesByFollowedArr = this.props.user.stories_by_followed_users;
       let responsesByFollowedArr = this.props.user.responses_by_followed_users;
       let byFollowedArr = storiesByFollowedArr.concat(responsesByFollowedArr);
-      mixedByFollowed = byFollowedArr.sort((a, b) => { return a.created_at.localeCompare(b.created_at); });
+      mixedByFollowed = byFollowedArr.sort((a, b) => { return b.created_at.localeCompare(a.created_at); });
 
       let likedStoriesArr = this.props.user.liked_stories;
       let likedResponsesArr = this.props.user.liked_responses;
       let likedArr = likedStoriesArr.concat(likedResponsesArr);
-      mixedLiked = likedArr.sort((a, b) => { return a.created_at.localeCompare(b.created_at); });
+      mixedLiked = likedArr.sort((a, b) => { return b.created_at.localeCompare(a.created_at); });
     }
 
     if(this.state.currentFeed === 'latest'){

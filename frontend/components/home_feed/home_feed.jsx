@@ -11,12 +11,14 @@ class HomeFeed extends React.Component {
   render(){
     let stories;
     if(this.props.stories){
+
+			let orderedStories = this.props.stories.sort((a, b) => { return b.created_at.localeCompare(a.created_at); });
       // select the first 23 stories for the home page
-      let firstFour = this.props.stories.slice(0,4);
-      let secondFour = this.props.stories.slice(4,8);
-      let thirdFive = this.props.stories.slice(8,13);
-      let fourthFive = this.props.stories.slice(13,18);
-      let fifthFive = this.props.stories.slice(18,23);
+      let firstFour = orderedStories.slice(0,4);
+      let secondFour = orderedStories.slice(4,8);
+      let thirdFive = orderedStories.slice(8,13);
+      let fourthFive = orderedStories.slice(13,18);
+      let fifthFive = orderedStories.slice(18,23);
 
       firstFour = firstFour.map((story) => {
         return(

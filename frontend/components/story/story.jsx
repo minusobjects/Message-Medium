@@ -248,7 +248,7 @@ class Story extends React.Component {
 								<span className='smallInfo'>
 									{ authorBio }
 									<br />
-									{ formattedDate }
+									<span className='dateInfo'>{ formattedDate }</span>
 								</span>
 							</div>
 							<CSSTransitionGroup
