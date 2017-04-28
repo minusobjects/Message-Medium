@@ -132,5 +132,28 @@ margin: 0 auto;
   color: #999;
 }
 
+.profileIconsHolder{
+  display: flex;
+  justify-content: space-between;
+  width:400px;
+  margin:auto;
+}
+
+.iconHolder{
+  color:#bbb;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1.3px;
+  width: 120px;
+  /*background-color: yellow;*/
+  text-align: center;
+}
+
+.profile-icon{
+  width:60px;
+  margin: 0 auto;
+  padding-bottom: 6px;
+}
+
   /*width: 640px
     box-shadow: 0 1px 4px rgba(0,0,0,.25);*/

@@ -134,6 +134,32 @@ class UserProfile extends React.Component {
         <br/><br/><br/><br/><br/><br/><br/><br/>
         {userData}
         <br/><br/>
+        <div className='profileIconsHolder'>
+        <div className='iconHolder'>
+        <div className='profile-icon'>
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
+          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
+          </svg>
+          </div>
+          Latest
+        </div>
+        <div className='iconHolder'>
+        <div className='profile-icon'>
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
+          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
+          </svg>
+          </div>
+          Recommended
+          </div>
+          <div className='iconHolder'>
+        <div className='profile-icon'>
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
+          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
+          </svg>
+          </div>
+          Following
+        </div>
+        </div>
         <a onClick={this.switchLatest}>LATEST</a>
         <a onClick={this.switchFollowing}>FOLLOWING</a>
         <a onClick={this.switchRecommended}>RECOMMENDED</a>

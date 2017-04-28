@@ -58,6 +58,13 @@
   transition: fill 200ms;
 }
 
+.likeHeart-static-orange{
+  fill:#e1bd5b;
+  stroke:#e1bd5b;
+  stroke-width:.5px;
+  transition: fill 200ms;
+}
+
 .likeNumber{
   color: #999;
   text-align: center;
