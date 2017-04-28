@@ -135,11 +135,17 @@
   height: 32px;
   overflow: hidden;
   border-radius: 50%;
-  opacity: .7;
+  opacity: .6;
   position: relative;
   padding: 0px;
   min-width: 32px;
   max-width: 32px;
+  transition: opacity 200ms;
+}
+
+.avatar-container:hover {
+  opacity: .8;
+  transition: opacity 200ms;
 }
 
 .avatar-container img {

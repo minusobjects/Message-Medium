@@ -58,7 +58,9 @@ render(){
 						</div>
 						<div>
 							<div className='mixedItem-authorName'>
+							<Link to={`/users/${this.props.mixedItem.story_author_id}`}>
 		        		{ this.props.mixedItem.story_author_name }
+							</Link>
 							</div>
 							<div className='mixedItem-storyDate'>
 		        		{ storyDate }

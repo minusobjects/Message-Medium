@@ -186,7 +186,9 @@ class Response extends React.Component {
           <img src={ this.props.response.writer_photo_url } />
         </div>
         <div className='authorInfoContainer'>
-          { this.props.response.writer_name }
+          <Link to={`/users/${this.props.response.writer_id}`}>
+            { this.props.response.writer_name }
+          </Link>
           <br />
           <span className='smallInfo'>
           {this.formatDate(this.props.response.date.split(','))}

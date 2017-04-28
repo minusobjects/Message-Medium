@@ -83,7 +83,9 @@ class HomeNav extends React.Component {
       buttons = logoutButton;
       imageUrl = this.props.currentUser.image_url;
       avatarBox = (<div className='avatar-container'>
+				<Link to={`/users/${this.props.currentUser.id}`}>
         <img src={ imageUrl } />
+				</Link>
       </div>);
     } else {
       buttons = sessionButtons;

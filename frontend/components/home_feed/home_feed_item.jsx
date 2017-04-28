@@ -36,7 +36,11 @@ class HomeFeedItem extends React.Component {
         { this.props.story.description }
       </section>
       <section className='homeFeedItemAuthor'>
-        { this.props.story.author_name }
+      <Link to={`/users/${this.props.story.author_id}`}>
+        <span className='lightener'>
+          { this.props.story.author_name }
+        </span>
+      </Link>
       </section>
       <section className='homeFeedItemDate'>
         { this.formatDate(this.props.story.date.split(',')) }

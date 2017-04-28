@@ -38,7 +38,7 @@ class UserProfile extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(this.props.params.id != nextProps.params.id){
-      this.props.fetchUser(this.props.params.id);
+      this.props.fetchUser(nextProps.params.id);
     }
   }
 
