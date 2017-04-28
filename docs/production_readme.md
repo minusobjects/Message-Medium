@@ -4,7 +4,7 @@
 
 [heroku]: http://message-medium.herokuapp.com/
 
-Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend). The goal of message is to provide an elegant and inviting experience for both the reading and writing of stories.
+Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
 
 ## Features & Implementation 
 
@@ -28,16 +28,18 @@ Below is an initial wireframe drawing of the user profile page:
 
 ### Likes
 
-Through the Rails backend, stories are associated with topics and can be 'liked' by users. Database associations allow for a record of all stories and responses that any user has liked (or both). By comparing data from the `likes` table with user information, various React component can detect whether or not the logged-in user has liked a story or response, updating their styles accordingly. The goal was to seamlessly integrate the experience of 'liking' into the site, i.e. by showing a story's 'likes' in a sidebar that appears and disappears according to the user's positiion in the story (via JavaScript and CSS).
+Through the Rails backend, stories are associated with topics and can be 'liked' by users. Database associations allow for a record of all stories and responses that any user has liked. By comparing data from the `likes` table with user information, various React components can detect whether or not the logged-in user has liked a story or response, updating their styles accordingly. 
+
+The goal was to seamlessly integrate the experience of 'liking' into the site, i.e. by showing a story's 'likes' in a sidebar that appears and disappears according to the user's positiion in the story (via JavaScript and CSS).
 
 ## Future Directions for the Project
 
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
+In addition to the features already implemented, I plan to continue work on this project.
 
 ### Search
 
-Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
+By utilizing the pg-search Ruby gem, I can integrate text-based search into the site.
 
-### Direct Messaging
+### Highlights
 
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+Medium allows users to highlight sections of stories that they particularly like. It would be possible to achieve a similar functionality on Message by storing information about each highlighted passage in the database and rendering the highlights via CSS.
