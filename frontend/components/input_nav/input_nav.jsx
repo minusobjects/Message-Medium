@@ -2,57 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+
+import PublishOptions from '../publish_options/publish_options';
+
 class InputNav extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {publishOptions: ''}
 
-    this.handleStoryInput = this.handleStoryInput.bind(this);
+		this.loadPublishOptions = this.loadPublishOptions.bind(this);
 	}
 
   componentDidMount(){
+		this.props.fetchAllTopics();
   }
 
   componentWillReceiveProps(newProps){
   }
 
-  handleStoryInput(e) {
+	loadPublishOptions(e){
+		e.preventDefault();
 
-    e.preventDefault();
-    let formData = new FormData();
-    let file = this.props.storyData.file;
-
-    formData.append("story[author_id]", this.props.storyData.author_id);
-    formData.append("story[title]", this.props.storyData.title);
-    formData.append("story[description]", this.props.storyData.description);
-    formData.append("story[body]", this.props.storyData.body);
-    formData.append("story[date]", this.encodeDate());
-    if(file){
-      formData.append("story[main_image]", file);
-    }
-
-    if(this.props.storyData.id){
-      formData.append("story[id]", this.props.storyData.id);
-      this.props.updateStory(formData).then(() => hashHistory.push(`/stories/${this.props.storyData.id}`));;
-    } else {
-			// remember, the 'then' is receive the entire action
-      this.props.createStory(formData).then(({story}) => hashHistory.push(`/stories/${story.id}`));
-    }
-  }
-
-    encodeDate(){
-      let date = new Date();
-      let month = (date.getMonth() + 1);
-      let day = date.getDate();
-      let year = date.getFullYear();
-      let hour = date.getHours();
-      let minutes = date.getMinutes();
-      let seconds = date.getSeconds();
-      return `${month},${day},${year},${hour},${minutes},${seconds}`;
-    }
-
+		this.setState({publishOptions: (
+			<PublishOptions
+			topics={this.props.topics}
+			storyData={this.props.storyData}
+			updateStory={this.props.updateStory}
+			createStory={this.props.createStory}/>
+		)});
+	}
 
   render() {
-
     let imageUrl;
 		let userUrl;
 
@@ -75,13 +56,19 @@ class InputNav extends React.Component {
           </Link>
           <div className='nav-right-input'>
             <div className='publish-link'>
-            <form onSubmit={this.handleStoryInput}>
-              <input type='submit' value='Publish' />
-            </form>
+            <a onClick={this.loadPublishOptions}>
+              Publish
+            </a>
+						<CSSTransitionGroup
+		          transitionName="profileFeedTrans"
+		          transitionEnterTimeout={200}
+		          transitionLeaveTimeout={200}>
+						{this.state.publishOptions}
+						</CSSTransitionGroup>
             </div>
-            { avatarBox }
+	            { avatarBox }
+						</div>
           </div>
-        </div>
       </div>
     );
   }
@@ -89,4 +76,3 @@ class InputNav extends React.Component {
 }
 
 export default withRouter(InputNav);
-// <a href="#">Publish</a>

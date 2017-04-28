@@ -10,7 +10,7 @@ class StoryInput extends React.Component {
   constructor(props){
     super(props);
     this.state = { title: "", description: "", body: "",
-      date: "", imageUrl: "", imageFile: null };
+      date: "", topic: "", imageUrl: "", imageFile: null };
 
     this.update = this.update.bind(this);
     this.loadImage = this.loadImage.bind(this);
@@ -38,14 +38,14 @@ class StoryInput extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-
     if(newProps.story){
       this.setState({
         title: newProps.story.title,
         description: newProps.story.description,
         body: newProps.story.body,
         date: newProps.story.date,
-        imageUrl: newProps.story.main_image_url
+        imageUrl: newProps.story.main_image_url,
+        topic: newProps.story.topic
       });
     }
     else {
@@ -127,6 +127,7 @@ class StoryInput extends React.Component {
      storyData.title = this.state.title;
      storyData.description = this.state.description;
      storyData.body = this.state.body;
+     storyData.topic = this.state.topic;
      storyData.file = this.state.imageFile;
       if(this.props.params.id){
         storyData.id = this.props.params.id;

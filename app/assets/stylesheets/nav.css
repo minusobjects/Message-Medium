@@ -297,3 +297,28 @@
   color: #9b9b9b;
   font-size: 17px;
 }
+
+/*.publish-link-nav {
+  margin-top: 20px;
+  text-align: right;
+  width: 200px;
+  margin-right: 16px;
+}*/
+
+.publish-link a {
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  letter-spacing: .8px;
+  color: #e1bd5b;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.publish-link a:hover {
+  color: #e6a822;
+}
+
+/*.publish-link input[type='submit']:focus {
+  outline: none;
+}*/

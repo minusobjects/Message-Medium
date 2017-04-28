@@ -289,7 +289,7 @@ class Story extends React.Component {
 						<section className='storyBody'>
 		        	{ parseBody }
 							<div className='storyTopic'>
-								Filed Under: <Link to={`/topics/${topicId}`}>{topicName}</Link>
+								Filed Under: &nbsp;<Link to={`/topics/${topicId}`}>{topicName}</Link>
 							</div>
 							<hr />
 		        </section>

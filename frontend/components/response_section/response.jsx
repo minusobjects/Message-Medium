@@ -30,7 +30,6 @@ class Response extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // debugger
     // if(!this.props.isMixed){
       if(nextProps.response != this.props.response){
         this.setState({floatingInput: ''});
@@ -235,7 +234,6 @@ export default Response;
 
 
 // if(nextProps.responses[this.props.responses.length-1]){
-//   debugger
 //   if(nextProps.responses[this.props.responses.length-1].id === this.props.response.id){
 //     this.setState({floatingInput: ''});
 //   }

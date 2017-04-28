@@ -42,6 +42,7 @@ class Story < ApplicationRecord
 
   belongs_to :topic,
     foreign_key: :topic_id,
-    class_name: 'Topic'
+    class_name: 'Topic',
+    optional: true
 
 end
