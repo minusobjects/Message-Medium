@@ -284,6 +284,7 @@
   opacity: 0;
   transition: opacity 300ms;
   cursor: pointer;
+  height: 100px;
 }
 
 .hoverTopics:hover {

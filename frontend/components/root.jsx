@@ -11,6 +11,7 @@ import StoryContainer from './story/story_container';
 import UserProfileContainer from './user_profile/user_profile_container';
 import HomeContainer from './home/home_container';
 
+// need to route signin and signup for topics - think i need to add 'children' to nav as well.
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -19,7 +20,10 @@ const Root = ({ store }) => (
         <Route path="/signin" component={AuthFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </Route>
-      <Route path="/topics/:id" component={HomeContainer} />
+      <Route path="/topics/:id" component={HomeContainer}>
+        <Route path="/topics/:id/signin" component={AuthFormContainer} />
+        <Route path="/topics/:id/signup" component={SignupFormContainer} />
+      </Route>
       <Route path="/write" component={StoryInputContainer} />
       <Route path="/stories/:id" component={StoryContainer}>
         <Route path="/stories/:id/signin" component={AuthFormContainer} />
