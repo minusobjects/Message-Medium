@@ -1,0 +1,136 @@
+.profileAuthorPhotoContainer {
+margin-top: 12px;
+margin-left: 12px;
+margin-right: 18px;
+width: 120px;
+height: 120px;
+overflow: hidden;
+border-radius: 50%;
+opacity: .8;
+position: relative;
+padding: 0px;
+margin: 0 auto;
+}
+
+.profileAuthorPhotoContainer img {
+ max-width: 122px;
+}
+
+.profile-userName{
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 1.3px;
+  color: #999;
+  padding-top: 10px;
+}
+
+.orangeBack{
+  background-color: bisque;
+  padding-left:6px;
+  padding-right:6px;
+}
+
+.profile-userBio{
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+  color: #888;
+  padding-top: 8px;
+  letter-spacing: .6px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.lighterText{
+  opacity: .7;
+  margin-top: 6px;
+  line-height: 26px;
+  letter-spacing: .6px;
+}
+
+
+.mixedItem-story{
+  width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  display:flex;
+  justify-content: space-between;
+  position:relative;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.mixedItem-storyImage{
+  width: 420px;
+  overflow:hidden;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /*border-radius: 4px;*/
+}
+
+.mixedItem-storyImage img{
+  /*clip: rect(0px,420px,240px,0px);*/
+  /*border-radius: 4px;*/
+  height: 240px;
+
+}
+
+.mixedItem-storyTitle{
+  padding-top: 26px;
+  font-size: 28px;
+  font-weight: 700;
+  width: 320px;
+}
+
+
+.mixedItem-authorPhotoContainer {
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-right: 18px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  padding: 0px;
+  min-width: 65px;
+  max-width: 65px;
+  min-height: 65px;
+}
+
+.mixedItem-authorPhotoContainer img{
+  display: inline;
+  margin: 0 auto;
+  min-width: 65px;
+  height: 65px;
+}
+
+.mixedItem-storyAuthor{
+  display: flex;
+  position: absolute;
+  bottom: 36px;
+}
+
+.mixedItem-authorName{
+  padding-top: 26px;
+  color: #999;
+}
+
+.mixedItem-storyDate{
+  color: #999;
+  padding-top: 4px;
+  font-size: 12px;
+}
+
+.mixedItem.story_description{
+  padding-top: 5px;
+  color: #999;
+}
+
+  /*width: 640px
+    box-shadow: 0 1px 4px rgba(0,0,0,.25);*/

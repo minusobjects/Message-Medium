@@ -118,7 +118,7 @@ class InteriorNav extends React.Component {
             </div>
             { buttons }
             <div className='mag-glass'>
-              <img src={window.images.mag_glass} />
+
             </div>
             { avatarBox }
           </div>
@@ -130,3 +130,5 @@ class InteriorNav extends React.Component {
 }
 
 export default withRouter(InteriorNav);
+
+// <img src={window.images.mag_glass} />

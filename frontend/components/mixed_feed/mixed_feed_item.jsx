@@ -8,34 +8,66 @@ class MixedFeedItem extends React.Component {
 		super(props);
 	}
 
-render(){
+	formatDate(dateArr){
+    let ampm;
+    let hour;
+    if(dateArr[3] > 12){
+      ampm = 'pm';
+      hour = (dateArr[3] - 12);
+    } else {
+      ampm = 'am';
+      hour = dateArr[3];
+    }
+    const months = ['none','Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
+    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${hour}:${dateArr[4]} ${ampm}`;
+    return str;
+  }
 
+render(){
   let thisItem = (<div></div>);
   let mainImagePath;
   let userImagePath;
+	let storyDate;
 
   if(this.props.mixedItem.this_is === 'story'){
+		storyDate = this.formatDate(this.props.mixedItem.story_date.split(','));
     if(this.props.mixedItem.story_main_image_url === 'story_default.png'){
       mainImagePath = 'assets/story_default.png';
     } else {
       mainImagePath = this.props.mixedItem.story_main_image_url;
     }
-    thisItem = (<div className='mixedItem-story'>
-        <img src={mainImagePath} />
-        <br />
-        <Link to={`/stories/${this.props.mixedItem.story_id}`}>
-        { this.props.mixedItem.story_title }
-        </Link>
-        <br />
-        { this.props.mixedItem.story_author_name }
-        <br />
-        { this.props.mixedItem.story_author_photo_url }
-        <br />
-        { this.props.mixedItem.story_date }
-        <br />
-        { this.props.mixedItem.story_description }
-        <br />
-      </div>);
+    thisItem = (
+				<div className='mixedItem-story'>
+				<div className='left-half'>
+					<div className='mixedItem-storyImage'>
+        		<img src={mainImagePath} />
+        	</div>
+					</div>
+					<div className='right-half'>
+					<div className='mixedItem-storyTitle'>
+        		<Link to={`/stories/${this.props.mixedItem.story_id}`}>
+        			{ this.props.mixedItem.story_title }
+        		</Link>
+        	</div>
+					<div className='mixedItem-storyDescription'>
+        		{ this.props.mixedItem.story_description }
+        	</div>
+					<div className='mixedItem-storyAuthor'>
+						<div className='mixedItem-authorPhotoContainer'>
+							<img src={ this.props.mixedItem.story_author_photo_url } />
+						</div>
+						<div>
+							<div className='mixedItem-authorName'>
+		        		{ this.props.mixedItem.story_author_name }
+							</div>
+							<div className='mixedItem-storyDate'>
+		        		{ storyDate }
+		        	</div>
+						</div>
+        	</div>
+					</div>
+      	</div>
+		);
   } else {
 
 		if(this.props.mixedItem.response_writer_photo_url === 'missing.png'){
