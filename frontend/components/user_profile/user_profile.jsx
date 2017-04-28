@@ -104,7 +104,14 @@ class UserProfile extends React.Component {
       mixedLiked = likedArr.sort((a, b) => { return b.created_at.localeCompare(a.created_at); });
     }
 
+    let bubbleClass;
+    let heartClass;
+    let personClass;
+
     if(this.state.currentFeed === 'latest'){
+      bubbleClass = 'likeHeart-static-orange';
+      heartClass = 'likeHeart-canLike';
+      personClass = 'likeHeart-canLike';
       currentFeed = (< Latest
         mixedItems={mixedLatest}
         currentUser={this.props.currentUser}
@@ -114,6 +121,9 @@ class UserProfile extends React.Component {
         responses={this.props.responses}
         key={1}/>);
     } else if(this.state.currentFeed === 'following'){
+      bubbleClass = 'likeHeart-canLike';
+      heartClass = 'likeHeart-canLike';
+      personClass = 'likeHeart-static-orange';
       currentFeed = (< Following
         mixedItems={mixedByFollowed}
         currentUser={this.props.currentUser}
@@ -123,6 +133,9 @@ class UserProfile extends React.Component {
         responses={this.props.responses}
         key={2}/>);
     } else {
+      bubbleClass = 'likeHeart-canLike';
+      heartClass = 'likeHeart-static-orange';
+      personClass = 'likeHeart-canLike';
       currentFeed = (< Recommended
         mixedItems={mixedLiked}
         currentUser={this.props.currentUser}
@@ -143,35 +156,38 @@ class UserProfile extends React.Component {
         <div className='profileIconsHolder'>
         <div className='iconHolder'>
         <div className='profile-icon'>
-          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
-          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
-          </svg>
+          <a onClick={this.switchLatest}>
+            <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
+              <path className={bubbleClass} d="M14.3,13.2c1.8-1.3,2.9-3.2,2.9-5.3c0-3.8-3.7-6.9-8.3-6.9C4.4,1,0.7,4.1,0.7,7.9 c0,3.8,3.7,6.9,8.3,6.9c1,0,2-0.2,3-0.5c0.8,0.9,2.1,1.8,4.2,1.7C16.1,16.1,14,14.3,14.3,13.2z"/>
+            </svg>
+          </a>
           </div>
           Latest
         </div>
         <div className='iconHolder'>
         <div className='profile-icon'>
-          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
-          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
-          </svg>
-          </div>
+          <a onClick={this.switchRecommended}>
+            <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
+              <path className={heartClass} d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
+            </svg>
+            </a>
+        </div>
           Recommended
           </div>
           <div className='iconHolder'>
         <div className='profile-icon'>
-          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 18 18">
-          <path className="likeHeart-canLike" d="M9,17.4C6.2,15-2.6,6.7,2.2,2.1C6.1-1.6,8.6,2.6,9,3.3l0,0l0,0c0.4-0.7,2.8-4.9,6.7-1.1 C20.6,6.7,11.8,15,9,17.4L9,17.4z"/>
+        <a onClick={this.switchFollowing}>
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="-296 388 18 18">
+          <path className={personClass} d="M-280.3,405.6c-0.6-3.4-2.4-6.1-4.7-7.1c1.9-0.8,3.2-2.6,3.2-4.8c0-2.9-2.3-5.2-5.2-5.2 s-5.2,2.3-5.2,5.2c0,2.2,1.3,4,3.2,4.8c-2.3,1-4.1,3.7-4.7,7.1H-280.3z"/>
           </svg>
+          </a>
           </div>
           Following
         </div>
         </div>
-        <a onClick={this.switchLatest}>LATEST</a>
-        <a onClick={this.switchFollowing}>FOLLOWING</a>
-        <a onClick={this.switchRecommended}>RECOMMENDED</a>
         <br/><br/>
         <CSSTransitionGroup
-          transitionName="responseInputTrans"
+          transitionName="profileFeedTrans"
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}>
             {currentFeed}

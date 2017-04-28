@@ -155,5 +155,28 @@ margin: 0 auto;
   padding-bottom: 6px;
 }
 
-  /*width: 640px
-    box-shadow: 0 1px 4px rgba(0,0,0,.25);*/
+.profileFeedTrans-enter {
+  opacity: 0.01;
+  /*height: 400px;*/
+  /*background-color: purple;*/
+}
+
+.profileFeedTrans-enter.profileFeedTrans-enter-active {
+  opacity: 1;
+  /*height: 700px;*/
+  transition: all 200ms ease-in;
+  /*background-color: pink;*/
+}
+
+.profileFeedTrans-leave {
+  opacity: 1;
+  /*height: 700px;*/
+  /*background-color: yellow;*/
+}
+
+.profileFeedTrans-leave.profileFeedTrans-leave-active {
+  opacity: 0;
+  /*height: 400px;*/
+  transition: all 200ms ease-in;
+  /*background-color: blue;*/
+}

@@ -57,7 +57,7 @@ response14 = Response.create!(writer_id: mary.id, story_id: story8.id, body: "Th
 response15 = Response.create!(writer_id: jane.id, story_id: story6.id, body: "I'm the first one to respond to your response!", date: "4,27,2017,2,52,19", in_response_id: response8.id)
 response16 = Response.create!(writer_id: jane.id, story_id: story3.id, body: "I don't know, it's not THAT weird.", date: "4,27,2017,2,52,56", in_response_id: response12.id)
 response17 = Response.create!(writer_id: jane.id, story_id: story4.id, body: "It's pretty dramatic, I'll agree.", date: "4,27,2017,2,53,41", in_response_id: response5.id)
-response18 = Response.create!(writer_id: jane.id, story_id: story2.id, body: "\"\"When the day comes that we can hitch on to the mighty energies locked away within the body of the atom, a truly new age of man will be ushered in. All the past achievements of the human race will be as nothing, the fire of Prometheus a mere plaything in comparison. Even flight to other worlds in space \"\n\nYeah that's pretty interesting!", date: "4,27,2017,2,54,27", in_response_id: nil)
+response18 = Response.create!(writer_id: jane.id, story_id: story2.id, body: "\"When the day comes that we can hitch on to the mighty energies locked away within the body of the atom, a truly new age of man will be ushered in. All the past achievements of the human race will be as nothing, the fire of Prometheus a mere plaything in comparison. Even flight to other worlds in space \"\n\nYeah that's pretty interesting!", date: "4,27,2017,2,54,27", in_response_id: nil)
 response19 = Response.create!(writer_id: jane.id, story_id: story9.id, body: "This is pretty good.", date: "4,27,2017,2,54,51", in_response_id: nil)
 
 Following.create!([
@@ -91,7 +91,6 @@ Like.create!([
   {liker_id: will.id, story_id: nil, response_id: response6.id},
   {liker_id: will.id, story_id: story3.id, response_id: nil},
   {liker_id: will.id, story_id: story7.id, response_id: nil},
-  {liker_id: will.id, story_id: nil, response_id: response2.id},
   {liker_id: will.id, story_id: story8.id, response_id: nil},
   {liker_id: will.id, story_id: nil, response_id: response7.id},
   {liker_id: will.id, story_id: nil, response_id: response2.id},
