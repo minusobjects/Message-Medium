@@ -54,13 +54,15 @@ class InputNav extends React.Component {
   render() {
 
     let imageUrl;
+		let userUrl;
 
     if(this.props.currentUser){
-      imageUrl = this.props.currentUser.image_url
+      imageUrl = this.props.currentUser.image_url;
+			userUrl = `/users/${this.props.currentUser.id}`;
     }
 
     let avatarBox = (<div className='add-margin avatar-container'>
-		<Link to={`/users/${this.props.currentUser.id}`}>
+		<Link to={ userUrl }>
       <img src={ imageUrl } />
 			</Link>
     </div>);

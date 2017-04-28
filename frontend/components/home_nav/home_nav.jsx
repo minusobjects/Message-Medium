@@ -77,11 +77,13 @@ class HomeNav extends React.Component {
     let buttons;
     let avatarBox;
     let imageUrl;
+		let writeUrl;
 
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
       imageUrl = this.props.currentUser.image_url;
+			writeUrl = '/write';
       avatarBox = (<div className='avatar-container'>
 				<Link to={`/users/${this.props.currentUser.id}`}>
         <img src={ imageUrl } />
@@ -89,6 +91,7 @@ class HomeNav extends React.Component {
       </div>);
     } else {
       buttons = sessionButtons;
+			writeUrl = `${this.props.location.pathname}signin`;
     }
 
     return(
@@ -100,7 +103,7 @@ class HomeNav extends React.Component {
               { helloMessage }
             </div>
             <div className='write-story-message'>
-              <Link to='/write'>Write a Story</Link>
+              <Link to={writeUrl}>Write a Story</Link>
             </div>
             { buttons }
             <div className='mag-glass'>
