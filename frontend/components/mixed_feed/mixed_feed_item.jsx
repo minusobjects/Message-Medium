@@ -25,17 +25,13 @@ class MixedFeedItem extends React.Component {
 
 render(){
   let thisItem = (<div></div>);
-  let mainImagePath;
-  let userImagePath;
+  let mainImagePath = this.props.mixedItem.story_main_image_url;
+	let userImagePath = this.props.mixedItem.response_writer_photo_url;
 	let storyDate;
 
   if(this.props.mixedItem.this_is === 'story'){
 		storyDate = this.formatDate(this.props.mixedItem.story_date.split(','));
-    if(this.props.mixedItem.story_main_image_url === 'story_default.png'){
-      mainImagePath = 'assets/story_default.png';
-    } else {
-      mainImagePath = this.props.mixedItem.story_main_image_url;
-    }
+
     thisItem = (
 				<div className='mixedItem-story'>
 				<div className='left-half'>
@@ -71,12 +67,6 @@ render(){
       	</div>
 		);
   } else {
-
-		if(this.props.mixedItem.response_writer_photo_url === 'missing.png'){
-      userImagePath = 'assets/missing.png';
-    } else {
-      userImagePath = this.props.mixedItem.response_writer_photo_url;
-    }
 
 		let improvedResponse = this.props.mixedItem.response;
 		improvedResponse.likes = this.props.mixedItem.response_likes;

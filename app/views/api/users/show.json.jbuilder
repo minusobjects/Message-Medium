@@ -9,11 +9,11 @@ json.liked_stories do
     json.story_description story.description
     json.story_date story.date
     json.created_at story.created_at
-    json.story_main_image_url story.main_image.url
+    json.story_main_image_url asset_path(story.main_image.url(:original))
     json.story_author_id story.author_id
     json.story_author_name story.author.name
     json.story_author_bio story.author.bio
-    json.story_author_photo_url story.author.photo.url
+    json.story_author_photo_url asset_path(story.author.photo.url(:original))
   end
 end
 
@@ -25,11 +25,11 @@ json.stories_by_followed_users do
     json.story_description story.description
     json.story_date story.date
     json.created_at story.created_at
-    json.story_main_image_url story.main_image.url
+    json.story_main_image_url asset_path(story.main_image.url(:original))
     json.story_author_id story.author_id
     json.story_author_name story.author.name
     json.story_author_bio story.author.bio
-    json.story_author_photo_url story.author.photo.url
+    json.story_author_photo_url asset_path(story.author.photo.url(:original))
   end
 end
 
@@ -41,11 +41,11 @@ json.stories do
     json.story_description story.description
     json.story_date story.date
     json.created_at story.created_at
-    json.story_main_image_url story.main_image.url
+    json.story_main_image_url asset_path(story.main_image.url(:original))
     json.story_author_id story.author_id
     json.story_author_name story.author.name
     json.story_author_bio story.author.bio
-    json.story_author_photo_url story.author.photo.url
+    json.story_author_photo_url asset_path(story.author.photo.url(:original))
   end
 end
 
@@ -61,7 +61,7 @@ json.liked_responses do
     json.response_writer_id response.writer_id
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
-    json.response_writer_photo_url response.writer.photo.url
+    json.response_writer_photo_url asset_path(response.writer.photo.url(:original))
     json.response_likes response.likes
     json.response_likers response.likers
     json.response_liker_ids response.liker_ids
@@ -80,7 +80,7 @@ json.responses_by_followed_users do
     json.response_writer_id response.writer_id
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
-    json.response_writer_photo_url response.writer.photo.url
+    json.response_writer_photo_url asset_path(response.writer.photo.url(:original))
     json.response_likes response.likes
     json.response_likers response.likers
     json.response_liker_ids response.liker_ids
@@ -99,7 +99,7 @@ json.responses do
     json.response_writer_id response.writer_id
     json.response_writer_name response.writer.name
     json.response_writer_bio response.writer.bio
-    json.response_writer_photo_url response.writer.photo.url
+    json.response_writer_photo_url asset_path(response.writer.photo.url(:original))
     json.response_likes response.likes
     json.response_likers response.likers
     json.response_liker_ids response.liker_ids
