@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 import HomeNavContainer from '../home_nav/home_nav_container';
-
 import StoriesFeed from '../stories_feed/stories_feed';
 import HomeFeed from '../home_feed/home_feed';
+import LoadingIcon from '../loading_icon/loading_icon';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -35,6 +35,10 @@ class Home extends React.Component {
   }
 
   render() {
+
+		if(this.props.loading){
+			return(<LoadingIcon />);
+		}
 
     return(
       <div>

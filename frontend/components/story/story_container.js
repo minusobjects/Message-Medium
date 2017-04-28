@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     story: state.stories[ownProps.params.id],
     responses: Object.values(state.responses),
-    likes: state.likes
+    likes: state.likes,
+    loading: state.loading.detailLoading
   });
 };
 

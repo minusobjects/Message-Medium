@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
-    stories: Object.values(state.stories)
+    stories: Object.values(state.stories),
+    loading: state.loading.indexLoading
   });
 };
 

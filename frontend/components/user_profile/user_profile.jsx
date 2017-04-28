@@ -3,6 +3,8 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
+import LoadingIcon from '../loading_icon/loading_icon';
+
 import Latest from './latest';
 import Following from './following';
 import Recommended from './recommended';
@@ -55,6 +57,10 @@ class UserProfile extends React.Component {
   switchRecommended(){this.setState({currentFeed: 'recommended'});}
 
   render(){
+
+    if(this.props.loading){
+      return(<LoadingIcon />);
+    }
 
     let userData;
 

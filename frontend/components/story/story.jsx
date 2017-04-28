@@ -10,6 +10,7 @@ import ResponseSectionContainer from '../response_section/response_section_conta
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
 import StorySidebar from '../story_sidebar/story_sidebar';
 import FollowUser from '../follow_user/follow_user';
+import LoadingIcon from '../loading_icon/loading_icon';
 
 var HtmlToReactParser = require('html-to-react').Parser;
 
@@ -138,6 +139,10 @@ class Story extends React.Component {
 
 
   render() {
+
+		if(this.props.loading){
+			return(<LoadingIcon />);
+		}
 
     // way to destructure?
 

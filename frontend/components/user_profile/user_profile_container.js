@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
     user: state.users[ownProps.params.id],
-    responses: Object.values(state.responses)
+    responses: Object.values(state.responses),
+    loading: state.loading.indexLoading
   });
 };
 
