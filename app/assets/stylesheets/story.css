@@ -157,7 +157,18 @@
 }
 
 .storyBody hr {
-  width: 40%;
-  border-top: 5px solid rgba(0,0,0,.4);
-  margin-top: 50px;
+  width: 90%;
+  border-top: 1px solid rgba(0,0,0,.15);
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.storyTopic {
+  font-family: 'PT Sans';
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .5px;
+  opacity: .8;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }

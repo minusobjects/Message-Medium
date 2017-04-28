@@ -161,6 +161,8 @@ class Story extends React.Component {
 		let likes = [];
 		let likerIds = [];
 		let authorFollowerIds;
+		let topicName;
+		let topicId;
 
     if(this.props.story){
 			storyId = this.props.story.id;
@@ -183,6 +185,10 @@ class Story extends React.Component {
 					likerIds.push(like.liker_id);
 					}
 				})
+			}
+			if(this.props.story.topic){
+				topicName = this.props.story.topic.name;
+				topicId = this.props.story.topic.id;
 			}
     }
 
@@ -282,6 +288,9 @@ class Story extends React.Component {
 						</section>
 						<section className='storyBody'>
 		        	{ parseBody }
+							<div className='storyTopic'>
+								Filed Under: <Link to={`/topics/${topicId}`}>{topicName}</Link>
+							</div>
 							<hr />
 		        </section>
 

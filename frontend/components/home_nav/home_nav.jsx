@@ -78,6 +78,13 @@ class HomeNav extends React.Component {
     let avatarBox;
     let imageUrl;
 		let writeUrl;
+		let topicsSection;
+
+		if(this.props.topics){
+			topicsSection = this.props.topics.map((topic) => {
+				return(<li key={topic.id}><Link to={`/topics/${topic.id}`}>{topic.name}</Link></li>)
+			});
+		}
 
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
@@ -101,12 +108,12 @@ class HomeNav extends React.Component {
           <img src={ window.images.first_logo } height='40px' id='logo' />
 				</Link>
           <div className='nav-right'>
+					<ul className='hoverTopics'>
+						{topicsSection}
+					</ul>
             <div className='hello-message'>
               { helloMessage }
             </div>
-						<div className='hoverTest'>
-							{this.props.topics.toString()}
-						</div>
             <div className='write-story-message'>
               <Link to={writeUrl}>Write a Story</Link>
             </div>

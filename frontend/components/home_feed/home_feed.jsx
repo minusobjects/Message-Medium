@@ -62,7 +62,9 @@ class HomeFeed extends React.Component {
 
     return(
       <div className='homeFeed'>
-				{this.props.topicName}
+				<div className='topicHead'>
+					{this.props.topicName}
+				</div>
         { stories }
       </div>
     );
