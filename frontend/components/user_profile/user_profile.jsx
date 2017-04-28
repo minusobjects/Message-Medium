@@ -5,12 +5,14 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import LoadingIcon from '../loading_icon/loading_icon';
 
+import FollowUser from '../follow_user/follow_user';
+
 import Latest from './latest';
 import Following from './following';
 import Recommended from './recommended';
 
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
-import FollowUser from '../follow_user/follow_user';
+
 
 
 class UserProfile extends React.Component {
@@ -84,6 +86,20 @@ class UserProfile extends React.Component {
           {this.props.user.bio}
           <br />
         <span className='lighterText'>Followers: {this.props.user.follower_ids.length}&nbsp;&nbsp;|&nbsp;&nbsp;Following: {this.props.user.following_ids.length}</span>
+        <div className='profileFollow'>
+          <CSSTransitionGroup
+           transitionName="followAppear"
+           transitionAppear={true}
+           transitionAppearTimeout={1000}>
+            <FollowUser
+              loggedIn={this.props.loggedIn}
+              currentUser={this.props.currentUser}
+              authorFollowerIds={this.props.user.follower_ids}
+              authorId={this.props.user.id}
+              createFollowing={this.props.createFollowing}
+              destroyFollowing={this.props.destroyFollowing}/>
+            </CSSTransitionGroup>
+            </div>
         </div>
       </div>
       );

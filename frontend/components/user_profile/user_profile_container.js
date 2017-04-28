@@ -3,6 +3,7 @@ import { fetchAllStories } from './../../actions/story_actions';
 import { fetchAllResponses } from './../../actions/response_actions';
 import { fetchUser } from './../../actions/user_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
+import { createFollowing, destroyFollowing } from '../../actions/following_actions';
 import UserProfile from './user_profile';
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,7 +20,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: (id) => dispatch(fetchUser(id)),
     createLike: like => dispatch(createLike(like)),
-    destroyLike: like => dispatch(destroyLike(like))
+    destroyLike: like => dispatch(destroyLike(like)),
+    createFollowing: like => dispatch(createFollowing(like)),
+    destroyFollowing: like => dispatch(destroyFollowing(like))
   };
 };
 

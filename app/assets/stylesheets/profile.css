@@ -85,6 +85,7 @@ margin: 0 auto;
   font-size: 28px;
   font-weight: 700;
   width: 320px;
+  line-height:31px;
 }
 
 
@@ -113,7 +114,7 @@ margin: 0 auto;
 .mixedItem-storyAuthor{
   display: flex;
   position: absolute;
-  bottom: 36px;
+  bottom: 32px;
 }
 
 .mixedItem-authorName{
@@ -181,4 +182,14 @@ margin: 0 auto;
   /*height: 400px;*/
   transition: all 200ms ease-in;
   /*background-color: blue;*/
+}
+
+.profileFollow{
+  display: flex;
+  justify-content: center;
+}
+
+.profileFollow .followButtonContainer{
+  width:115px;
+  top:10px
 }
