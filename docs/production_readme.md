@@ -12,7 +12,7 @@ Message is a full-stack single-page web application inspired by the blog/news si
 
 Users may write their own stories via a spare, clean interface - the almost-entirely white page is meant to emulate the feeling of a blank sheet of paper. The more-complex functionality only becomes evident after some interaction: image uploading and linked topics via database associations, and rich text editing using tools adapted from the QuillJS library. In order to achieve the desired experience, I had to heavily edit the Quill interface. The database stores stories in specially-formatted HTML, which can then be rendered via React.
 
-User may leave responses on stories or on other responses. The chain of responses (sorted by time and by comment thread) is managed through JavaScript algorithms; using the Redux architecture, users may seamlessly leave responses or edit their own responses.
+Users may leave responses on stories or on other responses. The chain of responses (sorted by time and by comment thread) is managed through JavaScript algorithms; using the Redux architecture, users may seamlessly leave responses or edit their own responses.
 
 Below is an initial wireframe drawing of the individual story page (note that the sidebar component is used to display that story's likes):
 
