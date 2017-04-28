@@ -297,7 +297,9 @@ class Story extends React.Component {
 				</section>
 
       </div>
-
+			<div className='bottom'>
+			  <img src={ window.images.first_logo } height='20px'/>
+			</div>
 		</div>
     );
   }

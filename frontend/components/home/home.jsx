@@ -52,6 +52,9 @@ class Home extends React.Component {
         < HomeFeed stories={this.props.stories } />
         <br />
         <br />
+				<div className='bottom'>
+				  <img src={ window.images.first_logo } height='20px'/>
+				</div>
       </div>
     );
   }
