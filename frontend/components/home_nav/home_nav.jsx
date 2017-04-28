@@ -97,7 +97,9 @@ class HomeNav extends React.Component {
     return(
       <div className={ this.mainClass }>
         <div className='home-nav'>
+				<Link to='/'>
           <img src={ window.images.first_logo } height='40px' id='logo' />
+				</Link>
           <div className='nav-right'>
             <div className='hello-message'>
               { helloMessage }

@@ -17,12 +17,24 @@ class Home extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-		if(this.props.route.path === "/topics/:id"){
-			this.props.fetchAllStories({topicId: this.props.params.id});
+		if(this.props.route){
+			if(this.props.route.path === "/topics/:id"){
+				this.props.fetchAllStories({topicId: this.props.params.id});
+			}
 		} else {
     this.props.fetchAllStories();
 		}
   }
+
+	componentWillReceiveProps(nextProps){
+		if(nextProps.route){
+			if((nextProps.route.path === "/topics/:id") && (nextProps.params.id != this.props.params.id)){
+				this.props.fetchAllStories({topicId: nextProps.params.id});
+			}
+		} else if (!nextProps.route && this.props.route) {
+			this.props.fetchAllStories();
+		}
+	}
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
