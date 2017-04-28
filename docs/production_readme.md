@@ -4,7 +4,7 @@
 
 [heroku]: http://message-medium.herokuapp.com/
 
-Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend).
+Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend). The goal of message is to provide an elegant and inviting experience for both the reading and writing of stories.
 
 ## Features & Implementation 
 
@@ -16,23 +16,19 @@ User may leave responses on stories or on other responses. The chain of response
 
 Below is an initial wireframe drawing of the individual story page (note that the sidebar component is used to display that story's likes):
 
+![image of story_page](wireframes/story.png)
+
 ### Follows
 
-Users may 'follow' other users by clicking on a modular React component. In addition to the user's information, each user profile page contains three feeds: stories and responses written by that user, stories and responses which have been liked by that user, and stories and responses by users followed by that user. This information is quickly retrieved from the server thanks to a series of associations between multiple database tables (`users`, `stories`, `responses`, `likes`, `follows`, and `followings`). Users my view these feeds by clicking on a custom SVG icon menu.
+Users may 'follow' other users by clicking on a modular React component. In addition to the user's information, each user profile page contains three feeds: stories and responses written by that user, stories and responses which have been liked by that user, and stories and responses by users followed by that user. This information is quickly retrieved from the server thanks to a series of associations between multiple database tables (`users`, `stories`, `responses`, `likes`, `follows`, and `followings`). Users may view these feeds by clicking on a custom SVG icon menu.
 
 Below is an initial wireframe drawing of the user profile page:
 
 ![image of user_profile](wireframes/user-profile.png)
 
-### Tags
+### Likes
 
-Through the Rails backend, stories are associated with topics and can be 'liked' by users. Database associations allow for a record of all stories and responses that any user has written or has simply liked (or both).
-
-As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
-
-Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
-
-![tag screenshot](wireframes/tag-search.png)
+Through the Rails backend, stories are associated with topics and can be 'liked' by users. Database associations allow for a record of all stories and responses that any user has liked (or both). By comparing data from the `likes` table with user information, various React component can detect whether or not the logged-in user has liked a story or response, updating their styles accordingly. The goal was to seamlessly integrate the experience of 'liking' into the site, i.e. by showing a story's 'likes' in a sidebar that appears and disappears according to the user's positiion in the story (via JavaScript and CSS).
 
 ## Future Directions for the Project
 
