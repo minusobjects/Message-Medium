@@ -29,7 +29,8 @@ class InputNav extends React.Component {
 			topics={this.props.topics}
 			storyData={this.props.storyData}
 			updateStory={this.props.updateStory}
-			createStory={this.props.createStory}/>
+			createStory={this.props.createStory}
+			visible={true}/>
 		)});
 	}
 

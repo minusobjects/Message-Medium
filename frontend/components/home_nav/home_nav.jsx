@@ -58,27 +58,23 @@ class HomeNav extends React.Component {
   }
 
   render() {
-    const logoutButton =(
-    <ul className='session-buttons'>
-    <a href='#' onClick={this.handleLogout}>Sign out</a>
-    </ul>);
-    const sessionButtons = (
-      <div className='session-buttons'>
-        <Link to={`${this.props.location.pathname}signin`}>Sign in</Link>
-        &nbsp;/&nbsp;
-        <Link to={`${this.props.location.pathname}signup`}>Sign up</Link>
-        &nbsp;/ <span className='guest-link'>
-        <a href='#' onClick={ this.guestLogin }>Sign in as guest</a>
-        </span>
-      </div>
-    );
 
     let helloMessage = ' ';
     let buttons;
     let avatarBox;
     let imageUrl;
-		let writeUrl;
 		let topicsSection;
+		let writeUrl = `${this.props.location.pathname}/signin`;
+		let signInUrl = `${this.props.location.pathname}/signin`;
+		let signUpUrl = `${this.props.location.pathname}/signup`;
+
+		if(this.props.loggedIn){
+			writeUrl = '/write';
+		} else if(!this.props.params.id){
+			writeUrl = `${this.props.location.pathname}signin`;
+			signInUrl = `${this.props.location.pathname}signin`;
+			signUpUrl = `${this.props.location.pathname}signup`;
+		}
 
 		if(this.props.topics){
 			topicsSection = this.props.topics.map((topic) => {
@@ -86,11 +82,26 @@ class HomeNav extends React.Component {
 			});
 		}
 
+		const logoutButton =(
+		<ul className='session-buttons'>
+		<a href='#' onClick={this.handleLogout}>Sign out</a>
+		</ul>);
+
+		const sessionButtons = (
+			<div className='session-buttons'>
+				<Link to={signInUrl}>Sign in</Link>
+				&nbsp;/&nbsp;
+				<Link to={signUpUrl}>Sign up</Link>
+				&nbsp;/ <span className='guest-link'>
+				<a href='#' onClick={ this.guestLogin }>Sign in as guest</a>
+				</span>
+			</div>
+		);
+
     if(this.props.loggedIn){
       helloMessage = `Hello, ${this.props.currentUser.name}!`;
       buttons = logoutButton;
       imageUrl = this.props.currentUser.image_url;
-			writeUrl = '/write';
       avatarBox = (<div className='avatar-container'>
 				<Link to={`/users/${this.props.currentUser.id}`}>
         <img src={ imageUrl } />
@@ -98,7 +109,6 @@ class HomeNav extends React.Component {
       </div>);
     } else {
       buttons = sessionButtons;
-			writeUrl = `${this.props.location.pathname}signin`;
     }
 
     return(
@@ -130,9 +140,3 @@ class HomeNav extends React.Component {
 }
 
 export default withRouter(HomeNav);
-
-// <img src={window.images.mag_glass} />
-
-// <div className='hoverTest'>
-// 	<a href='#'>ENERGY MOTION TIME DISTANCE</a>
-// 	</div>

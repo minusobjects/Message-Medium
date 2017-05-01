@@ -17,6 +17,10 @@ class PublishOptions extends React.Component {
 		}
 	}
 
+	componentWillReceiveProps(nextProps){
+		// this.setState({wrapperClass: 'form-wrapper-2'});
+	}
+
 	encodeDate(){
 		let date = new Date();
 		let month = (date.getMonth() + 1);
@@ -63,9 +67,11 @@ class PublishOptions extends React.Component {
 	}
 
 	changeWrapper(e){
-		this.setState({
-			wrapperClass: 'form-wrapper-3'
-		});
+		if($(e.target).attr('id') === 'publish-wrapper'){
+			this.setState({
+				wrapperClass: 'form-wrapper-3'
+			});
+		}
 	}
 
   render(){
@@ -81,21 +87,19 @@ class PublishOptions extends React.Component {
 
     return(
 
-
-	      <div className='publishOptionsBox'>
+	      <div className='publishOptionsBox' id='publish-options-box'>
 	      Select a topic:
-				<div className='publish-link'>
-				<form onSubmit={this.handleStoryInput} className='moveUp'>
-						<div className='topicSelect'>
-							<ul className='topicButtons'>
-							  {topics}
-							</ul>
-						</div>
-					<input type='submit' value='Publish Your Story' />
-				</form>
-				</div>
+					<div className='publish-link'>
+						<form onSubmit={this.handleStoryInput} className='moveUp'>
+								<div className='topicSelect'>
+									<ul className='topicButtons'>
+									  {topics}
+									</ul>
+								</div>
+							<input type='submit' value='Publish Your Story' />
+						</form>
+					</div>
 	      </div>
-
     );
   }
 
@@ -103,5 +107,5 @@ class PublishOptions extends React.Component {
 
 export default PublishOptions;
 
-	// <div className={this.state.wrapperClass} onClick={this.changeWrapper}>
-	// </div>
+// <div className={this.state.wrapperClass} id='publish-wrapper' onClick={this.changeWrapper}>
+// </div>

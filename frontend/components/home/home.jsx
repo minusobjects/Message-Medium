@@ -74,6 +74,7 @@ class Home extends React.Component {
 
     return(
       <div>
+			{this.props.children}
         < HomeNavContainer scrollDir={this.state.scrollDir} scrollTop={this.state.scrollTop} topics={this.props.topics}/>
         <br />
         <br />
