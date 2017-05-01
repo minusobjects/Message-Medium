@@ -30,11 +30,9 @@ class Response extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // if(!this.props.isMixed){
       if(nextProps.response != this.props.response){
         this.setState({floatingInput: ''});
       }
-    // }
     }
 
   handleUnlike(e){
@@ -160,7 +158,7 @@ class Response extends React.Component {
     if(this.props.loggedIn && !this.props.isMixed){
       if((this.props.currentUser.id) === (this.props.response.writer_id)){
         if(!this.props.isChild){
-          // tried to also allow user to respond to self, but too hard.
+
           responseOptions = (
             <div>
             <a onClick={this.loadResponseInput}>Edit this response</a>
@@ -221,20 +219,3 @@ class Response extends React.Component {
 }
 
 export default Response;
-
-// transitionAppear={true}
-// transitionAppearTimeout={3000}
-
-// <br />
-// For EDITING this one:
-// < ResponseInputContainer storyId={this.props.storyId} thisResponse={this.props.response} this_id={this.props.response.id} />
-// <br />
-// For RESPONDING TO this one (should only be allowed if not already a child):
-// < ResponseInputContainer storyId={this.props.storyId} inResponseId={this.props.response.id} />
-
-
-// if(nextProps.responses[this.props.responses.length-1]){
-//   if(nextProps.responses[this.props.responses.length-1].id === this.props.response.id){
-//     this.setState({floatingInput: ''});
-//   }
-// }

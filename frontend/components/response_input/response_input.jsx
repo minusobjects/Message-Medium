@@ -52,8 +52,6 @@ class ResponseInput extends React.Component {
       this.props.createResponse(responseData);
     }
 
-    // this.transName = 'testThing';
-    // this.setState({change: (this.state.change + 'n')})
   }
 
   encodeDate(){

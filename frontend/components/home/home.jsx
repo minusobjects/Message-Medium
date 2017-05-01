@@ -46,10 +46,8 @@ class Home extends React.Component {
 
   handleScroll(event) {
     if(($(document).scrollTop()) > this.state.scrollTop){
-      // console.log('scroll down!');
       this.setState({scrollDir: 'down'});
     } else {
-      // console.log('scroll up!');
       this.setState({scrollDir: 'up'});
     }
     this.setState({scrollTop: $(document).scrollTop()});

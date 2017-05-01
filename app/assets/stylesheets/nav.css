@@ -1,3 +1,15 @@
+.nav-outer-scroll {
+  display: flex;
+  position:fixed;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
+  z-index: 101;
+}
+
+
 .nav-outer {
   display: flex;
   justify-content: center;

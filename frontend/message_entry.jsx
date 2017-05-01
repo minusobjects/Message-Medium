@@ -4,23 +4,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-// test stuff
-// meow
-// import {storyIndex, storyShow} from './util/story_api_util';
-// window.storyIndex = storyIndex;
-// window.storyShow = storyShow;
-// import {responseIndex, responseShow} from './util/response_api_util';
-// window.responseIndex = responseIndex;
-// window.responseShow = responseShow;
-// import {likeDestroy} from './util/like_api_util';
-// window.likeDestroy = likeDestroy;
-// import {followingDestroy, followingCreate} from './util/following_api_util';
-// window.followingCreate = followingCreate;
-// window.followingDestroy = followingDestroy;
-// import {userShow} from './util/user_api_util';
-// window.userShow = userShow;
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
   let store;

@@ -1,7 +1,6 @@
 class Api::LikesController < ApplicationController
 
   def index
-    # do I even need this?
     if params[:likerId]
       likes = Like.where(liker_id: params[:likerId])
     elsif params[:storyId]
@@ -21,7 +20,6 @@ class Api::LikesController < ApplicationController
     @like = Like.new(like_params)
 
       if @like.save
-        # is this render right?
         render :show
       else
         render json: @like.errors.full_messages, status: 422

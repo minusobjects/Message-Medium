@@ -1,12 +1,3 @@
-// export const userIndex = (data) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: '/api/users',
-//     dataType: 'json',
-//     data
-//   });
-// };
-
 export const userShow = (userId) => {
   return $.ajax({
     method: 'GET',

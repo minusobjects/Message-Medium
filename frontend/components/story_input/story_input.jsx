@@ -96,7 +96,6 @@ class StoryInput extends React.Component {
   render(){
 
     let modules = { toolbar: [
-      // [{ 'header': [1, 2, false] }],
       ['bold', 'italic', 'link'],
       [{ 'header': 2 }, { 'header': 3 }],
       ['blockquote'],
@@ -114,7 +113,6 @@ class StoryInput extends React.Component {
         <img src={this.state.imageUrl} />
         </div>)
     } else {
-      // previewImage = window.images.story_default;
     }
 
     $("button.ql-header[value='3']").html('<svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="3" y1="3" x2="3" y2="13"></line><line class="ql-stroke" x1="11" y1="3" x2="11" y2="13"></line><line class="ql-stroke" x1="11" y1="8" x2="3" y2="8"></line><path id="XMLID_28_" class="ql-stroke ql-thin" d="M13.3,9.9c0,0,0.2-1.5,1.5-0.6c1.1,0.8-0.5,1.9-0.5,1.9s0.9,0.8,1.1,1.2 c0.1,0.5-1.1,1.5-2.1,0.3"></path></svg>');

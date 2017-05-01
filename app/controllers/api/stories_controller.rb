@@ -5,8 +5,6 @@ def index
   stories = Story.all.includes(:likes, :likers, :author, :topic)
 
   if params[:authorId]
-    # maybe should rearrange this conditional so we're
-    # not getting every story every time?
     stories = stories.where(author_id: params[:authorId])
   elsif params[:topicId]
     stories = stories.where(topic_id: params[:topicId])
@@ -19,7 +17,6 @@ def create
   @story = Story.new(story_params)
   if current_user.id == @story.author_id
     if @story.save
-      # is this render right?
       render :show
     else
       render json: @story.errors.full_messages, status: 422
@@ -38,7 +35,6 @@ def update
   @story = Story.find(params[:story][:id])
   if current_user.id == @story.author_id
     if @story.update(story_params)
-      # is this render right?
       render :show
     else
       render json: @story.errors.full_messages, status: 422
@@ -50,22 +46,13 @@ def update
 end
 
 def destroy
-  # delete story. tk.
-  # don't forget to check current user?
+
 end
 
 private
 
 def story_params
-  # need to have author id in params?
   params.require(:story).permit(:author_id, :title, :description, :body, :date, :topic_id, :main_image)
 end
 
 end
-
-
-
-# if (params[:minSeating] && params[:maxSeating])
-#     benches = benches.where(seating: seating_range)
-#   end
-#   @benches = benches.includes(:reviews, :favorite_users)

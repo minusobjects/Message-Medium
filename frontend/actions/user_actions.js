@@ -6,11 +6,6 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const START_LOADING_USER = 'START_LOADING_USER';
 
-// export const receiveAllUsers = users => ({
-//   type: RECEIVE_ALL_USERS,
-//   users
-// });
-
 export const startLoadingUser = () => ({
   type: START_LOADING_USER
 });
@@ -24,12 +19,6 @@ export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors
 });
-
-// export const fetchAllUsers = (data) => dispatch => (
-//   UserAPIUtil.userIndex(data)
-//     .then(users => dispatch(receiveAllUsers(users)),
-//     err => dispatch(receiveErrors(err.responseJSON)))
-// );
 
 export const fetchUser = (userId) => (dispatch) => {
   dispatch(startLoadingUser());

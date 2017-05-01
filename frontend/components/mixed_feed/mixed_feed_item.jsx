@@ -89,24 +89,3 @@ render(){
 }
 
 export default MixedFeedItem;
-
-// if(this.props.mixedItem.response_writer_photo_url === 'missing.png'){
-//   userImagePath = 'assets/missing.png';
-// } else {
-//   userImagePath = this.props.mixedItem.response_writer_photo_url;
-// }
-// thisItem = (<div className='mixedItem-response'>
-//   <Link to={`/stories/${this.props.mixedItem.response_story_id}`}>
-//   Go to story.
-//   </Link>
-//   <br />
-//   { this.props.mixedItem.response_writer_name }
-//   <br />
-//   <img src={ userImagePath } />
-//   <br />
-//   { this.props.mixedItem.response_date }
-//   <br />
-//   { this.props.mixedItem.response_body }
-//   <br />
-//   { this.props.mixedItem.response_liker_ids }
-// </div>);

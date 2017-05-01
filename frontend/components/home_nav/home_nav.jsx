@@ -14,15 +14,12 @@ class HomeNav extends React.Component {
   componentDidMount(){
   }
 
-  // I'm sure this could be nicer, refactoring-wise.
-  // could I just change the 'position' rather than the class?
-  // meow
   componentWillReceiveProps(newProps){
     const elem = ReactDOM.findDOMNode(this);
     if((newProps.scrollDir === 'up') && (newProps.scrollTop > 80)){
       elem.style.opacity = 0;
       elem.style.top = '-80px';
-      this.mainClass = 'nav-outer-TEST';
+      this.mainClass = 'nav-outer-scroll';
       window.requestAnimationFrame(function() {
         elem.style.transition = "top 200ms, opacity 150ms";
         elem.style.opacity = 1;
@@ -43,7 +40,7 @@ class HomeNav extends React.Component {
     }
     else if((newProps.scrollDir === 'down') && (newProps.scrollTop < 80)) {
     this.mainClass = 'nav-outer'; }
-    else { this.mainClass = 'nav-outer-TEST'; }
+    else { this.mainClass = 'nav-outer-scroll'; }
   }
 
   handleLogout(e) {

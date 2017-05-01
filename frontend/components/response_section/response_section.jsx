@@ -3,9 +3,6 @@ import { Link, withRouter, hashHistory } from 'react-router';
 
 import Response from './response';
 
-// eventually pass in the input container as well, unless maybe the response just grabs it directly?
-// yeah it should just grab it directly.
-
 class ResponseSection extends React.Component {
 
   constructor(props){
@@ -14,7 +11,7 @@ class ResponseSection extends React.Component {
     this.flatten = this.flatten.bind(this);
   }
 
-  // handy found function
+  // flatten arrays
   flatten(ary) {
       var ret = [];
       for(var i = 0; i < ary.length; i++) {

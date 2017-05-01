@@ -219,36 +219,3 @@ class UserProfile extends React.Component {
 }
 
 export default withRouter(UserProfile);
-
-
-// <section className='storyInfo'>
-//   <div className='authorPhotoContainer'>
-//     <img src={ authorPhotoUrl } />
-//   </div>
-//   <div className='authorInfoContainer'>
-//   <Link to={`/users/${authorId}`}>
-//     { authorName }
-//     </Link>
-//     <br />
-//     <span className='smallInfo'>
-//       { authorBio }
-//       <br />
-//       { formattedDate }
-//     </span>
-//   </div>
-//   <CSSTransitionGroup
-//    transitionName="followAppear"
-//    transitionAppear={true}
-//    transitionAppearTimeout={1000}>
-//     <FollowUser
-//       loggedIn={this.props.loggedIn}
-//       currentUser={this.props.currentUser}
-//       authorFollowerIds={authorFollowerIds}
-//       authorId={authorId}
-//       createFollowing={this.props.createFollowing}
-//       destroyFollowing={this.props.destroyFollowing}/>
-//     </CSSTransitionGroup>
-// </section>
-//
-// concat both arrays (stories and responses) into one array, then:
-// c = a.sort(function (a, b) { return a.created_at.localeCompare(b.created_at); });

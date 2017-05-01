@@ -47,13 +47,6 @@ class SignupForm extends React.Component {
     });
   }
 
-  // old version - didn't have to account for images
-  // handleSignup(e) {
-  //   e.preventDefault();
-  //   const user = this.state;
-  //   this.props.signup({user});
-  // }
-
   handleSignup(e) {
     e.preventDefault();
     let formData = new FormData();

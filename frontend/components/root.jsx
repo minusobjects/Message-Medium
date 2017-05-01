@@ -11,8 +11,6 @@ import StoryContainer from './story/story_container';
 import UserProfileContainer from './user_profile/user_profile_container';
 import HomeContainer from './home/home_container';
 
-// need to route signin and signup for topics - think i need to add 'children' to nav as well.
-
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>
@@ -40,10 +38,3 @@ const Root = ({ store }) => (
 );
 
 export default Root;
-
-
-// <IndexRoute component={EventIndexContainer} />
-// <Route path="/events/new" component={EventFormContainer} />
-// <Route path="/events" component={EventIndexContainer} />
-// <Route path="/events/:eventId" component={EventShowContainer} />
-// <Route path="/events/:eventId/edit" component={EventFormContainer} />

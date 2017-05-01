@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link, hashHistory } from 'react-router';
 import ScrollableAnchor from 'react-scrollable-anchor';
 
 class StorySidebar extends React.Component {
@@ -94,5 +93,3 @@ class StorySidebar extends React.Component {
 }
 
 export default StorySidebar;
-// <a href={`${this.props.thisPath}#testing`}>Go to comments!</a>
-// <a href='#testing'>Go to comments!</a>

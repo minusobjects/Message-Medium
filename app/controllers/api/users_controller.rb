@@ -17,11 +17,11 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    # modify user info. TK.
+
   end
 
   def destroy
-    # delete user. TK.
+    
   end
 
   private

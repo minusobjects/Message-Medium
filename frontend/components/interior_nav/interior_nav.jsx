@@ -2,14 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
-// import SignupForm from '../signup_form/signup_form';
-// import AuthForm from '../auth_form/auth_form';
-
 class InteriorNav extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// this.state = {authForm: '', signupForm: ''};
 
     this.handleLogout = this.handleLogout.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
@@ -20,15 +15,12 @@ class InteriorNav extends React.Component {
   componentDidMount(){
   }
 
-  // I'm sure this could be nicer, refactoring-wise.
-  // could I just change the 'position' rather than the class?
-  // meow
   componentWillReceiveProps(newProps){
     const elem = ReactDOM.findDOMNode(this);
     if((newProps.scrollDir === 'up') && (newProps.scrollTop > 80)){
       elem.style.opacity = 0;
       elem.style.top = '-80px';
-      this.mainClass = 'nav-outer-TEST';
+      this.mainClass = 'nav-outer-scroll';
       window.requestAnimationFrame(function() {
         elem.style.transition = "top 200ms, opacity 150ms";
         elem.style.opacity = 1;
@@ -49,7 +41,7 @@ class InteriorNav extends React.Component {
     }
     else if((newProps.scrollDir === 'down') && (newProps.scrollTop < 80)) {
     this.mainClass = 'nav-outer'; }
-    else { this.mainClass = 'nav-outer-TEST'; }
+    else { this.mainClass = 'nav-outer-scroll'; }
   }
 
   handleLogout(e) {
@@ -132,5 +124,3 @@ class InteriorNav extends React.Component {
 }
 
 export default withRouter(InteriorNav);
-
-// <img src={window.images.mag_glass} />

@@ -14,13 +14,11 @@ def create
   @response = Response.new(response_params)
   if current_user.id == @response.writer_id
     if @response.save
-      # is this render right?
       render :show
     else
       render json: @response.errors.full_messages, status: 422
     end
   else
-    # only if someone's maliciously using the URL
     render json: 'Invalid response'
   end
 end
@@ -33,20 +31,17 @@ def update
   @response = Response.find(params[:this_id])
   if current_user.id == @response.writer_id
     if @response.update(response_params)
-      # is this render right? guess so.
       render :show
     else
       render json: @response.errors.full_messages, status: 422
     end
   else
-    # only if someone's maliciously using the URL
     render json: 'Invalid edit'
   end
 end
 
 def destroy
-  # delete response. tk.
-  # don't forget to check current user?
+  
 end
 
 private

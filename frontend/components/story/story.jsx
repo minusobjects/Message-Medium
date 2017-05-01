@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-// import ScrollableAnchor from 'react-scrollable-anchor';
 
 import ResponseInputContainer from '../response_input/response_input_container';
 import ResponseSectionContainer from '../response_section/response_section_container';
@@ -46,7 +45,6 @@ class Story extends React.Component {
 	}
 
   componentWillReceiveProps(nextProps) {
-		// this.props.fetchAllLikes({storyId: this.props.params.id});
 
 		if(nextProps.params.id != this.props.params.id){
     	this.props.fetchStory(nextProps.params.id);
@@ -64,7 +62,6 @@ class Story extends React.Component {
 	handleScroll(event) {
 		const storyHeight = document.getElementById('mainBody').clientHeight;
 		this.setState({storyHeight: storyHeight});
-		// console.log(storyHeight);
 
 		if(($(document).scrollTop()) > this.state.scrollTop){
       this.setState({scrollDir: 'down'});
@@ -72,7 +69,6 @@ class Story extends React.Component {
       this.setState({scrollDir: 'up'});
     }
 			if(($(document).scrollTop() > 140) && ($(document).scrollTop() < this.state.storyHeight - 300)){
-				// console.log(this.state.storyHeight);
 
 				let storyId;
 				let authorId;
@@ -84,7 +80,7 @@ class Story extends React.Component {
 					authorId = this.props.story.author_id;
 					likes = this.props.likes;
 					if(this.props.likes){
-
+						// meow
 						Object.values(likes).forEach((like) => {
 							// don't think I need the response_id thing anymore
 							if(!like.response_id){
@@ -144,7 +140,6 @@ class Story extends React.Component {
 			return(<LoadingIcon />);
 		}
 
-    // way to destructure?
 
 		let storyId;
     let mainImageUrl;
@@ -157,7 +152,6 @@ class Story extends React.Component {
     let formattedDate;
     let description;
     let body;
-		// let likers = [];
 		let likes = [];
 		let likerIds = [];
 		let authorFollowerIds;
@@ -177,7 +171,6 @@ class Story extends React.Component {
       formattedDate = this.formatDate(date.split(','));
       description = this.props.story.description;
       body = this.props.story.body;
-			// likers = this.props.story.likers;
 			likes = this.props.story.likes;
 			if(this.props.story.likes){
 				likes.forEach((like) => {
@@ -192,7 +185,7 @@ class Story extends React.Component {
 			}
     }
 
-		// this thingy here both checks whether the user can edit the story
+		// this both checks whether the user can edit the story
 		// and whether they can leave a comment.
 		let editThis;
 		let respondHere;

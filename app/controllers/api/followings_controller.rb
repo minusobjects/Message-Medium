@@ -1,7 +1,6 @@
 class Api::FollowingsController < ApplicationController
 
   def index
-    # do I even need this? yes!
     if params[:followerId]
       followings = Following.where(follower_id: params[:followerId])
     else params[:followingId]
@@ -18,7 +17,6 @@ class Api::FollowingsController < ApplicationController
   def create
     @following = Following.new(following_params)
       if @following.save
-        # is this render right?
         render :show
       else
         render json: @following.errors.full_messages, status: 422

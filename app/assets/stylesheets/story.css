@@ -1,8 +1,5 @@
 .mainContainer {
   width: 100%;
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*text-align: center;*/
   background-color: white;
 }
 
@@ -65,7 +62,6 @@
 
 
 .storyHead {
- /*background-color: goldenrod;*/
  background-color: white;
 }
 
@@ -107,8 +103,6 @@
 }
 
 .editThis {
-  /*font-family: 'Crimson Text', serif;*/
-  /*color: rgba(0,0,0,.5);*/
   font-size: 16px;
   opacity: .6;
   margin-top: 25px;
