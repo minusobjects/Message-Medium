@@ -115,9 +115,9 @@ Like.create!([
   {liker_id: jane.id, story_id: story9.id, response_id: nil},
   {liker_id: jane.id, story_id: nil, response_id: response10.id},
   {liker_id: mary.id, story_id: nil, response_id: response10.id},
-  {liker_id: mary.id, story_id: story6.id, response_id: response3.id},
+  {liker_id: mary.id, story_id: story6.id, response_id: nil},
   {liker_id: mary.id, story_id: nil, response_id: response5.id},
-  {liker_id: mary.id, story_id: story8.id, response_id: response10.id},
+  {liker_id: mary.id, story_id: story8.id, response_id: nil},
   {liker_id: mary.id, story_id: nil, response_id: response8.id},
-  {liker_id: mary.id, story_id: story11.id, response_id: response10.id}
+  {liker_id: mary.id, story_id: story11.id, response_id: nil}
 ])
