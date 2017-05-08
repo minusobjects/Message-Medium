@@ -24,20 +24,12 @@
     "react-scrollable-anchor": "^0.4.2",
     "react-transition-group": "^1.1.2",
     "redux": "^3.6.0",
-<<<<<<< HEAD
     "redux-thunk": "^2.2.0",
     "webpack": "^2.4.1"
   },
   "devDependencies": {
     "redux-logger": "^3.0.1"
   },
-=======
-    "redux-logger": "^3.0.1",
-    "redux-thunk": "^2.2.0",
-    "webpack": "^2.4.1"
-  },
-  "devDependencies": {},
->>>>>>> 4127800ac1e456c01f17bbd22c5aa5c6dd2c8358
   "engines": {
     "node": "6.7.0",
     "npm": "3.10.7"
