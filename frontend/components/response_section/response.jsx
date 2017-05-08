@@ -207,9 +207,7 @@ class Response extends React.Component {
           {responseOptions}
         </div>
         <CSSTransitionGroup
-          transitionName="responseInputTrans"
-            transitionEnterTimeout={200}
-            transitionLeaveTimeout={200}>
+          transitionName="responseInputTrans">
             {this.state.floatingInput}
           </CSSTransitionGroup>
       </li>

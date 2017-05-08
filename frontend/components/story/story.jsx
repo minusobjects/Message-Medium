@@ -202,9 +202,7 @@ class Story extends React.Component {
 				}
 			respondHere = (
 				<CSSTransitionGroup
-          transitionName="responseInputTrans"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}>
+          transitionName="responseInputTrans">
 						{this.state.firstResponseInput}
 				 	</CSSTransitionGroup>
 			);
@@ -230,9 +228,7 @@ class Story extends React.Component {
 				<div className='storyContentContainer'>
 					<article id='mainBody' className='storyContent'>
 					<CSSTransitionGroup
-	          transitionName="sidebarTrans"
-	          transitionEnterTimeout={100}
-	          transitionLeaveTimeout={100}>
+	          transitionName="sidebarTrans">
 							{this.state.sidebar}
 							</CSSTransitionGroup>
 		        <section className='storyInfo'>

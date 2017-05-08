@@ -203,9 +203,7 @@ class UserProfile extends React.Component {
         </div>
         <br/><br/>
         <CSSTransitionGroup
-          transitionName="profileFeedTrans"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}>
+          transitionName="profileFeedTrans">
             {currentFeed}
         </CSSTransitionGroup>
         <br/><br/><br/>

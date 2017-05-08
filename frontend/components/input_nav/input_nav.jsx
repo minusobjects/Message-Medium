@@ -61,9 +61,7 @@ class InputNav extends React.Component {
               Publish
             </a>
 						<CSSTransitionGroup
-		          transitionName="profileFeedTrans"
-		          transitionEnterTimeout={200}
-		          transitionLeaveTimeout={200}>
+		          transitionName="profileFeedTrans">
 						{this.state.publishOptions}
 						</CSSTransitionGroup>
             </div>
