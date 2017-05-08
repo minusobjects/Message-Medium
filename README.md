@@ -16,7 +16,7 @@ Users may leave responses on stories or on other responses. The chain of respons
 
 Below is an initial wireframe drawing of the individual story page (note that the sidebar component is used to display that story's likes):
 
-![image of story_page](wireframes/story.png)
+![image of story_page](docs/wireframes/story.png)
 
 ### Follows
 
@@ -24,7 +24,7 @@ Users may 'follow' other users by clicking on a modular React component. In addi
 
 Below is an initial wireframe drawing of the user profile page:
 
-![image of user_profile](wireframes/user-profile.png)
+![image of user_profile](docs/wireframes/user-profile.png)
 
 ### Likes
 
