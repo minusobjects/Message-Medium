@@ -5,7 +5,7 @@ Story.destroy_all
 Response.destroy_all
 Topic.destroy_all
 
-guest = User.create!(username: 'guest', password: 'password', name: 'Guest User', email: 'guest@guest.com', bio: 'Thanks for checking out Message, a full-stack web application inspired by Medium. This app was created by Mike Newton.', photo_url: nil)
+guest = User.create!(username: 'guest', password: 'password', name: 'Guest User', email: 'guest@guest.com', bio: 'Thanks for checking out Message, a full-stack web application inspired by Medium. This app was created by Mike Newton in April/May, 2017. Learn more about me: <br/><a href="https://minusobjects.github.io/">portfolio</a> | <a href="https://github.com/minusobjects/">github</a> | <a href="https://www.linkedin.com/in/michael-newton-976588140/">linkedin</a>', photo_url: nil)
 
 laura = User.create!(username: "laura", email: "l@laser.com", name: "Laura Laser", bio: "Sharp and focused like a laser. Also I enjoy pie.", photo_url: nil, password: 'password', photo: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/female2.png"))
 john = User.create!(username: "john", email: "j@jg.com", name: "John Gunn", bio: "Intergalactic jack-of-all-trades, enjoyer of fine space deserts.", photo_url: nil, password: 'password', photo: URI.parse("https://s3.us-east-2.amazonaws.com/message-dev/users/seed_photos/male1.png"))

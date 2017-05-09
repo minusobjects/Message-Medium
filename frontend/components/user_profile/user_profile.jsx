@@ -13,7 +13,7 @@ import Recommended from './recommended';
 
 import InteriorNavContainer from '../interior_nav/interior_nav_container';
 
-
+var HtmlToReactParser = require('html-to-react').Parser;
 
 class UserProfile extends React.Component {
 
@@ -58,12 +58,14 @@ class UserProfile extends React.Component {
   switchFollowing(){this.setState({currentFeed: 'following'});}
   switchRecommended(){this.setState({currentFeed: 'recommended'});}
 
+
   render(){
 
     if(this.props.loading){
       return(<LoadingIcon />);
     }
 
+    let htmlToReactParser = new HtmlToReactParser();
     let userData;
 
     let mixedLatest;
@@ -83,7 +85,7 @@ class UserProfile extends React.Component {
           <span className='orangeBack'>{this.props.user.name}</span>
         </div>
         <div className='profile-userBio'>
-          {this.props.user.bio}
+          {htmlToReactParser.parse(this.props.user.bio)}
           <br />
         <span className='lighterText'>Followers: {this.props.user.follower_ids.length}&nbsp;&nbsp;|&nbsp;&nbsp;Following: {this.props.user.following_ids.length}</span>
         <div className='profileFollow'>
