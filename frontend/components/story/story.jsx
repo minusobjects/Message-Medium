@@ -11,6 +11,8 @@ import StorySidebar from '../story_sidebar/story_sidebar';
 import FollowUser from '../follow_user/follow_user';
 import LoadingIcon from '../loading_icon/loading_icon';
 
+import * as MUtil from '../../util/m_util';
+
 var HtmlToReactParser = require('html-to-react').Parser;
 
 class Story extends React.Component {
@@ -80,9 +82,8 @@ class Story extends React.Component {
 					authorId = this.props.story.author_id;
 					likes = this.props.likes;
 					if(this.props.likes){
-						// meow
 						Object.values(likes).forEach((like) => {
-							// don't think I need the response_id thing anymore
+							// response_id not strictly necessary
 							if(!like.response_id){
 							likerIds.push(like.liker_id);
 							}
@@ -118,28 +119,11 @@ class Story extends React.Component {
 		this.props.createLike(likeData);
 	}
 
-  formatDate(dateArr){
-    let ampm;
-    let hour;
-    if(dateArr[3] > 12){
-      ampm = 'pm';
-      hour = (dateArr[3] - 12);
-    } else {
-      ampm = 'am';
-      hour = dateArr[3];
-    }
-    const months = ['none','Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
-    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${hour}:${dateArr[4]} ${ampm}`;
-    return str;
-  }
-
-
   render() {
 
 		if(this.props.loading){
 			return(<LoadingIcon />);
 		}
-
 
 		let storyId;
     let mainImageUrl;
@@ -168,7 +152,7 @@ class Story extends React.Component {
 			authorPhotoUrl = this.props.story.author_photo_url;
 			authorFollowerIds = this.props.story.author_follower_ids;
       date = this.props.story.date;
-      formattedDate = this.formatDate(date.split(','));
+      formattedDate = MUtil.formatDate(date.split(','));
       description = this.props.story.description;
       body = this.props.story.body;
 			likes = this.props.story.likes;
@@ -241,7 +225,7 @@ class Story extends React.Component {
 								</Link>
 								<br />
 								<span className='smallInfo'>
-									{ authorBio }
+									{ htmlToReactParser.parse(authorBio) }
 									<br />
 									<span className='dateInfo'>{ formattedDate }</span>
 								</span>

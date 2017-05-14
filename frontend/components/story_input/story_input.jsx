@@ -31,7 +31,6 @@ class StoryInput extends React.Component {
   }
 
   redirectIfNotLoggedIn() {
-
     if (!this.props.loggedIn) {
       hashHistory.push("/signin");
     }
@@ -64,7 +63,6 @@ class StoryInput extends React.Component {
     });
   }
 
-
   loadImage(e){
     e.preventDefault();
     var reader = new FileReader();
@@ -72,7 +70,6 @@ class StoryInput extends React.Component {
     reader.onloadend = function() {
       this.setState({ imageUrl: reader.result, imageFile: file});
     }.bind(this);
-
     if (file) {
       reader.readAsDataURL(file);
     } else {
@@ -94,7 +91,6 @@ class StoryInput extends React.Component {
 
 
   render(){
-
     let modules = { toolbar: [
       ['bold', 'italic', 'link'],
       [{ 'header': 2 }, { 'header': 3 }],
@@ -119,7 +115,6 @@ class StoryInput extends React.Component {
 
 
     let cameraStyle={backgroundImage: `url(${window.images.little_camera})`};
-
 
      let storyData = {};
      storyData.title = this.state.title;

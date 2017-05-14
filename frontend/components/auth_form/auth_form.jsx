@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter, hashHistory } from 'react-router';
 
-
 class AuthForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -31,8 +30,6 @@ class AuthForm extends React.Component {
     $('#form-wrapper').animate({
     opacity: 1,}, 200);
   }
-
-  // look more into difference between router.push and hashHistory.push
 
   formWrapperRedirect(e) {
     if($(e.target).attr('class') === 'form-wrapper'){

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
+import * as MUtil from '../../util/m_util';
+
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import ResponseInputContainer from '../response_input/response_input_container';
@@ -61,21 +63,6 @@ class Response extends React.Component {
       }
     };
     this.props.createLike(likeData);
-  }
-
-  formatDate(dateArr){
-    let ampm;
-    let hour;
-    if(dateArr[3] > 12){
-      ampm = 'pm';
-      hour = (dateArr[3] - 12);
-    } else {
-      ampm = 'am';
-      hour = dateArr[3];
-    }
-    const months = ['none','Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
-    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${hour}:${dateArr[4]} ${ampm}`;
-    return str;
   }
 
   loadResponseInput(e){
@@ -188,7 +175,7 @@ class Response extends React.Component {
           </Link>
           <br />
           <span className='smallInfo'>
-          {this.formatDate(this.props.response.date.split(','))}
+          {MUtil.formatDate(this.props.response.date.split(','))}
           </span>
         </div>
       </section>

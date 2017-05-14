@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
+import * as MUtil from '../../util/m_util';
+
 class PublishOptions extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,23 +23,10 @@ class PublishOptions extends React.Component {
 		// this.setState({wrapperClass: 'form-wrapper-2'});
 	}
 
-	encodeDate(){
-		let date = new Date();
-		let month = (date.getMonth() + 1);
-		let day = date.getDate();
-		let year = date.getFullYear();
-		let hour = date.getHours();
-		let minutes = date.getMinutes();
-		let seconds = date.getSeconds();
-		return `${month},${day},${year},${hour},${minutes},${seconds}`;
-	}
-
   handleStoryInput(e) {
-
     e.preventDefault();
 
 		// will also pass in topic data from the new form below
-
     let formData = new FormData();
     let file = this.props.storyData.file;
 
@@ -45,7 +34,7 @@ class PublishOptions extends React.Component {
     formData.append("story[title]", this.props.storyData.title);
     formData.append("story[description]", this.props.storyData.description);
     formData.append("story[body]", this.props.storyData.body);
-    formData.append("story[date]", this.encodeDate());
+    formData.append("story[date]", MUtil.encodeDate());
     formData.append("story[topic_id]", this.state.topicId);
     if(file){
       formData.append("story[main_image]", file);

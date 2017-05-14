@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
+import * as MUtil from '../../util/m_util';
 
 class ResponseInput extends React.Component {
 
@@ -31,7 +32,7 @@ class ResponseInput extends React.Component {
   handleResponseInput(e) {
     e.preventDefault();
     let body = this.state.body;
-    let date = this.encodeDate();
+    let date = MUtil.encodeDate();
     let writer_id = this.props.currentUser.id;
     let story_id = this.props.storyId;
     let in_response_id = this.props.inResponseId;
@@ -52,17 +53,6 @@ class ResponseInput extends React.Component {
       this.props.createResponse(responseData);
     }
 
-  }
-
-  encodeDate(){
-    let date = new Date();
-    let month = (date.getMonth() + 1);
-    let day = date.getDate();
-    let year = date.getFullYear();
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    return `${month},${day},${year},${hour},${minutes},${seconds}`;
   }
 
 	renderErrors() {

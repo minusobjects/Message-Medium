@@ -1,27 +1,14 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
+import * as MUtil from '../../util/m_util';
+
 import Response from '../response_section/response';
 
 class MixedFeedItem extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-
-	formatDate(dateArr){
-    let ampm;
-    let hour;
-    if(dateArr[3] > 12){
-      ampm = 'pm';
-      hour = (dateArr[3] - 12);
-    } else {
-      ampm = 'am';
-      hour = dateArr[3];
-    }
-    const months = ['none','Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
-    let str = `${months[dateArr[0]]} ${dateArr[1]}, ${dateArr[2]}. ${hour}:${dateArr[4]} ${ampm}`;
-    return str;
-  }
 
 render(){
   let thisItem = (<div></div>);
@@ -30,13 +17,15 @@ render(){
 	let storyDate;
 
   if(this.props.mixedItem.this_is === 'story'){
-		storyDate = this.formatDate(this.props.mixedItem.story_date.split(','));
+		storyDate = MUtil.formatDate(this.props.mixedItem.story_date.split(','));
 
     thisItem = (
 				<div className='mixedItem-story'>
 				<div className='left-half'>
 					<div className='mixedItem-storyImage'>
-        		<img src={mainImagePath} />
+						<Link to={`/stories/${this.props.mixedItem.story_id}`}>
+        			<img src={mainImagePath} />
+						</Link>
         	</div>
 					</div>
 					<div className='right-half'>
