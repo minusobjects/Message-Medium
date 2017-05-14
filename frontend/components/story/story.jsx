@@ -62,7 +62,10 @@ class Story extends React.Component {
   }
 
 	handleScroll(event) {
-		const storyHeight = document.getElementById('mainBody').clientHeight;
+		let storyHeight;
+		if(document.getElementById('mainBody')){
+			storyHeight = document.getElementById('mainBody').clientHeight;
+		}
 		this.setState({storyHeight: storyHeight});
 
 		if(($(document).scrollTop()) > this.state.scrollTop){
