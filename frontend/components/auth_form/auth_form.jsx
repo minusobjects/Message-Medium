@@ -6,6 +6,7 @@ class AuthForm extends React.Component {
 		super(props);
 		this.state = { username: "", password: ""};
 		this.handleLogin = this.handleLogin.bind(this);
+		this.guestLogin = this.guestLogin.bind(this);
     this.formWrapperRedirect = this.formWrapperRedirect.bind(this);
 
 		this.backPath = this.props.location.pathname.slice(0, -7);
@@ -48,6 +49,12 @@ class AuthForm extends React.Component {
   	const user = this.state;
     this.props.login({user});
   }
+
+	guestLogin(e) {
+		e.preventDefault();
+		let guest = {user: {username: 'guest', password: 'password'}};
+		this.props.login(guest).then(() => hashHistory.push('/'));
+	}
 
 	renderErrors() {
 		return(
@@ -92,7 +99,11 @@ class AuthForm extends React.Component {
             </div>
             <br /><br />
             <div className='small-message'>
-            <Link to={`${this.backPath}/signup`}>Don't have an account? Sign up here.</Link>
+            <Link to={`${this.backPath}/signup`}>{"Don't have an account? Sign up here."}</Link>
+						<br/>
+						<div className="authGuestLink">
+							<a href='#' onClick={ this.guestLogin }>{"Click here to sign in as a guest."}</a>
+						</div>
             </div>
 				</form>
         <br />

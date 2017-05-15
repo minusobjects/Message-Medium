@@ -3,7 +3,6 @@
   font-size: 12px;
   letter-spacing: 1px;
   color: #a50000;
-  /*display: flex;*/
   justify-content: center;
   padding: 0px;
 }
@@ -63,7 +62,6 @@
 }
 
 .inner_auth input[type='text']:focus {
-    /*background-color: purple;*/
 }
 
 .inner-auth input[type='submit'] {
@@ -83,6 +81,7 @@
 
 .small-message {
   font-size: 12px;
+  letter-spacing:.05em;
 }
 
 .signup-form {
@@ -168,4 +167,24 @@
   background-color: rgba(70, 70, 70, 0.3);
   z-index: 200;
   opacity: .1;
+}
+
+.authGuestLink{
+  margin-top:6px;
+  margin-bottom:3px;
+}
+
+.authGuestLink a{
+  color: #e6a822;
+}
+
+.authGuestLink a:visited{
+  color: #e6a822;
+}
+
+.authGuestLink a:active{
+  color: #e6a822;
+}
+.authGuestLink a:hover{
+  color: #e1bd5b;
 }
