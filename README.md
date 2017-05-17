@@ -6,7 +6,7 @@
 
 ![image of home_page](docs/caps/m-cap-home.jpg)
 
-Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
+Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (back-end), PostgreSQL (database), and React.js/Redux (front-end). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
 
 ## Features & Implementation
 
@@ -38,7 +38,7 @@ Below is an initial wireframe drawing of the user profile page:
 
 Through the Rails backend, stories are associated with topics and can be 'liked' by users. Database associations allow for a record of all stories and responses that any user has liked. By comparing data from the `likes` table with user information, various React components can detect whether or not the logged-in user has liked a story or response, updating their styles accordingly.
 
-The goal was to seamlessly integrate the experience of 'liking' into the site, i.e. by showing a story's 'likes' in a sidebar that appears and disappears according to the user's positiion in the story (via JavaScript and CSS).
+The goal was to seamlessly integrate the experience of 'liking' into the site, i.e. by showing a story's 'likes' in a sidebar that appears and disappears according to the user's position in the story (via JavaScript and CSS).
 
 ## Future Directions for the Project
 
