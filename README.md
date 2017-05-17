@@ -6,7 +6,7 @@
 
 ![image of home_page](docs/caps/m-cap-home.jpg)
 
-Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (back-end), PostgreSQL (database), and React.js/Redux (front-end). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
+**Message** is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (back-end), PostgreSQL (database), and React.js/Redux (front-end). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
 
 ## Features & Implementation
 
