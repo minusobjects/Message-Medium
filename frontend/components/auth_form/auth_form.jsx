@@ -102,7 +102,7 @@ class AuthForm extends React.Component {
             <Link to={`${this.backPath}/signup`}>{"Don't have an account? Sign up here."}</Link>
 						<br/>
 						<div className="authGuestLink">
-							<a href='#' onClick={ this.guestLogin }>{"Click here to sign in as a guest."}</a>
+							<span className="authGuestLinkColor"><a href='#' onClick={ this.guestLogin }>{"Click here to sign in as a guest."}</a></span>
 						</div>
             </div>
 				</form>

@@ -175,17 +175,17 @@
   color: #e6a822;
 }
 
-.authGuestLink a{
+.authGuestLinkColor a{
   color: #e6a822;
 }
 
-.authGuestLink a:visited{
+.authGuestLinkColor a:visited{
   color: #e6a822;
 }
 
-.authGuestLink a:active{
+.authGuestLinkColor a:active{
   color: #e6a822;
 }
-.authGuestLink a:hover{
+.authGuestLinkColor a:hover{
   color: #e1bd5b;
 }
