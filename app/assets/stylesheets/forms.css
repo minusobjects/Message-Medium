@@ -179,6 +179,10 @@
   color: #e6a822;
 }
 
+.authGuestLinkColor a:link{
+  color: #e6a822;
+}
+
 .authGuestLinkColor a:visited{
   color: #e6a822;
 }
