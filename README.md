@@ -1,8 +1,10 @@
 # Message
 
-[Message live][heroku]
+[Message live][app]
 
-[heroku]: http://message-medium.herokuapp.com/
+[app]: http://www.message-medium.net/
+
+![image of home_page](docs/caps/m-cap-home.jpg)
 
 Message is a full-stack single-page web application inspired by the blog/news site Medium. It utilizes Ruby on Rails (backend), PostgreSQL (database), and React.js/Redux (frontend). The goal of Message is to provide an elegant and inviting experience for both the reading and writing of stories.
 
@@ -10,7 +12,11 @@ Message is a full-stack single-page web application inspired by the blog/news si
 
 ### Writing and editing stories and responses
 
+![image of story_input](docs/caps/m-cap-story-input.jpg)
+
 Users may write their own stories via a spare, clean interface - the almost-entirely white page is meant to emulate the feeling of a blank sheet of paper. The more-complex functionality only becomes evident after some interaction: image uploading and linked topics via database associations, and rich text editing using tools adapted from the QuillJS library. In order to achieve the desired experience, I had to heavily edit the Quill interface. The database stores stories in specially-formatted HTML, which can then be rendered via React.
+
+![image of story](docs/caps/m-cap-story.jpg)
 
 Users may leave responses on stories or on other responses. The chain of responses (sorted by time and by comment thread) is managed through JavaScript algorithms; using the Redux architecture, users may seamlessly leave responses or edit their own responses.
 
@@ -19,6 +25,8 @@ Below is an initial wireframe drawing of the individual story page (note that th
 ![image of story_page](docs/wireframes/story.png)
 
 ### Follows
+
+![image of home_page](docs/caps/m-cap-profile.jpg)
 
 Users may 'follow' other users by clicking on a modular React component. In addition to the user's information, each user profile page contains three feeds: stories and responses written by that user, stories and responses which have been liked by that user, and stories and responses by users followed by that user. This information is quickly retrieved from the server thanks to a series of associations between multiple database tables (`users`, `stories`, `responses`, `likes`, `follows`, and `followings`). Users may view these feeds by clicking on a custom SVG icon menu.
 
