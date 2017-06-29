@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :responses, only:[:index, :create, :update, :show, :destroy]
     resources :likes, only:[:index, :create, :show, :destroy]
     resources :followings, only:[:index, :create, :show, :destroy]
-    resources :topics, only:[:index] 
+    resources :topics, only:[:index]
   end
 
 end
